@@ -1,0 +1,569 @@
+# C++对象技术简介
+
+## 本章大纲
+
+- C++对C的改进（C++部分兼容C）
+- C++标准库的头文件
+- 引用的创建及操作
+- 内联函数
+- 一元作用域运算符
+- 带默认值得函数
+- 函数重载
+- 函数模板
+
+
+## 面向对象编程
+1. 类
+2. 对象
+3. 继承
+4. 多态性
+
+## 泛型编程
+1.  函数模板
+2.  类模板
+
+
+## 与C与语言相比
+1. 预处理命令可以不带`.h`
+2. 使用命名空间`using namespace xxx；`
+3. 使用某个对象`xxx::obj_name`，例`std::cout`
+
+
+## 输入与输出
+ C++通过调用I/O流标准库中的流对象实现I/O功能
+
+### 流(stream)
+- 指要从某种I/O设备上读入/写出的字符序列
+-  "流" 意指字符是随时间顺序生成或消耗的
+
+
+### I/O标准库(iostream)
+- ` cin `  ——输入流对象的名字, `std::cin`
+- `cout `——输出流对象的名字, `std::cout`
+- `>> `——流提取操作符，用于从输入流中读入输入
+- `<< `——流插入操作符，用于把输出内容插入到输出流中
+
+### **输入流：输入设备-->内存**
+
+键盘输入的作用是：读取用户键入的字符串，按相应变量的类型转换成二进制代码写入内存
+输入流语法格式：`cin >> 变量1 >> 变量2  … >> 变量n ;`
+
+```cpp
+int  a , b, c;
+cin >>a
+    >>b
+    >>c；
+cin >>a；
+cin >>b；
+cin >>c；
+cin >>a>>b>>c；
+```
+
+### **输出流：内存-->显存**
+
+屏幕输出的作用： 从内存读取数据项的值，转换成相应的字符串显示到屏幕上
+输出流语法格式：`cout << 表达式1 << 表达式2 … << 表达式n ;`
+
+```cpp
+  int param1, param2, param3;
+  cin >> param1 >> param2 >> param3;
+  cout << "\nparam1 is : " << param1
+       << "\nparam2 is : " << param2
+       << "\nparam3 is : " << param3
+       <<"\n"; //<<endl;
+```
+
+### endl（end of line）
+- 将它写入输出流时，具有输出换行的效果，并刷新与设备相关联的缓冲区（buffer）
+- 通过刷新缓冲区，用户可立即看到写入到流中的输出
+
+**输出流注意事项：**
+不能用一个插入运算符“<<”插入多个输出项：
+
+```cpp
+cout<<a,b,c;		//错误，不能一次插入多项
+cout<<a<<b<<c<<endl;
+cout<<a
+    <<b
+    <<c
+    <<endl;
+```
+
+## C++标准库
+- 由C++编译器开发商提供的类和函数
+- 软件重用 ：尽可能地使用已有的代码片段创建程序，避免重复劳动，称为软件重用
+
+
+### C++标准库头文件（省略.h）
+1. 函数原型
+2. 类定义
+3. 常量定义等
+
+
+## 常用C++标准库头文件
+
+```cpp
+<iostream>	//标准输入输出函数的原型
+<cmath>		//数学库函数的原型
+<ctime>		//时间及日期函数原型以及类
+<cctype>	//测试字符属性函数原型
+<cstring>	//字符串处理函数的原型
+<fstream>	//文件操作函数原型
+<string>	//包含string类的定义
+```
+
+## 内联函数inline
+- 为提高程序运行效率而引入的。所有函数调用时都会产生一些额外的开销，主要是系统栈的保护、代码的传递、系统栈的恢复以及参数传递等。
+- 对于一些函数体很小但又经常使用的函数，由于被调用的频率非常高，这种额外开销也就很可观，有时甚至会对运行效率产生本质的影响。
+- 直接复制程序代码，不调用。把函数代码直接放在函数调用处，取代函数调用，从而提高程序的执行速度。编译时，内置函数用内置代码替换函数调用，是用空间换时间的方式。
+- 以下3种情况，内联函数会失效（即编译时不会生产扩展代码）：**循环**、**switch**、**递归**
+
+## 内联函数语法
+```cpp
+<inline> 	<数据类型> 	<函数名> (形参列表) {
+     函数体                
+}
+inline ret_type func_name(...param ){
+    //......
+}
+```
+
+## 关键字
+C与C++共有的关键字：
+```cpp
+auto        break      case        char        const
+continue    default    do          double      else
+enum        extern     float       for         goto    
+if          int        long        register    return
+short       signed     sizeof      static      struct   
+switch      typedef    union       unsigned    void
+volatile    while
+```
+
+C++特有的关键字：
+```cpp
+and            and_eq           asm             bitand               bitor
+bool           catch            class           compl                const_cast
+delete         dynamic_cast     explicit        export               false
+friend         inline           mutable         namespace            new
+not            not_eq           operator        or                   or_eq
+private        protected        public          reinterpret_cast     static_cast
+template       this             throw           true                 try    
+typeid         typename         using           vitual               wchat_t    
+xor            xor_eq
+```
+
+## 引用和引用形参
+- 概念
+- 作用
+- 要点
+
+**1、引用是什么？**
+变量的另一个名字；变量的别名
+
+**2、引用有什么用？**
+
+- 用作函数形参，被调函数内对**引用形参**的修改可传回主调函数
+- 方便函数处理大型数据结构
+
+```cpp
+数据类型   &引用变量名 = 原有变量名 ；
+datatype &ref_name=var_name;
+```
+```cpp
+int age=25;
+int &ref=age;	//声明 ref 是 age 的别名
+//	age与ref在内存中占用同一地址，即同一地址两个名字。
+//	&不是地址运算符，而是将ref的类型声明为int &
+```
+```cpp
+  int param_origin;
+  int &alias = param_origin;
+  cout << "address: " << &param_origin << endl
+       << "address: " << &alias << endl;
+
+address: 0x7ffee371cc84
+address: 0x7ffee371cc84
+```
+
+**3、使用引用有什么要点要注意？**
+
+-     引用在定义时必须**初始化**
+-     对引用的操作就是对被引用的变量的操作
+-     引用变量初始化值不能为常数
+-     引用同变量一样有地址，可将其地址赋给指针
+-     当 **&age 前面有数据类型符时，必然是声明引用**，否则是取地址
+
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age;
+    int *pointer;
+    int &ref=age; //&ref是变量的引用
+    pointer=&ref; //&ref是变量的地址
+    //pointer=&age; 
+    *pointer=10; //ref,*pointer<==>age
+                 //&ref,pointer<==>&age
+    return 0;
+}
+```
+
+**4、一个变量可以声明多个引用；一个引用可以被其他引用引用**
+
+```cpp
+int age=25,score=90;
+int &ref=age;
+int &reff=age;
+int &ref_2=ref;
+```
+
+
+
+## 引用和指针
+
+-     引用声明时必须初始化，不初始化编译报错（`error: 'ref' declared as reference but not initialized`）
+-     指针有自己的存储单元，可以被改变，引用一旦初始化之后，不能再（修改）作为其他变量的别名(会导致重复声明)
+-     指针通过地址间接访问变量，引用通过别名直接访问变量
+
+## 引用和函数
+
+用作`函数形参`或`函数返回值`
+
+```cpp
+//引用作函数的形参，实际上是在被调函数中对实参变量进行操作
+//引用作为形参，实参是变量而不是地址，这与指针变量作形参不一样。
+```
+
+```cpp
+void  change_r(int &x,  int &y);//形参为整型引用
+int a,b;
+change_r(a,b);  //实参为变量
+
+void  change_p(int *x,  int *y);//形参为指针变量
+int a,b;
+change_p(&a,&b); //实参为地址
+
+void swap_r(int &param1,int &param2){
+     int temp=param1;
+     param1=param2;
+     param2=temp;
+}
+void swap_p(int *param1,int *param2){
+    int temp=*param1;
+    *param1=*param2;
+    *param2=temp;
+}
+```
+
+
+## 空的形参列表
+不需要传递参数时，形参表可空或`void`
+
+```cpp
+void func1(void);
+void func2();
+```
+
+## 默认实参
+可指定形参的默认值
+- 必须**从右向左**的顺序定义
+- 应该在**函数原型**中定义默认形参
+- 若无函数原型，可在函数头中指定
+-  不可同时在函数原型和函数头中指定形参默认值，会报错。
+
+
+在C++中定义函数时，允许给参数指定一个缺省值。在调用函数时：
+-    若明确给出了这种实参的值，则使用相应实参的值；
+-  若没有给出相应的实参，则使用缺省值。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int  fac(int n=2) {
+    cout<<"接收到的实参是: "<<n<<endl;
+    int t=1;
+    for(int i=1; i<=n; i++)
+        t=t*i;
+    return t;
+}
+int main() {
+    cout<< fac(6) <<endl;
+    cout<< fac() <<endl;
+    return 0;
+}
+```
+
+### 有默认参数的函数
+
+- 默认参数的定义必须在函数**调用之前**的函数声明（或函数定义）中给出
+- 默认参数放在一般参数之后
+
+```cpp
+power(int c=0,double a );//错误的定义方式
+
+double power(double real,int n=2) {// 默认参数在函数定义中定义
+    if (n==0)
+        return  1.0;
+    double result=real;
+    for(int i=2; i<=n; i++)
+        result*=real ;
+    return  result;
+}
+int main () {
+    double r=3.0;
+    cout<<power(r)<<endl; // real=r, n=2  (用默认值2)
+    cout<<power(r,3)<<endl;// real=r,  n=3
+    cout<<power(4)<<endl;  // real=4, n=2  (用默认值2)
+    return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+int mult(int n,int k=2) {   //第二个形参具有默认值
+
+    if(k==2)
+        return (n*n);
+    else
+        return (mult(n,k-1)*n);
+}
+void main() {
+
+    // 形参n用实参来初始化为5，形参k采用默认值2，实现5*5
+    cout<<endl<<mult(5)<<endl;
+    // 用实参来初始化形参，n为5，k为3，实现5*5*5
+    cout<<mult(5,3)<<endl;
+}
+//===========不可在【函数原型】和【函数定义】头中【同时】指定形参默认值==============
+#include <iostream>
+using namespace std;
+int mult(int n,int k=2) ;//【函数原型】
+
+int main() {
+
+    // 形参n用实参来初始化为5，形参k采用默认值2，实现5*5
+    cout<<endl<<mult(5)<<endl;
+    // 用实参来初始化形参，n为5，k为3，实现5*5*5
+    cout<<mult(5,3)<<endl;
+}
+
+int mult(int n,int k) { //【函数定义】第二个形参具有默认值
+
+    if(k==2)
+        return (n*n);
+    else
+        return (mult(n,k-1)*n);
+}
+```
+
+默认形参值必须按**从右向左**的顺序定义。在有默认值的形参右面，不能出现无默认值的形参。因为在调用时，实参初始化形参是按从左向右的顺序。例如：
+```cpp
+void try(int j=3,int k)		//非法
+void try(int j,int k=2,int m)		//非法
+void try(int j,int k=7)		//合法
+void try(int j,int k=2,int m=3)		//合法
+void try(int j=3,int k=2,int m=3)	//合法
+```
+
+默认形参值应该在**函数原型**中给出。**若函数没有函数原型，则在函数头中给出**。例如：
+```cpp
+int multi(int x=2,int y=5)； //默认形参值在函数原型中给出
+void main( ) {
+    multi( )； //并非无参调用，而是采用默认值，x取值2，y取值5
+}
+int multi(int x,int y) {
+    return(x*y)；
+}
+```
+
+### 默认形参值与函数的调用位置
+
+**默认形参值必须出现在函数调用之前**
+
+```cpp
+int add(int x=5,int y=6);
+int main() {
+    add(); //函数调用在函数实现前
+}
+int add(int x,int y) {
+    return x+y;
+}
+int add(int x=5,int y=6) {
+    return  x+y;
+}
+int main() {
+    add();   //函数调用在函数实现后
+}
+```
+
+### 默认形参值的作用域
+
+在相同的作用域内，默认形参值的说明应保持唯一，但如果在不同的作用域内，允许说明不同的默认形参。
+```cpp
+int add(int x=1,int y=2);
+int main() {
+    int add(int x=3,int y=4);
+    add();  //使用局部默认形参值（实现3+4）
+}
+void fun(void) {
+    ...
+    add();  //使用全局默认形参值（实现1+2）
+}
+```
+
+### 一元作用域运算符
+
+使用一元作用域运算符` ::` 访问**函数体外部的同名全局变量**，若所在域内无同名局部变量，可直接访问
+
+```cpp
+int number = 7; // global variable
+int main() {
+    double number = 10.5;
+    cout << "Local doulbe value of number = "<< number
+         << "\nGlobal int value of number  = "<< ::number
+         << endl;
+}
+```
+
+## 函数重载
+C++中同名不同参的函数。也称多态函数。$\textcolor{red}{}$ <font color="red">C语言中没有函数重载。</font>
+-  形参<font color="red">**个数**</font>不同
+-     形参<font color="red">**类型**</font>不同
+-     形参<font color="red">**顺序**</font>不同
+
+1、C++编译系统允许为两个或两个以上的函数取相同的函数名，但是形参的个数或者形参的类型不应相同，编译系统会根据实参和形参的类型及个数的最佳匹配，自动确定调用哪一个函数，这就是所谓的函数重载。
+
+2、对于没有重载机制的C语言，每个函数必须有其不同于其它函数的名称，即使操作是相同的，仅仅数据的类型不相同，也需要定义名称完全不同的函数，这样就显得重复且效率低下。例如，定义求平方函数，就必须对整数的平方、浮点数的平方以及双精度数的平方分别用不同的函数名：
+
+```cpp
+int isq(int x,int y);
+float fsq(float x,float y);
+double dsq(double x,double y);
+```
+
+3、函数重载的关键是**参数列表**；
+
+- 编译器根据不同参数的类型和个数产生调用匹配的函数
+- 重载函数的形参必须不同: **个数不同或类型不同或顺序不同**。
+- 编译程序将根据实参和形参的类型及个数的最佳匹配来选择调用哪一个函数。
+
+4、不要将不同功能的函数声明为重载函数，以免出现调用结果的误解、混淆。
+
+```cpp
+//错误的函数重载 编译器不以形参名来区分
+int add(int x,int y);
+int add(int a,int b);
+
+//错误的函数重载 编译器不以返回值来区分
+int add(int x,int y);
+void add(int x,int y);
+```
+
+例  求3个数中最大的数（分别考虑整数、双精度数、长整数的情况）。
+```cpp
+#include <iostream>
+using namespace std;
+int main( ) {
+    int max(int a,int b,int c);  //函数声明
+    double max(double a,double b,double c);  //函数声明
+    long max(long a,long b,long c); //函数声明
+    int i1,i2,i3,i;
+    cin>>i1>>i2>>i3; //输入3个整数
+    i=max(i1,i2,i3); //求3个整数中的最大者
+    cout<<″i_max=″<<i<<endl;
+    double d1,d2,d3,d;
+    cin>>d1>>d2>>d3;  //输入3个双精度数
+    d=max(d1,d2,d3);  //求3个双精度数中的最大者
+    cout<<″d_max=″<<d<<endl;
+    long g1,g2,g3,g;
+    cin>>g1>>g2>>g3; //输入3个长整数
+    g=max(g1,g2,g3); //求3个长整数中的最大者
+    cout<<″g_max=″<<g<<endl;
+}
+int max(int a,int b,int c)  { //定义求3个整数中的最大者的函数
+
+    if(b>=a) a=b;
+    if(c>=a) a=c;
+    return a;
+}
+double max(double a,double b,double c) {//定义求3个双精度数中的最大者的函数
+    if(b>=a) a=b;
+    if(c>=a) a=c;
+    return a;
+}
+long max(long a,long b,long c)   {  //定义求3个长整数中的最大者的函数
+
+    if(b>=a) a=b;
+    if(c>=a) a=c;
+    return a;
+}
+```
+
+## 函数模板
+- 除函数处理的数据类型不同外，其它均相同，可定义函数模板
+-     模板是一种自动生成代码的方法
+-     定义函数模板实际上定义了一个函数集合
+
+```cpp
+template < class T >
+T  func( T a, T b ）{
+    //...
+}
+```
+
+函数模板的定义形式如下：
+```cpp
+template <typename 标识符>
+标识符  func( 标识符 a, 标识符 b ）
+{
+    //...
+}
+或
+template <class 标识符>
+标识符  func( 标识符 a, 标识符 b ）
+{
+    //...
+}
+
+template <typename T>  //模板声明：T是虚拟的类型
+T  max (T a, T b, T c)   //定义通用的函数描述
+{  T  x=a;
+    if (x<b) x=b;
+    if(x<c) x=c;
+    return x;
+}
+```
+函数模板可以用来创建一个通用功能的函数，以支持多种不同形参，简化重载函数的函数体设计。它的最大特点是**把函数所使用的数据类型作为参数**。
+
+```cpp
+#include <iostream>
+using  namespace  std;
+template  < typename T >   // 模板声明：T是虚拟的类型
+T  max( T a, T  b, T c)    {        //定义通用的函数
+    T  x=a;
+    if (x=<b) x=b;
+    if (x<=c) x=c;
+    return x;
+}
+void main() {
+    int  i1=2,i2=3, i3=5,i;
+    double  d1=1.5,d2=0.5,d3=0.7,d;
+    long  g1=123456,g2=234567,g3=345678,g;
+    i=max(i1, i2, i3);      //  T 就是 int
+    d=max(d1,d2, d3);       //  T 就是 double
+    g=max(g1,g2, g3);       //  T 就是 long
+    cout<<"i="<<i<<endl;
+    cout<<"d="<<d<<endl;
+    cout<<"g="<<g<<endl;
+}
+```
+
+# 本章总结
+
+-     C++对C的许多特征进行了改进，并且增加了面向对象编程(OOP)功能，提高了软件的生成率、质量和重用性。
+-     面向对象设计模拟现实世界中的对象建模软件，更符合人们认识客观世界的规律
+-     使用用对象技术，程序员可以通过组合标准的、可互换的、称为类的零件，创建大多数所需要的软件

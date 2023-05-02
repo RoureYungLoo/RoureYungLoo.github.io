@@ -1,5 +1,5 @@
 
-site_name: 禄若阳的笔记
+site_name: 若阳的笔记
 theme:
   name: material
   features:
@@ -48,12 +48,3 @@ markdown_extensions:
       linenums_style: inline  pymdownx-inline
       line_spans: __span
   - pymdownx.superfences
-
-
-
-
-
-
-
-
-

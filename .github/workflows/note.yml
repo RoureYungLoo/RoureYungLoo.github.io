@@ -18,7 +18,6 @@ jobs:
         with:
           key: mkdocs-material-${{ github.sha }}
           path: .cache
-          cname: www.luruoyang.com
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material 
