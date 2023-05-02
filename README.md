@@ -1,6 +1,6 @@
 #### 禄若阳
 
-<div><img src="resume.jpeg" style="width: 148px;height: 207px;float: right;"><br/>
+<div><img src="docs/resume.jpeg" style="width: 148px;height: 207px;float: right;"><br/>
 
 
 - 电话：191-5388-8241
