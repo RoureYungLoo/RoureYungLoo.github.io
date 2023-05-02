@@ -1,0 +1,59 @@
+
+site_name: 禄若阳的笔记
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+
+    - navigation.path
+    - navigation.footer
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - navigation.prune
+    
+    - header.autohide
+
+  palette:    
+    - media: "(prefers-color-scheme dark)"
+      scheme: slate
+      primary: blue
+      accent: cyan 
+      toggle:
+        icon: material/brightness-7
+        name: 开启日间模式
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: light blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: 开启夜间模式
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/RoureYungLoo
+      name: RoureYungLoo
+
+markdown_extensions:
+  - pymdownx.highlight:
+      use_pygments: true
+      pygments_lang_class: true
+      auto_title: true
+      linenums: true
+      linenums_style: inline  pymdownx-inline
+      line_spans: __span
+  - pymdownx.superfences
+
+
+
+
+
+
+
+
+
