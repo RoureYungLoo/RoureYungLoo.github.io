@@ -183,6 +183,8 @@ sudo apt update
 
 > 因为软件官方更新或CDN的缘故，以下链接极有可能会失效，只是时间问题，为此，已将下载好的deb包压缩并上传至网盘。
 
+网盘地址：
+
 ### 安装[Microsoft Edge](https://www.microsoft.com/zh-cn/edge/download)
 
 ```bash
@@ -301,7 +303,9 @@ sudo dpkg -i EdrawMax_12.0.6_cn.deb
 ### 安装FSearch
 
 ```bash
-sudo apt install fsearch
+sudo add-apt-repository ppa:christian-boxdoerfer/fsearch-stable
+sudo apt update
+sudo apt install -y fsearch-trunk
 ```
 
 ### 安装Xmind
@@ -319,7 +323,7 @@ curl -O https://68704497b4143c83511ee468e56ef784.rdt.tfogc.com:49156/dldir1.qq.c
 sudo dpkg -i qqmusic_1.1.5_amd64.deb
 ```
 
-### 安装[QT Creator](https://download.qt.io/official_releases/qtcreator/)
+### 安装[Qt或QtCreator](https://download.qt.io/official_releases/qtcreator/)
 
 ```bash
 curl -O https://download.qt.io/official_releases/qtcreator/8.0/8.0.0/qt-creator-opensource-linux-x86_64-8.0.0.run
@@ -331,7 +335,7 @@ sudo ./qt-opensource-linux-x64-5.12.9.run
 ### 安装VLC播放器
 
 ```bash
-sudo apt install vlc browser-plugin-vlc ubuntu-restricted-extras
+sudo apt install vlc ubuntu-restricted-extras
 ```
 
 ### 安装[Wireshark](https://www.wireshark.org/download.html)
@@ -349,9 +353,28 @@ sudo usermod -aG wireshark $USER
 sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin install_dir=/opt
 ```
 
-### 安装Gparted
+或者
+
+```bash
+curl -O https://download.calibre-ebook.com/6.17.0/calibre-6.17.0-x86_64.txz
+sudo mkdir -p /opt/calibre && sudo rm -rf /opt/calibre/*
+tar xvf calibre-6.17.0-x86_64.txz -C /opt/calibre
+sudo /opt/calibre/calibre_postinstall
+```
+
+### 安装GParted
 
 ```bash
 sudo apt install gparted
 ```
 
+### 安装[搜狗输入法](https://shurufa.sogou.com/linux/guide)
+
+```bash
+sudo apt remove --purge ibus
+sudo apt install fcitx
+sudo cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
+sudo dpkg -i sogoupinyin_4.2.1.145_amd64.deb
+```
+
+安装完成后最好重启一下电脑。
