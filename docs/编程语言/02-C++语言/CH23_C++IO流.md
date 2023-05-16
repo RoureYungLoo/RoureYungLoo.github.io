@@ -15,9 +15,9 @@
   - 读 / 写文件
   - 关闭文件
 
-### C++ IO
+## C++ IO
 
-#### IO类型
+### IO类型
 
 是什么类型的输入输出，要看输入输出的对象是什么
 
@@ -34,7 +34,7 @@
 
 ![图片1. C++ IO](../../assets/images/ch23/01.png)
 
-#### 数据流
+### 数据流
 
 - 数据之间的传输过程称作流(stream)
   - 输入流——表示数据从某个载体或设备传送到内存
@@ -47,7 +47,7 @@
 
 ![图2. 数据流](../../assets/images/ch23/02.png)
 
-#### 流对象
+### 流对象
 
 - C++将I/O流定义为类，叫做流类，stream类。属于流类的对象是流对象。
 
@@ -55,11 +55,11 @@
   - `cin`，标准输入流对象
   - `cout`，标准输出流对象
 
-### IO流模板层次
+## IO流模板层次
 
 ![图3. 流层次](../../assets/images/ch23/03.png)
 
-### IO库各种流类
+## IO库各种流类
 
 | 类名    | 作用 | 头文件 |
 | ------- | ---- | ------ |
@@ -74,18 +74,18 @@
 | ostrstream | 输出字符串流类 | \<strstream\> |
 | strstream | 输入输出字符串流类 | \<strstream\> |
 
-### 输入和输出流对象
+## 输入和输出流对象
 
 - `cout`，标准输出
 - `cerr`，标准错误输出，无缓冲，发送给`cerr`的内容立即被输出
 - `clog`，类似`cerr`，有缓冲，缓冲区满时被输出
 - `cin`，标准输入
 
-### 标准输出流
+## 标准输出流
 
 数据流向：从**内存**流向**标准输出设备**(显示器)。
 
-#### cout
+### cout
 
 在控制台(显示器)输出，用流插入运算符`"<<"`向`cout`输出数据
 
@@ -94,7 +94,7 @@ cout << "a="<< a << endl;
 cout << 数据1 <<数据2 << 数据3;
 ```
 
-#### cerr
+### cerr
 
 在控制台(显示器)输出错误信息，用流插入运算符`"<<`向`cerr`输出数据
 
@@ -108,7 +108,7 @@ cerr << "除数为0, 出错!" << endl;
   - `cout`的输出默认是显示器，但可以被重定向为输出到磁盘文件
   - `cerr`只能定向输出到显示器
 
-#### clog
+### clog
 
 在控制台(显示器)输出错误信息，用流插入运算符`"<<"`向`clog`输出数据
 
@@ -141,20 +141,295 @@ void main() {
 }
 ```
 
+### 用于控制输出格式的流成员函数
 
+| 流成员函数   | 与之作用相同的控制符 | 作用                                         |
+| ------------ | -------------------- | -------------------------------------------- |
+| precision(n) | setprecision(n)      | 设置实数的精度为n位                          |
+| width(n)     | setw(n)              | 设置字符的宽度为n位                          |
+| fill(c)      | setfill(c)           | 设置填充字符c                                |
+| setf()       | setioflags()         | 设置输出格式状态，括号中应给出格式状态       |
+| unsetf()     | resetioflags()       | 终止已设置的输出格式状态，在括号中应指定内容 |
 
+### 设置格式状态的格式标志
 
+| 格式标志        | 作用                                                       |
+| --------------- | ---------------------------------------------------------- |
+| ios::left       | 输出数据在本域宽范围内向左对齐                             |
+| ios::right      | 输出数据在本域宽范围内向右对齐                             |
+| ios::internal   | 数值的符号位在域宽内左对齐，数值右对齐，中间由填充字符填充 |
+| ios::dec        | 设置整数的基数为10                                         |
+| ios::oct        | 设置整数的基数为8                                          |
+| ios::hex        | 设置整数的基数为16                                         |
+| ios::showbase   | 强制输出整数的基数(八进制数以0打头，十六进制数以0x打头)    |
+| ios::showpoint  | 强制输出浮点数的小点和尾数0                                |
+| ios::uppercase  | 在以科学记数法格式E和以十六进制输出字母时以大写表示        |
+| ios::showpos    | 对正数显示“+”号                                            |
+| ios::scientific | 浮点数以科学记数法格式输出                                 |
+| ios::fixed      | 浮点数以定点格式(小数形式)输出                             |
+| ios::unitbuf    | 每次输出之后刷新所有的流                                   |
+| ios::stdio      | 每次输出之后清除stdout, stderr                             |
 
-### 标准输入流
+说明
 
-### 文件操作与文件流
+- `cout.width(n)`与格式控制符`setw(n)`相似
+- `cout.fill(c)`与格式控制符`setfill(c)`相似
 
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+  int a = 21;
+  cout.setf(ios::showbase);
+  cout << "dec:" << a << endl;
+  cout.unsetf(ios::dec);
+  cout.setf(ios::hex);
+  cout << "hex:" << a << endl;
+  cout.unsetf(ios::hex);
+  cout.setf(ios::oct);
+  cout << "oct:" << a << endl;
+  char *pt = "China";
+  cout.width(10);
+  cout << pt << endl;
+  cout.width(10);
+  cout.fill('*');
+  cout << pt << endl;
+  double pi = 22.0 / 7.0;
+  cout.setf(ios::scientific);
+  cout << "pi=";
+  cout.width(14);
+  cout << pi << endl;
+  cout.unsetf(ios::scientific);
+  cout.setf(ios::fixed);
+  cout.width(12);
+  cout.setf(ios::showpos);
+  cout.setf(ios::internal);
+  cout.precision(6);
+  cout << pi << endl;
+  return 0;
+}
+```
 
+## 标准输入流
 
+从标准输入设备(键鼠等)流向程序的数据流。
 
+### cin
 
+```cpp
+int a, b;
+cin >> a >> b;  // 从键盘输入2个整数
+```
 
+当输入时遇到无效的字符或遇到文件结束符 ctrl+z 时，cin处于出错状态,无法正常提取数据(cin=false)
 
+```cpp
+if (!cin)
+   cout<<“输入出错”;
+```
 
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+  float grade;
+  cout << "enter grade:";
+  while (cin >> grade) {  // 能从cin流读取数据
+    if (grade >= 85) cout << grade << "GOOD!" << endl;
+    if (grade < 60) cout << grade << "fail!" << endl;
+    cout << "enter grade:";
+  }
+  cout << "The end." << endl;
+  return 0;
+}
+```
+
+### istream和ostream
+
+#### istream的公有成员函数
+
+| 函数     | 功能                               |
+| -------- | ---------------------------------- |
+| read     | 无格式输入指定字符数               |
+| get      | 从流中提取字符，包括空格           |
+| getline  | 从流中提取一行字符                 |
+| ignore   | 提取并丢弃流中指定字符数           |
+| peek     | 返回流中下一个字符，但不从流中删除 |
+| gcount   | 统计最后输入的字符个数             |
+| eatwhite | 忽略前导空格                       |
+| seekg    | 移动输入流指针                     |
+| tellg    | 返回输入流中指定位置的指针值       |
+
+示例：
+
+```cpp
+  istream& read(char* pch, int nCount);
+  int get();  // 读取一个字符, 不跳过空白字符
+  istream& get(char& rch); //  读取一行字符，不提取'\n'
+  istream& get(char* pch, int nCount, char delim = '\n');
+```
+
+#### ostream的公有成员函数
+
+| 函数  | 功能                                                         |
+| ----- | ------------------------------------------------------------ |
+| put   | 无格式，插入一个字节（`ostream& put(char ch);`）             |
+| write | 无格式，插入一字节序列(`ostream& write(const char* pch, int nCount)`;) |
+| flush | 刷新输出流                                                   |
+| seekp | 移动输出流指针                                               |
+| tellp | 返回输出流中指定位置的指针                                   |
+
+## 用于字符输入的流成员函数
+
+### cin.get()
+
+功能：从输入流提取1个字符
+返回值：
+
+- 提取到的字符
+
+- 若遇到文件结束符，则返回值为EOF,即 -1
+
+```cpp
+  char ch;
+  while ( (ch=cin.get())!=EOF)
+  cout.put(ch); //字符输出的流成员函数，功能——在显示器上显示一个字符
+```
+
+### cin.get(ch)
+
+功能：从输入流提取1个字符放入ch; 
+
+返回值：
+
+- 函数返回值就是非0值
+- 若遇到文件结束符,则返回值为0
+
+```cpp
+ char ch;
+ while ( cin.get(ch)!=0)
+ cout.put(ch);
+```
+
+### cin.get(char*,n,ch)
+
+cin.get(字符数组, 字符个数n, 终止字符)
+
+cin.get(字符指针, 字符个数n, 终止字符)
+
+功能：从输入流提取n-1个字符放入数组; 
+
+返回值：
+
+- 函数返回值就是非0值
+- 若遇到文件结束符,则返回值为0
+
+```cpp
+ char str[20];
+ cin.get(str, 10,“\n”);
+ cout<<str;
+```
+
+### cin.get()对比cin.getline()
+
+cin.get(字符数组, 字符个数n, 终止字符)  
+
+cin.getline(字符指针, 字符个数n, 终止字符)
+
+相同之处：
+
+- 从输入流提取n-1个字符放入数组
+- 函数返回值是非0值
+- 若遇到文件结束符,则返回值为0
+
+不同之处：
+
+- 当读到终止字符时，
+  - cin.getline()将指针移到终止字符之后；
+  - cin.get()将指针移到终止字符处；
+- 则下次继续读取时的位置就不同
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+  char c1, c2, c3;
+  char str1[80], str2[100];
+  cout << "输入三个字符:";
+  c1 = cin.get();
+  cin.get(c2);
+  cin.get(c3);
+  cin.get();
+  cout << "输入第一行字符串:";
+  cin.get(str1, 80);
+  cin.get();
+  cout << "输入第二行字符串:";
+  cin.getline(str2, 80);
+  cout.put(c1).put(c2).put(c3).put('\n');
+  cout.write(str1, 3);
+  cout.write(str2, strlen(str2));
+  cout.put('\n');
+  return 0;
+}
+/*输入形式如下：
+W
+E
+Abcdef
+Abcdefg
+输出结果？
+*/
+```
+
+## 流错误状态
+
+所有流都把流的状态存储在状态字中；不同标志位中存储不同的错误状态位；包含在类ios的enum成员中
+
+### 流错误常量
+
+| 标识常量     | 值   | 意义                               |
+| ------------ | ---- | ---------------------------------- |
+| ios::goodbit | 0x00 | 状态正常                           |
+| ios::eofbit  | 0x01 | 文件结束符，当文件尾时设置该标志   |
+| ios::failbit | 0x02 | `IO`操作失败，数据未丢失，可以恢复 |
+| ios::badbit  | 0x04 | 非法操作，数据丢失，不可恢复       |
+
+### 流错误处理函数
+
+| 函数                      | 功能                                           |
+| ------------------------- | ---------------------------------------------- |
+| int eof() const;          | 返回eofbit状态值。文件结束符时返回1，否则返回0 |
+| int fail() const;         | 返回failbit状态值                              |
+| int good() const;         | eofbit、failbit、badbit都没有被设置，则返回1   |
+| int bad() const;          | badbit被设置，则返回1                          |
+| int rdstate() const;      | 返回状态字                                     |
+| void clear(int nState=0); | 恢复或设置状态字                               |
+
+```cpp
+#include <iostream>
+using namespace std;
+int integerValue;
+// display results of cin functions
+cout << "Before a bad input operation:"
+     << "\ncin.rdstate(): " << cin.rdstate() << "\n    cin.eof(): " << cin.eof()
+     << "\n   cin.fail(): " << cin.fail() << "\n    cin.bad(): " << cin.bad()
+     << "\n   cin.good(): " << cin.good()
+     << "\n\nExpects an integer, but enter a character: ";
+cin >> integerValue;  // enter character value
+cout << endl;
+// display results of cin functions after bad input
+cout << "After a bad input operation:"
+     << "\ncin.rdstate(): " << cin.rdstate() << "\n    cin.eof(): " << cin.eof()
+     << "\n   cin.fail(): " << cin.fail() << "\n    cin.bad(): " << cin.bad()
+     << "\n   cin.good(): " << cin.good() << endl
+     << endl;
+cin.clear();  // clear stream
+// display results of cin functions after clearing cin
+cout << "After cin.clear()"
+     << "\ncin.fail(): " << cin.fail() << "\ncin.good(): " << cin.good()
+     << endl;
+return 0;
+```
+
+## 文件操作与文件流
 
 ## 本章总结
