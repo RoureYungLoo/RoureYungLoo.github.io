@@ -6,6 +6,12 @@ hide:
 
 # 首页
 
+## 数据结构
+
+## Linux
+
+[shell编程](./Linux/Shell/index.md)
+
 
 ## 编程语言
 
@@ -15,9 +21,10 @@ hide:
 
 ## 学习方法
 
-## Data_Structure
+## 英语
 
-## Linux
+### 单词
 
-[shell编程](./Linux/Shell/index.md)
+[01_单词方法论](./英语/01-单词/01_单词方法论.md)
 
+[02_刘彬20000词](./英语/01-单词/02_刘彬20000词.md)
