@@ -2,17 +2,15 @@
 site_name: 若阳的笔记
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.instant
     - navigation.tracking
-
     - navigation.path
     - navigation.footer
-    
     - navigation.top
     - toc.follow
-    - navigation.prune
-    
+    - navigation.prune 
     - header.autohide
 
   palette:    
@@ -38,6 +36,22 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/RoureYungLoo
       name: RoureYungLoo
+  analytics:
+    provider: google
+    property: G-Q4DFFNKQER
+  feedback:
+      title: 这个页面有用吗？
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: 这个页面有用
+          data: 1
+          note: >-
+            谢谢~
+        - icon: material/emoticon-sad-outline
+          name: 这个页面有待改进
+          data: 0
+          note: >-
+            感谢你的反馈！
 
 markdown_extensions:
   - pymdownx.highlight:
