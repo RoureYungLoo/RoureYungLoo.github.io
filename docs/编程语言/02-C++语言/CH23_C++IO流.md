@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # C++ IO流
 
 ## 本章大纲
@@ -442,5 +446,180 @@ return 0;
   - 存储量大，速度慢，字符操作
 - 二进制文件：数据以二进制形式存储。
   - 存储量小，速度快，存放中间结果
+- 文本文件(ASCII文件)：
+  - 文件中的内容都是字符, 以ASCII码形式存在文件内。如: 12345在文本文件中是以 ‘1’,’2’,’3’,’4’,’5’共 5个字符形式存储的
+  - 每一个字节存放一个ASCII码，代表一个字符。其输出与字符一一对应，一个字节代表一个字符，因此便于对字符进行逐个处理。
+  - 文本文件由文本行组成，每行中可以有0个或多个字符，并以换行符‘\n’结尾。
+  - 文本结束标志是0x1A。
+- 二进制文件：文件中的内容是以数据的二进制形式存储的。如: 12345在二进制文件中按1个整数类型以二进制形式存储,占4个字节空间
+  - 把数据按其在内存中的存储形式原样存放在磁盘上，一个字节并不对应一个字符，不能直接输出字符形式。
+
+### 流类图
+
+![图4 流类图](../../assets/images/ch23/04.png)
+
+### 文件流
+
+- 用标准流进行I/O时，系统自动地完成数据类型的转换。
+- 对于输入流，要将输入的字符序列形式的数据变换成计算机内部形式的数据（二进制或ASCII）后，再赋给变量，变换后的格式由变量的类型确定。
+- 对于输出流，将要输出的数据变换成字符串形式后，送到输出流（文件）中。
+
+### 文件操作与标准输入设备对比
+
+![图5 程序操作文件图](../../assets/images/ch23/05.png)
+
+在涉及文本文件的操作时，将输入文件看成键盘，将输出文件看成显示器，格式不变。只需在程序中增加打开与关闭文件的语句。
+
+### 文件和流
+
+![图6 文件和流](../../assets/images/ch23/06.png)
+
+n为文件长度，黑色方块■为文件结束符
+
+### 文件操作
+
+头文件`#include <fstream>`
+
+1. 定义文件流对象
+2. 打开文件
+3. 读写文件
+4. 关闭文件
+
+1、定义文件流对象
+
+```cpp
+//用于与一个输入文件建立联系
+ifstream  infile;
+//用于与一个输出文件建立联系
+ofstream  outfile;
+//用于与一个输入输出文件建立联
+fstream  iofile;
+```
+
+2、打开文件
+
+- 与外部文件关联；
+- 指定文件的打开方式；
+- 方法一：调用流类带参数的**构造函数**，建立流对象时连接外部文件
+- 方法二：先建立流对象，后调用fstream::open()函数
+
+方法一：
+
+**流类 对象名（文件名，打开方式）**
+
+```cpp
+ifstream infile ( "datafile.dat" , ios::in );
+ofstream outfile ( "d:\\newfile.dat" , ios::out );
+fstream rwfile ( "myfile.dat" , ios::in | ios::out );//用 “|”（或运算符）连接两个表示打开方式的标识常量
+ofstream  ofile ("a:\\binary", ios::binary | ios::app );//打开一个二进制文件进行追加操作
+```
+
+打开方式常量表：
+
+| 标识常量      | 意义 |
+| ------------- | ---- |
+| `ios::in`     | 只读打开     |
+| `ios::out`    | 只写打开     |
+| `ios::ate`    | 文件指针指向尾部 |
+| `ios::app`    | 追加写 |
+| `ios::trunc`  | 删除文件原有内容 |
+| `ios::binary` | 二进制打开 |
+| `ios::in|ios::out`     | 读写打开 |
+| `ios::out|ios::binary`或`ios::in|ios::binary`      | 只读或只写打开二进制文件 |
+
+方法二：
+
+```cpp
+流类  对象名 ;
+对象名.open ( 文件名 , 方式 ) ;
+
+//打开一个已有文件datafile.dat，准备读：
+ifstream infile ;  // 建立输入文件流对象
+infile.open( "datafile.dat" , ios::in ) ;  // 连接文件，指定打开方式
+
+//打开（创建）一个文件newfile.dat，准备写：
+ofstream outfile ;  // 建立输出文件流对象
+outfile.open( "d:\\newfile.dat" , ios::out ) ;  // 连接文件，指定打开方式
+```
+
+#### 文件读写操作
+
+```cpp
+infile >> x;
+outfile << y;
+```
+
+![图7 文件流](../../assets/images/ch23/07.png)
+
+#### 文件关闭操作
+
+- 关闭文件操作包括把缓冲区数据完整地写入文件，添加文件结束标志，切断流对象和外部文件的连接
+
+- 当一个流对象的生存期结束，系统也会自动关闭文件；
+
+- 若流对象的生存期没有结束，用close()关闭文件后，该流对象可以重用．
+
+- 文件读写完毕，必须关闭
+  - void ifstream::close( );
+  - void ofstream::close( );
+  - void fstream::close( );
+
+```cpp
+infile.close( );   //切断与输入文件 myfile1.txt 的联系
+outfile.close( ); //切断与输出文件 myfile2.txt 的联系
+iofile.close( ); //切断与输入输出文件 myfile3.txt 的联系
+```
+
+#### 打开与关闭错误
+
+检测文件是否成功打开，可在条件表达式中使用取反操作符（！）测试流状态 (一般是读文件的时候用）
+
+```cpp
+if( !outfile)    //  之前outfile.open(“myfile2.dat”)
+{    cerr<<” error: unable to open file2！”;   }
+```
+
+为了测试成功关闭文件，可以调用fail()函数
+
+```cpp
+myfile2.close();
+if(myfile2.fail())
+   cerr<<”Error to close myfile2! ;”
+```
+
+#### 从文件读取数据
+
+将文件类对象看成键盘和显示器即可
+
+```cpp
+ifstream  infile;  //定义输入文件类对象
+infile.open("myfile1.txt"); //利用函数打开某一文件
+float  x , y;
+infile>>x>>y;//用infile代替myfile1.txt进行操作。
+```
+
+#### 把数据写到文件
+
+```cpp
+ofstream  outfile;  //定义输出文件类对象
+outfile.open("myfile2.txt"); //利用函数打开某一文件
+  float x＝3 , y＝4;
+outfile<<x<<'\t'<<y<<endl;//用outfile代替myfile2.txt 进行操作。
+```
+
+#### 关闭文件
+
+```cpp
+ifstream  infile;
+ofstream outfile；
+infile.open("myfile1.txt");
+outfile.open("myfile2.txt");
+float x,y;
+infile>>x>>y;
+outfile<<x<<'\t'<<y<<endl;
+infile.close();
+outfile.close();
+```
 
 ## 本章总结
+
