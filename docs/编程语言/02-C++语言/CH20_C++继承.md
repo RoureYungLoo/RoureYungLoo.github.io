@@ -18,11 +18,11 @@ comments: true
 > 要搞清楚类`A`和类`A`的对象的访问属性。
 > 要搞清楚派生类`B::A`和派生类`B`的访问属性。不同继承方式访问属性不同。
 
-### 1、继承简介
+## 1、继承简介
 
 根据已知类生成新的类。已知类A，对类A增加一些属性和行为，构成新类B，称类B继承了类A，或类A派生了类B。
 
-### 2、基类和派生类
+## 2、基类和派生类
 
 基类：类A，又称父类，BaseClass
 派生类：类B，又称子类，DerivedClass
@@ -37,7 +37,7 @@ C++继承方式：
 
 ![img](../../assets/images/ch20/04.png)
 
-### 3、派生类的定义格式
+## 3、派生类的定义格式
 
 ```cpp
 class <派生类名> : [继承方式] <基类名>
@@ -46,14 +46,14 @@ class <派生类名> : [继承方式] <基类名>
 };
 ```
 
-#### 继承方式
+### 继承方式
 
 public
 private（默认继承方式）
 protected
 继承方式指定**派生类成员**以及**类外对象对继承来的成员**的访问权限。
 
-#### 不同继承方式的影响主要体现在：
+### 不同继承方式的影响主要体现在：
 1、派生类成员对基类成员的访问控制。
 2、派生类对象对基类成员的访问控制
 派生类成员指除了从基类继承来的所有成员之外，新增加的数据和函数成员。这些新增的成员正是派生类不同于基类的关键所在，是派生类对基类的发展。当重用和扩充已有的代码时，就是通过在派生类中新增成员来添加新的属性和功能。可以说，这就是类在继承基础上的进化和发展。
@@ -97,13 +97,13 @@ class technician : public employee  // 兼职技术人员类
 };
 ```
 
-#### 派生类的成员:
+### 派生类的成员:
 
    1. 从基类继承的成员;
    2. 改造基类成员;
    3. 添加派生类新成员.
 
-#### 同名覆盖：
+### 同名覆盖：
 
 - 派生类修改基类的成员，是在派生类中声明了一个与基类成员同名的新成员。在派生类作用域内或者在类外通过派生类的对象直接使用这个成员名，只能访问到派生类中声明的同名新成员，这个新成员覆盖了从基类继承的同名成员，这种情况称为**同名覆盖**。
 
@@ -164,7 +164,7 @@ Base func2
 
 ![img](../../assets/images/ch20/06.png)
 
-#### 类内类外访问属性
+### 类内类外访问属性
 
 |          | 私有成员                          | 公有成员     | 保护成员                          |
 | -------- | --------------------------------- | ------------ | --------------------------------- |
@@ -178,14 +178,15 @@ Base func2
 ①类内可以调用本类的任何成员属性和成员函数
 ②类外可以调用本类的公有成员，不可调用私有成员属性和成员函数
 
-### 4、基类和派生类之间的关系
+## 4、基类和派生类之间的关系
 
 类成员的访问属性：
 public        公有
 private       私有
 protected     保护
 
-**再次强调**：
+### **再次强调**：
+
 在基类内部，自身成员可以对任何一个其它成员进行访问，但是通过基类的对象，就只能访问基类的公有成员（属性和函数）。
 
 ```cpp
@@ -214,7 +215,7 @@ class Base {
 - protected继承
 - private继承
 
-#### public：公有继承
+### public：公有继承
 - 基类的public和protected成员的访问属性在派生类中保持不变，但**<font color="red">基类的private成员不可访问。</font>**
 - **派生类中的成员函数**可以直接访问基类中的public和protected成员，但不能访问基类的private成员。（派生类--类内任意）
 - **派生类的对象**只能访问基类的public成员。（派生类--类外public）
@@ -268,7 +269,7 @@ class C : public B {
 
 
 
-#### private，私有继承
+### private，私有继承
 
 - 基类的public和protected成员都以private身份出现在派生类中，但**基类的private成员不可直接访问。**
 - 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员。
@@ -318,7 +319,7 @@ class C : public B {
 
 
 
-#### protected，保护继承
+### protected，保护继承
 
 - 基类的public和protected成员都以protected身份出现在派生类中，但**基类的private成员不可访问。**
 - 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员。
@@ -338,7 +339,7 @@ class C : public B {
 
 - 对于protected成员，根据不同的派生方式，protected成员的直接访问特性可以被（或不被）传递到派生类的派生类中。
 
-#### 派生类中的静态成员
+### 派生类中的静态成员
 
 - 基类中定义的静态成员，将被所有派生类共享
 - 根据静态成员自身的访问属性和派生类的继承方式，在类层次体系中具有不同的访问性质
@@ -369,7 +370,7 @@ class D : private B {
 };
 ```
 
-### 5、派生类构造函数与析构函数
+## 5、派生类构造函数与析构函数
 
 C++中的类<font color="red">不能继承基类的**构造函数**、**析构函数**</font>，C++中的派生类需要声明自己的构造函数、析构函数。
 - 声明构造函数时，只需要**对本类中新增成员进行初始化**，对继承来的基类成员的初始化，自动调用基类构造函数完成
@@ -377,7 +378,7 @@ C++中的类<font color="red">不能继承基类的**构造函数**、**析构�
 - 不需要显式地调用基类的析构函数，系统会自动隐式调用
 - 析构函数的调用次序与构造函数相反
 
-#### 简单派生类的构造函数
+### 简单派生类的构造函数
 
 - 简单的派生类只有一个基类，而且只有一级派生(只有直接派生类，没有间接派生类)，在派生类的数据成员中不包含基类的对象 
 - 简单派生类的构造函数的一般形式为：
@@ -459,7 +460,7 @@ Student1(int n, string nam, char s, int a, string ad)
 - 在派生类对象释放时，先执行派生类析构函数，再执行其基类析构函数。
 - 构造时，先基后派；释放时，先派后基
 
-#### 有子对象的派生类的构造函数
+### 有子对象的派生类的构造函数
 
 子对象：对象中的对象。类的数据成员中可以包含其他类的对象。
 派生类构造函数的任务应该包括3个部分:
@@ -524,7 +525,7 @@ class Student1 : public Student {  // 声明公用派生类Student1
         ② 调用子对象构造函数，对子对象数据成员初始化；
         ③ 再执行派生类构造函数本身，对派生类数据成员初始化。    
 
-#### 多层派生时的构造函数
+### 多层派生时的构造函数
 
 一个类不仅可以派生出一个派生类，派生类还可以继续派生，形成派生的层次结构。
 
@@ -583,7 +584,7 @@ class Student2 : public Student1 {  // 声明间接公用派生类Student2
 ② 再初始化Student1的数据成员age
 ③ 最后再初始化Student2的数据成员score
 
-#### 派生类构造函数的特殊形式
+### 派生类构造函数的特殊形式
 
 ① 当不需要对派生类新增的成员进行任何初始化操作时，派生类构造函数的函数体可以为空。即构造函数是空函数。此派生类构造函数的作用只是为了将参数传递给基类构造函数和子对象，并在执行派生类构造函数时调用基类构造函数和子对象构造函数。
 
@@ -633,7 +634,7 @@ int main() { B objb(5); }
 
 ③如果在基类中既定义无参的构造函数，又定义了有参的构造函数，则在定义派生类构造函数时，既可以包含基类构造函数及其参数，也可以不包含基类构造函数。在调用派生类构造函数时，根据构造函数的内容决定调用基类的有参的构造函数还是无参的构造函数。
 
-### 6、多继承
+## 6、多继承
 
 多个基类共同派生出一个派生类；一个派生类继承多个基类。
 
@@ -650,3 +651,223 @@ protected: // 保护成员说明
 } ;
 ```
 
+![](../../assets/images/ch20/12.png)
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+#define PI 3.14159
+class Point {  // 类：点
+ protected:
+  int x;
+  int y;
+
+ public:
+  Point() { cout << "调用Point类的无参构造函数" << endl; }
+  Point(int _x, int _y) {
+    x = _x;
+    y = _y;
+    cout << "调用Point类的有参构造函数" << endl;
+  }
+  void show_point() {
+    cout << x << endl;
+    cout << y << endl;
+  }
+  int getx() { return x; }
+  int gety() { return y; }
+  void set_x_y(int paramx, int paramy) {
+    x = paramx;
+    y = paramy;
+  }
+};
+
+class Radius {  // 类：半径
+ protected:
+  int r;
+
+ public:
+  Radius() { cout << "调用Radius类的无参构造函数" << endl; }
+  Radius(int param_r) {
+    r = param_r;
+    cout << "调用Radius类的有参构造函数" << endl;
+  }
+  void set_r(int _r) { r = _r; }
+  int get_r() { return r; }
+};
+
+class Circle : public Point,
+               public Radius {  // 类：圆 继承顺序决定构造函数调用顺序
+ public:
+  Circle() { cout << "调用Circle类的无参构造函数" << endl; }
+  Circle(int x, int y, int r)
+      : Point(x, y), Radius(r) {  // 此处顺序更改不会影响构造函数调用顺序
+    cout << "调用Circle类的有参构造函数" << endl;
+  }
+  double area() { return PI * r * r; }
+  void move(int offset_x, int offset_y) {
+    x += offset_x;
+    y += offset_y;
+  }
+  void show_circle() {
+    show_point();
+    cout << "Radius: " << r << endl;
+    cout << "Area: " << area() << endl;
+  }
+};
+int main() {
+  Circle c(1, 1, 1);
+  c.show_circle();
+  c.move(1, 2);
+  c.show_circle();
+  c.set_x_y(4, 5);
+  c.set_r(2);
+  c.show_circle();
+  return 0;
+}
+//输出：
+调用Point类的有参构造函数
+调用Radius类的有参构造函数
+调用Circle类的有参构造函数
+1
+1
+Radius: 1
+Area: 3.14159
+2
+3
+Radius: 1
+Area: 3.14159
+4
+5
+Radius: 2
+Area: 12.5664
+```
+
+class Circle :public **Point**,public **Radius** **继承顺序决定构造函数调用顺序**
+
+Circle(int x,int y,int r):Point(x,y),Radius(r) {//**此处顺序更改不会影响构造函数调用顺序**
+
+说明：
+
+1. 构造函数调用的顺序是**先执行基类的构造函数**，**再执行派生类自己的构造函数**的函数体。
+2. 析构函数顺序和构造函数调用顺序相反
+
+## 7、多继承二义性
+
+分类：
+
+1. **不同基类成员名相同**
+2. **共同基类成员名相同**
+
+### 不同基类成员名相同
+
+访问不同基类的具有相同名字成员时可能出现二义性
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+ public:
+  void f() { cout << "A::f()" << endl; }
+};
+
+class B {
+ public:
+  void f() { cout << "B::f()" << endl; }
+  void g() { cout << "B::g()" << endl; }
+};
+
+class C : public A, public B {
+ public:
+  void g() { cout << "C::g()" << endl; }
+  void h() { cout << "C::h()" << endl; }
+};
+
+int main() {
+  C C1;
+  // C1.f();  // 出现二义性 C1.A::f();  或者 C1.B::f();  //指定类名
+  C1.A::f();
+  C1.B::f();
+  C1.B::g();
+  C1.g();
+  C1.h();
+}
+```
+
+编译报错：
+
+```shell
+ubuntu@localhost:~$ g++ demo.cpp -o test
+demo.cpp: In function ‘int main()’:
+demo.cpp:23:6: error: request for member ‘f’ is ambiguous
+   23 |   C1.f();
+      |      ^
+demo.cpp:11:8: note: candidates are: ‘void B::f()’
+   11 |   void f() { cout << "B::f()" << endl; }
+      |        ^
+demo.cpp:6:8: note:                 ‘void A::f()’
+    6 |   void f() { cout << "A::f()" << endl; }
+      |        ^
+
+```
+
+类图：
+
+![](../../assets/images/ch20/13.png)
+
+### 共同基类成员名相同
+
+当一个派生类有多个基类，而这些基类又有一个共同的基类，对这个共同基类中成员的访问可能出现二义性。
+
+```cpp
+#include <iostream>
+using namespace std;
+class A {
+ public:
+  int a;
+};
+class B1 : public A {
+ private:
+  int b1;
+};
+
+class B2 : public A {
+ private:
+  int b2;
+};
+
+Class C : public B1, public B2 {
+ public:
+  int f();
+
+ private:
+  int c;
+};
+int main() {
+  C Cobj;
+  Cobj.a;         // 有二义性
+  Cobj.A::a;      // 有二义性
+  Cobj.B1::A::a;  // 有二义性
+  Cobj.B1::a;     // 无二义性
+  Cobj.B2::a;     // 无二义性
+}
+```
+
+类图：
+
+![](../../assets/images/ch20/14.png)
+
+![](../../assets/images/ch20/15.png)
+
+- 类A 是派生类C 两条继承路径上的一个公共基类，因此这个公共基类会在派生类对象中产生两个基类子对象。
+- ==如果要<strong style="color:red">使这个公共基类在派生类中只产生一个基类子对象</strong>，则需要将这个基类设置为<strong style="color:red">虚基类</strong>==
+
+在“Cobj.a;”中是对B1 继承的基类A 的成员a，还是对B2继承基类A 的成员a 进行访问呢？故有二义性。消除二义性的方法可改写为：
+
+```cpp
+Cobj.B1::a;
+Cobj.B2::a;
+```
+
+## 8、虚基类
