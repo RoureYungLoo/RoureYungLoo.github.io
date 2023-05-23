@@ -871,3 +871,49 @@ Cobj.B2::a;
 ```
 
 ## 8、虚基类
+
+为解决二义性问题，将<strong style="color:red">共同基类设置为虚基类</strong>，创建派生类对象时，**虚基类的构造函数只会调用一次**，虚基类的成员在第三层派生类对象中就只有一份拷贝，不会再引起二义性问题。
+
+```cpp
+class 派生类名: virtual 继承方式 基类名 {
+     //……
+}
+```
+
+```cpp
+class A {
+ public:
+  void f();
+
+ private:
+  int a;
+};
+
+class B : virtual public A {
+ protected:
+  int b;
+};
+
+class C : virtual public A {
+ protected:
+  int c;
+};
+
+class D : public B, public C {
+ public:
+  int g();
+
+ private:
+  int d;
+};
+```
+
+类A 是类D 的虚基类。类A，类B，类C 和类D 之间的关系用DAG图示如下：
+
+![](../../assets/images/ch20/16.png)
+
+虚基类子对象被合并成一个子对象，这种“合并”作用，使得可能出现的二义性被消除。
+
+- 在多继承情况下，虚基类关键字的作用范围和继承方式关键字相同，只对紧随其后的基类起作用。
+- 在多继承类结构中，说明虚基类之后，虚基类的成员在派生类中将不会因继承关系对虚基类的多次继承而形成多份拷贝，只为最远的派生类提供唯一的基类成员，消除了多继承结构中的二义性问题。
+- 需要注意的是在第一级继承时就要将共同基类设计为虚基类。
