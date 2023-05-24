@@ -385,3 +385,350 @@ int main() {
 
 - 函数重载处理的是**同一层次**上的同名函数问题，而虚函数处理的是**不同派生层次**上的同名函数问题，前者是**横向重载**，后者可以理解为**纵向重载**。
 - 与重载不同的是: **同一类族的虚函数的首部是相同的**，而**函数重载时函数的首部是不同**的(参数个数或类型不同)。
+
+## 虚析构函数
+
+使用场景
+
+1. 通过基类指针删除派生类对象时
+2. 如果你打算允许其他人通过基类指针调用对象的析构函数（通过delete这样做是正常的），并且被析构的对象是有重要的析构函数的派生类的对象，就需要让基类的析构函数成为虚拟的。
+
+语法：`virtual ~ ClassName(){}`
+
+```cpp
+#include <iostream>
+using namespace std;
+class A {
+ public:
+  ~A() { cout << "A::~A() is called.\n"; }
+};
+class B : public A {
+ public:
+  ~B() { cout << "B::~B() is called.\n"; }
+};
+int main() {
+  A *Ap = new B;
+  B *Bp2 = new B;
+  cout << "delete first object:\n";
+  delete Ap;
+  cout << "delete second object:\n";
+  delete Bp2;
+}
+```
+
+![图2.类继承关系](../../assets/images/ch21/04.png)
+
+```cpp
+#include <iostream>
+using namespace std;
+class A {
+ public:
+  virtual ~A() { cout << "A::~A() is called.\n"; }
+};
+class B : public A {
+ public:
+  ~B() { cout << "B::~B() is called.\n"; }
+};
+int main() {
+  A *Ap = new B;
+  B *Bp2 = new B;
+  cout << "delete first object:\n";
+  delete Ap;
+  cout << "delete second object:\n";
+  delete Bp2;
+}
+```
+
+![图2.类继承关系](../../assets/images/ch21/05.png)
+
+- 定义了基类虚析构函数，**基类指针指向的派生类动态对象也可以正确地用delete析构**
+- 设计类层次结构时，提供一个虚析构函数，能够使派生类对象在不同状态下正确调用析构函数
+
+## 虚函数的限制
+
+如果将所有的成员函数都设置为虚函数，当然是很有益的。它除了会**增加一些额外的资源开销**，没有什么坏处。但设置虚函数须注意以下几点：
+
+1. 只有<font style="color:red">成员函数</font>才能声明为虚函数。因为虚函数仅适用于**有继承关系的类对象**，所以普通函数不能声明为虚函数。
+2. 虚函数必须是<font style="color:red">非静态成员函数</font>。这是因为静态成员函数不受限于某个对象
+3. <font style="color:red">内联函数不能</font>声明为虚函数。因为内联函数不能在运行中动态确定其位置
+4. <font style="color:red">构造函数不能</font>声明为虚函数。多态是指不同的对象对同一消息有不同的行为特性。**虚函数作为运行过程中多态的基础，主要是针对对象的，而构造函数是在对象产生之前运行的**，因此，虚构造函数是没有意义的。
+5. <font style="color:blue">析构函数可以</font>声明为虚函数。析构函数的功能是在该类对象消亡之前进行一些必要的清理工作。析构函数没有类型，也没有参数，和普通成员函数相比，虚析构函数情况略为简单些。
+
+```cpp
+#include <cstring>
+#include <iostream>
+using namespace std;
+class base {
+  char *baseptr;
+
+ public:
+  base() {
+    baseptr = new char[100];
+    strcpy(baseptr, "In class base");
+    fc();
+  }
+  virtual void fc()  // D
+  {
+    cout << baseptr << endl;
+  }
+  virtual ~base()  // E
+  {
+    delete[] baseptr;
+    cout << "Delete [ ]baseptr" << endl;
+  }
+};
+class A : public base {
+  char *Aptr;
+
+ public:
+  A() {
+    Aptr = new char[100];
+    strcpy(Aptr, "In class A");
+    fc();  // F
+  }
+  void f() {
+    fc();  // G
+  }
+  ~A() {
+    delete[] Aptr;
+    cout << "Delete [ ]Aptr" << endl;
+  }
+};
+class B : public A {
+  char *Bptr;
+
+ public:
+  B() {
+    Bptr = new char[100];
+    strcpy(Bptr, "In class B");
+  }
+  void fc() { cout << Bptr << endl; }
+  ~B() {
+    delete[] Bptr;
+    cout << "Delete [ ]Bptr" << endl;
+  }
+};
+void main(void) {
+  B b;              // H
+  b.f();            // K
+  base *p = new B;  // M
+  delete p;         // N
+}
+```
+
+## 抽象类和纯虚函数
+
+- 带有**纯虚函数**的类称为**抽象类**。
+
+- 虚函数为一个类体系中所有类提供了一个统一的接口。然而在有些情况下，**定义基类时**虽然**知道其子孙类应当具有某一接口**，**但**其自身由于某种原因却**无法实现该接口**，换句话：
+  - 它**在该基类中没有定义具体的操作内容**。这里就应将该接口说明成一个<strong style="color:red">纯虚函数</strong>，其具体操作由各子孙类来定义
+
+纯虚函数：
+
+```cpp
+class 类名 {
+  virtual 类型 函数名(参数表) = 0;  // 纯虚函数
+  //...
+}
+//纯虚函数与一般虚函数在书写形式上的不同在于其后面加了"=0"，
+//表明在基类中不用定义该函数，它的实现部分——函数体留给派生类去做。
+```
+
+### 抽象类的作用
+
+- 抽象类为抽象和设计的目的而声明，将有关的**数据和行为组织在一个继承层次结构**中，保证派生类具有要求的行为。
+- 对于**暂时无法实现的函数，可以声明为纯虚函数**，留给派生类去实现。
+
+### 抽象类的注意事项
+
+- 抽象类只能作为基类来使用，不能声明抽象类的对象。
+- 抽象类不能用作**参数类型**、**函数返回值**或**显式转换的类型**。
+- 可以**声明一个抽象类的指针和引用**。通过指针或引用，可以指向并访问派生类对象，以访问派生类的成员。
+- 抽象类派生类
+  - 若派生类**给出所有**纯虚函数的函数实现，这个派生类就可以声明自己的对象，因而不再是抽象类
+  - 若派生类没有给出全部纯虚函数的实现，这时的派生类仍然是一个抽象类
+
+```cpp
+#include <iostream>
+using namespace std;
+const double PI = 3.14159;
+class Shapes  // 抽象基类Shapes声明
+{
+ protected:
+  int x, y;
+
+ public:
+  void setvalue(int xx, int yy = 0) {
+    x = xx;
+    y = yy;
+  }
+  virtual void display() = 0;  // 纯虚函数成员
+};
+class Rectangle : public Shapes  // 派生类Rectangle声明
+{
+ public:  // 虚成员函数
+  void display() { cout << "The area of rectangle is: " << x * y << endl; }
+};
+class Circle : public Shapes  // 派生类Circle声明
+{
+ public:  // 虚成员函数
+  void display() { cout << "The area of circle is: " << PI * x * x << endl; }
+};
+int main() {
+  Shapes *ptr[2];  // 声明抽象基类指针
+  Rectangle rect1;
+  Circle cir1;
+  ptr[0] = &rect1;  // 指针指向Rectangle类对象
+  ptr[0]->setvalue(5, 8);
+  ptr[0]->display();
+  ptr[1] = &cir1;  // 指针指向Circle类对象
+  ptr[1]->setvalue(10);
+  ptr[1]->display();
+}
+```
+
+应用实例：虚函数和抽象基类的应用。介绍了以Point为基类的点—圆—圆柱体类的层次结构。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Shape  // 声明抽象基类Shape
+{
+ public:
+  virtual float area() const {
+    return 0.0;  // 虚函数
+  }
+  virtual float volume() const {
+    return 0.0;  // 虚函数
+  }
+  virtual void shapeName() const = 0;  // 纯虚函数
+};
+// 声明Point类
+class Point : public Shape  // Point是Shape的公用派生类
+{
+ public:
+  Point(float = 0, float = 0);
+  void setPoint(float, float);
+  float getX() const { return x; }
+  float getY() const { return y; }
+  virtual void shapeName() const  // 对虚函数进行再定义
+  {
+    cout << "Point:";
+  }
+  friend ostream &operator<<(ostream &, const Point &);
+
+ protected:
+  float x, y;
+};
+// 定义Point类成员函数
+Point::Point(float a, float b) {
+  x = a;
+  y = b;
+}
+void Point::setPoint(float a, float b) {
+  x = a;
+  y = b;
+}
+ostream &operator<<(ostream &output, const Point &p) {
+  output << "[" << p.x << "," << p.y << "]";
+  return output;
+}
+
+// 声明Circle类
+class Circle : public Point {
+ public:
+  Circle(float x = 0, float y = 0, float r = 0);
+  void setRadius(float);
+  float getRadius() const;
+  virtual float area() const;
+  virtual void shapeName() const {
+    cout << "Circle:";  // 对虚函数进行定义
+  }
+  friend ostream &operator<<(ostream &, const Circle &);
+
+ protected:
+  float radius;
+};
+// 声明Circle类成员函数
+Circle::Circle(float a, float b, float r) : Point(a, b), radius(r) {}
+
+void Circle::setRadius(float r) : radius(r) {}
+
+float Circle::getRadius() const { return radius; }
+
+float Circle::area() const { return 3.14159 * radius * radius; }
+
+ostream &operator<<(ostream &output, const Circle &c) {
+  output << "[" << c.x << "," << c.y << "], r=" << c.radius;
+  return output;
+}
+// 声明Cylinder类
+class Cylinder : public Circle {
+ public:
+  Cylinder(float x = 0, float y = 0, float r = 0, float h = 0);
+  void setHeight(float);
+  virtual float area() const;
+  virtual float volume() const;
+
+  virtual void shapeName() const  // 对虚函数进行再定义
+  {
+    cout << "Cylinder:";
+  }
+  friend ostream &operator<<(ostream &, const Cylinder &);
+
+ protected:
+  float height;
+};
+// 定义Cylinder类成员函数
+Cylinder::Cylinder(float a, float b, float r, float h)
+    : Circle(a, b, r), height(h) {}
+
+void Cylinder::setHeight(float h) { height = h; }
+
+float Cylinder::area() const {
+  return 2 * Circle::area() + 2 * 3.14159 * radius * height;
+}
+
+float Cylinder::volume() const { return Circle::area() * height; }
+
+ostream &operator<<(ostream &output, const Cylinder &cy) {
+  output << "[" << cy.x << "," << cy.y << "], r=" << cy.radius
+         << ", h=" << cy.height;
+  return output;
+}
+// main函数
+int main() {
+  Point point(3.2, 4.5);                   // 建立Point类对象point
+  Circle circle(2.4, 1.2, 5.6);            // 建立Circle类对象circle
+  Cylinder cylinder(3.5, 6.4, 5.2, 10.5);  // 建立Cylinder类对象cylinder
+  point.shapeName();                       // 静态关联
+  cout << point << endl;
+
+  circle.shapeName();  // 静态关联
+  cout << circle << endl;
+
+  cylinder.shapeName();  // 静态关联
+  cout << cylinder << endl << endl;
+
+  Shape *pt;  // 定义基类指针
+
+  pt = &point;      // 指针指向Point类对象
+  pt->shapeName();  // 动态关联
+  cout << "x=" << point.getX() << ",y=" << point.getY()
+       << "\\narea=" << pt->area() << "\\nvolume=" << pt->volume() << "\\n\\n";
+
+  pt = &circle;     // 指针指向Circle类对象
+  pt->shapeName();  // 动态关联
+  cout << "x=" << circle.getX() << ",y=" << circle.getY()
+       << "\\narea=" << pt->area() << "\\nvolume=" << pt->volume() << "\\n\\n";
+
+  pt = &cylinder;   // 指针指向Cylinder类对象
+  pt->shapeName();  // 动态关联
+  cout << "x=" << cylinder.getX() << ",y=" << cylinder.getY()
+       << "\\narea=" << pt->area() << "\\nvolume=" << pt->volume() << "\\n\\n";
+  return 0;
+}
+```
+
+## 强制转换
