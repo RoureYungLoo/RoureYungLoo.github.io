@@ -12,6 +12,8 @@ theme:
     - toc.follow
     - navigation.prune 
     - header.autohide
+    - content.code.copy
+    - content.code.select
 
   palette:    
     - media: "(prefers-color-scheme dark)"
