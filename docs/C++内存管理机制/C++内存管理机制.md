@@ -42,4 +42,4 @@ C++应用程序，分配内存的途径
 
 # 重载new()/delete()
 
-placement new
+placement new，
