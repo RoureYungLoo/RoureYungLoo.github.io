@@ -1,0 +1,168 @@
+{
+  "main": {
+    "id": "dc66134cb001f667",
+    "type": "split",
+    "children": [
+      {
+        "id": "9a79fbe170afed25",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c58c6558db078472",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "resume.jpeg"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "825097e63d7ed14e",
+    "type": "split",
+    "children": [
+      {
+        "id": "bd75f0e3c29e714e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "31e6500b414b1b6a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "830ede0d2a675270",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "81acf53a07092675",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "731da52cd4e89e85",
+    "type": "split",
+    "children": [
+      {
+        "id": "0e0ce70b0bb2e3d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a21f186aa80059b2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "resume.jpeg",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7773df9fa472e6ff",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "resume.jpeg",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ed18794c2c4f2437",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "69f4831691be571f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "resume.jpeg"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "c58c6558db078472",
+  "lastOpenFiles": [
+    "index.md",
+    "UNIX环境编程/00_环境搭建.md",
+    "Linux/Shell/index.md",
+    "Linux/Shell/CH16_控制脚本.md",
+    "Linux/Shell/CH15_呈现数据.md",
+    "Linux/Shell/CH14_处理用户输入.md",
+    "Linux/Shell/CH13_更多的结构化命令.md",
+    "Linux/Shell/CH12_使用结构化命令.md",
+    "Linux/Shell/CH11_构建基本脚本.md",
+    "Linux/安装教程/ubuntu22.04-安装教程.md",
+    "编程语言/02-C++语言/侯捷课程笔记/C++内存管理机制/C++内存管理机制.md",
+    "英语/99-英文名/01_起名原则.md",
+    "resume.jpeg",
+    "编程语言/02-C++语言/CH22_C++模板.md",
+    "编程语言/02-C++语言/CH23_C++IO流.md",
+    "编程语言/02-C++语言/CH25_C++11新特性.md",
+    "编程语言/02-C++语言/index.md",
+    "编程语言/02-C++语言/CH18_类的深入剖析二.md"
+  ]
+}
