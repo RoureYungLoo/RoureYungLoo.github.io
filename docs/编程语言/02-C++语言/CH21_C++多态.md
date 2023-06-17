@@ -388,10 +388,18 @@ int main() {
 
 ## 虚析构函数
 
-使用场景
+### 使用场景
 
-1. 通过基类指针删除派生类对象时
-2. 如果你打算允许其他人通过基类指针调用对象的析构函数（通过delete这样做是正常的），并且被析构的对象是有重要的析构函数的派生类的对象，就需要让基类的析构函数成为虚拟的。
+1. 通过**基类指针**删除**派生类对象**时
+2. 如果允许通过**基类指针**调用对象的析构函数（即delete 基类指针），并且被析构的对象是有析构函数的派生类的对象，就需要将基类的析构函数成为虚析构函数。
+
+### When
+
+派生类含有指针类型数据成员。
+
+### Why
+
+避免内存泄漏：**delete** 指向派生类对象的**基类指针**时自动**调用子类**的**析构函数**释放派生类对象已申请的**堆内存**，从而防止内存泄露。
 
 语法：`virtual ~ ClassName(){}`
 
@@ -731,4 +739,50 @@ int main() {
 }
 ```
 
+一些结论：
+
+1. 含有1个及以上**纯虚(成员)函数**的基类是抽象基类，抽象基类不能且没必要定义对象；
+2. 抽象基类一般并不是现实存在的对象的抽象(如圆形是千千万万个实际的圆的抽象)，它可以没有任何物理上的或其他实际意义方面的含义；
+3. 在类的层次结构中，顶层或最上面的几层可以是抽象基类。抽象基类体现了本类族中各类的共性，把各类中**共有的成员函数**集中在抽象基类中声明；
+4. 抽象基类是本类族的公共接口。或者说，从同一基类派生出的多个类有同一接口；
+5. 如果在**基类**声明了**虚函数**，则在**派生类**中凡是与该函数有相同的**函数名**、**函数返回类型**、**参数个数和类型**的函数，均为虚函数(不论在派生类中是否用virtual声明)；
+6. 区别静态关联和动态关联。
+
 ## 强制转换
+
+### dynamic_cast
+
+关键字dynamic_cast（动态强制转换）：操作符dynamic_cast将一个指向基类的指针转换为一个指向派生类的指针（如果不能正确转换，则返回0——空指针）。
+
+![](../../assets/images/ch21/06.png)
+
+```cpp
+class Shape {
+    public: virtual ~Shape();
+    virtual void draw() const = 0;
+};
+class Rollable {
+    public: virtual ~Rollable();
+    virtual void roll() = 0;
+};
+class Circle : public Shape, public Rollable {
+    void draw() const;
+    void roll();
+};
+class Square : public Shape {
+    void draw() const;
+};
+
+//横向转型失败
+Shape *pShape1 = new Square();
+Rollable *pRollable1 = dynamic_cast<Rollable*>(pShape1);
+//pRollable为NULL
+
+//横向转型成功
+Shape *pShape2 = new Circle();
+Rollable *pRollable2 = dynamic_cast<Rollable*>(pShape2);
+//pRollable不为NULL
+```
+
+例子：设计shape类层次结构。每个TwoDShape类都包含成员函数getArea，用于计算二维形状的面积。每个ThreeDShape类都包含成员函数getArea和getVolume，分别用于计算三维形状的表面积和体积。编写一个程序，使用一个Shape指针的vector对象，他的元素指向类层次总每个具体类的对象。
+程序打印输出该vector对象的所有形状循环中，程序应判断每个形状是二维形状还是三维形状，如果是二维形状，显示面积，如果是三维形状，显示表面积和体积。
