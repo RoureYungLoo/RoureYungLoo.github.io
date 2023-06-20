@@ -93,3 +93,17 @@ Lua 中有 8 个基本类型分别为：nil、boolean、number、string、userda
 - Lua 中的表（table）其实是一个"关联数组"（associative arrays），数组的索引可以是**数字**或者是**字符串**。
 - 在 Lua 里表的默认初始索引一般以 1 开始。
 - table 不会固定长度大小，有新数据添加时 table 长度会自动增长，没初始的 table 都是 nil。
+
+### function
+
+- 在 Lua 中，函数是被看作是"第一类值（First-Class Value）"，函数可以存在变量里。
+- function 可以以匿名函数（anonymous function）的方式通过参数传递
+
+### thread
+
+- 在 Lua 里，最主要的线程是协同程序（coroutine）。它跟线程（thread）差不多，拥有自己独立的栈、局部变量和指令指针，可以跟其他协同程序共享全局变量和其他大部分东西。
+- 线程跟协程的区别：**线程可以同时多个运行，而协程任意时刻只能运行一个**，并且**处于运行状态的协程只有被挂起（suspend）时才会暂停。**
+
+### userdata
+
+自定义类型。用于表示一种由应用程序或 C/C++ 语言库所创建的类型，可以将任意 C/C++ 的任意数据类型的数据（通常是 struct 和 指针）存储到 Lua 变量中调用。
