@@ -378,3 +378,30 @@ sudo dpkg -i sogoupinyin_4.2.1.145_amd64.deb
 ```
 
 安装完成后最好重启一下电脑。
+
+### 安装MySQL
+
+```bash
+sudo apt update
+sudo apt install mysql-server
+sudo mysql -uroot
+```
+
+```mysql
+alter user 'root'@'localhost' identified with mysql_native_password by 'your_passwd';
+```
+
+`/etc/mysql/mysql.conf.d/mysqld.cnf` #找到 `bind-address`,修改为`0.0.0.0`
+
+重启mysql
+
+```bash
+sudo mysql -uroot -pyour_passwd
+```
+
+```mysql
+use mysql;
+update user set host='%' where user='root';
+flush privileges;
+```
+
