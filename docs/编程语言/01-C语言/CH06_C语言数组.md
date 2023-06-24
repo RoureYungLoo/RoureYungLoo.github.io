@@ -56,7 +56,7 @@ int a[n][m];
 
 `float mark[100];`
 
-![img](../../assets/images/ch06/01.png)
+![img](/img/ch06-01.png)
 
 每个数据元素占用的字节数，是基本类型的字节数，一个元素占4个字节。
 

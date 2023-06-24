@@ -152,7 +152,7 @@ int maximum( int x, int y, int z ) {  
     - int
     - char
 
-![img](../../assets/images/ch05/001.png)
+![img](/img/ch05-01.png)
 
 #### 函数调用堆栈及活动记录
 
@@ -608,7 +608,7 @@ long fibonacci(long n) {
 
 #### 汉诺塔问题
 
-![img](../../assets/images/ch05/002.png)
+![img](/img/ch05-02.png)
 
 由上面的分析可知：将ｎ个盘子从Ａ座移到Ｃ座可以分解为以下3个步骤：
 
@@ -642,7 +642,7 @@ long fibonacci(long n) {
 
 - - 有利于实现人工智能
 
-![img](../../assets/images/ch05/003.png)
+![img](/img/ch05-03.png)
 
 #### 章小结
 

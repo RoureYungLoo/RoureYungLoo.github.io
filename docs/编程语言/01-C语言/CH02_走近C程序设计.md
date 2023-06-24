@@ -147,7 +147,7 @@ sizeof
 
 位、字节、字：
 
-![img](../../assets/images/bit-byte-word.png) 
+![img](/img/ch02-01.png) 
 
 字 ：即机器字长，是自然的存储单位。计算机是多少位的，一个字就又多少位。（如64位的机器，一个机器字长就是64位）
 
@@ -155,27 +155,27 @@ sizeof
 
 （1）有符号正整数：以二进制补码形式存放，正整数的补码与原码相同
 
-![img](../../assets/images/49ac31d6-9a61-4b9e-b070-aa566c6832c0.png)
+![img](/img/ch02-02.png)
 
-![img](../../assets/images/5877ed6d-82ec-41ca-94b5-2f82b79967cd.png)
+![img](/img/ch02-03.png)
 
 （2）有符号的负整数：以二进制补码的形式存放
 
-![img](../../assets/images/b8d22bd3-e55c-40e7-8770-b014c5393a86.png)
+![img](/img/ch02-04.png)
 
-![img](../../assets/images/c1a30201-3b32-4970-8576-da8cacc0594a.png)
+![img](/img/ch02-05.png)
 
-![img](../../assets/images/34acf435-c4f8-4a4d-b547-569c1156cd10.png)
+![img](/img/ch02-06.png)
 
 （3）无符号整数：所有二进制位都存放数值
 
-![img](../../assets/images/92052880-13f1-4094-afa3-a01daaf7d424.png)![img](../../assets/images/f80c86b8-a31e-45de-9fbd-a68255c54461.png)
+![img](/img/ch02-07.png)![img](/img/ch02-08.png)
 
-![img](../../assets/images/130d6d36-122c-40fd-9211-8e22333fab4c.png)
+![img](/img/ch02-09.png)
 
 ------
 
-![img](../../assets/images/b16266d6-0cf8-400a-bb40-c1b8d90c4e84.png)
+![img](/img/ch02-10.png)
 
 C标准只规定：**short ≤ int ≤ long**
 
@@ -207,7 +207,7 @@ height=288;//初始化变量height，破环了原有存储空间的值
 
 破坏变量声明后的存储空间值，存入新的值
 
-![img](../../assets/images/55013a9a-2019-4950-8402-d5331552b98d.png)
+![img](/img/ch02-11.png)
 
 整数溢出：超出整数类型的数值范围。
 
@@ -230,7 +230,7 @@ height=288;//初始化变量height，破环了原有存储空间的值
   - 那么在内存中以65的二进制形式存储，
   - 且占一个字节。
 
-![img](../../assets/images/cf006415-acb8-46ac-8c6d-66607fa41761.png)
+![img](/img/ch02-12.png)
 
 字符类型和字符变量
 
@@ -256,7 +256,7 @@ c2='bc';
 
 - char类型为8位,一个字节，对于’bc’，将把’b’和’c’的ASCII码值存储在两个字节中，并把’c’赋值给变量c2。不同系统处理方式不同，结果不同。
 
-![img](../../assets/images/a7efcf2b-46e1-404e-955c-1513df4e45f8.png)
+![img](/img/ch02-13.png)
 
 转义字符
 
@@ -282,13 +282,13 @@ c2='bc';
 
 314.15
 
-![img](../../assets/images/a1adcc57-c6f4-475b-9e09-5fb0aee23e21.png)
+![img](/img/ch02-14.png)
 
-![img](../../assets/images/87f427e5-d833-48d7-a359-7cd99cb45624.png)
+![img](/img/ch02-15.png)
 
 s = ±1
 
-![img](../../assets/images/fac1b7c0-639e-41be-bdf6-c74d23bfaa07.png)
+![img](/img/ch02-16.png)
 
 浮点数常量：
 
@@ -319,7 +319,7 @@ int main() {
 }
 ```
 
-![img](../../assets/images/15d45d36-b24c-40b9-8974-1d3fb4fbaa43.png)
+![img](/img/ch02-20.png)
 
 a+20的理论值应该是：12345678920
 
@@ -346,7 +346,7 @@ int main()
 }
 ```
 
-![img](../../assets/images/e83c96bf-5d1b-4bd6-9b74-7a21400fe6b2.png)
+![img](/img/ch02-17.png)
 
  
 
@@ -369,11 +369,11 @@ int main()
 
 - 初始化变量使用的常量应当与变量的类型相匹配。
 
-![img](../../assets/images/7e12cfc8-35fd-49b7-9d91-4b3739c0ad78.png)
+![img](/img/ch02-18.png)
 
  
 
-![img](../../assets/images/d88e33a1-2284-475d-87fd-0c8a420a0bf9.png)
+![img](/img/ch02-19.png)
 
 [(144条消息) C++与C数据类型的区别_偷包米的贼的博客-CSDN博客_数据结构c和c++区别](https://blog.csdn.net/qq_33963178/article/details/120475271)
 
