@@ -72,7 +72,7 @@ int main() {
 
 for循环首部结构
 
-![](/img/ch04-01.png)
+![](./img/ch04-01.png)
 
 for循环语句的标准格式
 
@@ -243,7 +243,7 @@ do{
 }while (循环条件)
 ```
 
-![img](/img/ch04-02.png)
+![img](./img/ch04-02.png)
 
  
 
@@ -269,11 +269,11 @@ continue
 
 真值表
 
-![img](/img/ch04-03.png)
+![img](./img/ch04-03.png)
 
 运算符优先级
 
-![img](/img/ch04-04.png)
+![img](./img/ch04-04.png)
 
 章小结
 

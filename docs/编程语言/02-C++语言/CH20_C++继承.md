@@ -35,7 +35,7 @@ C++继承方式：
 直接基类：父类被称为子类的直接基类。
 间接基类：父类的父类或更高层次的父类被称为该子类的间接基类。
 
-![img](/img/ch20-04.png)
+![img](./img/ch20-04.png)
 
 ## 3、派生类的定义格式
 
@@ -68,7 +68,7 @@ protected
 - 兼职推销员的报酬按该推销员当月销售额提成;
 - 销售经理既拿固定月薪也领取销售提成。
 
-![img](/img/ch20-05.png)
+![img](./img/ch20-05.png)
 
 ```cpp
 class employee {
@@ -162,7 +162,7 @@ Base func2
 2
 ```
 
-![img](/img/ch20-06.png)
+![img](./img/ch20-06.png)
 
 ### 类内类外访问属性
 
@@ -205,7 +205,7 @@ class Base {
 };
 ```
 
-![img](/img/ch20-07.png)
+![img](./img/ch20-07.png)
 
 派生类继承了**<font color="red">基类的全部数据成员</font>**和除了**<font color="red">构造函数、析构函数</font>**之外的全部函数成员，但是这些成员的访问属性在派生的过程中是可以调整的。从基类继承的成员，其访问属性由**继承方式**控制。
 
@@ -221,7 +221,7 @@ class Base {
 - **派生类的对象**只能访问基类的public成员。（派生类--类外public）
 - **基类的私有数据成员，不能在派生类中直接访问，但派生类对象建立私有数据空间**
 
-![img](/img/ch20-01.png)
+![img](./img/ch20-01.png)
 
 ```cpp
 #include <iostream>
@@ -263,9 +263,9 @@ class C : public B {
 };
 ```
 
-![img](/img/ch20-08.png)
+![img](./img/ch20-08.png)
 
-![img](/img/ch20-09.png)
+![img](./img/ch20-09.png)
 
 
 
@@ -275,7 +275,7 @@ class C : public B {
 - 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员。
 - 派生类的对象不能访问基类中的任何成员。
 
-![img](/img/ch20-02.png)
+![img](./img/ch20-02.png)
 
 ```cpp
 #include <iostream>
@@ -325,7 +325,7 @@ class C : public B {
 - 派生类中的成员函数可以直接访问基类中的public和protected成员，但不能访问基类的private成员。
 - 派生类的对象不能访问基类中的任何成员.
 
-![img](/img/ch20-03.png)
+![img](./img/ch20-03.png)
 
 - 对建立其所在类对象的模块来说，它与 private 成员的性质相同。
 - 对于其派生类来说，它与 public 成员的性质相同。
@@ -427,7 +427,7 @@ class Student1 : public Student  // 声明派生类Student1
 
 派生类在建立对象时调用构造函数，其实参传递给形参的形式如下：
 
-![img](/img/ch20-10.png)
+![img](./img/ch20-10.png)
 
 派生类的构造函数也可以只在类体中声明，而在类外定义：
 
@@ -577,7 +577,7 @@ class Student2 : public Student1 {  // 声明间接公用派生类Student2
 };
 ```
 
-![img](/img/ch20-11.png)
+![img](./img/ch20-11.png)
 
 在执行Student2构造函数时，先调用Student1构造函数；在执行Student1构造函数时，先调用基类Student构造函数。初始化的顺序是:
 ① 先初始化基类的数据成员num和name
@@ -651,7 +651,7 @@ protected: // 保护成员说明
 } ;
 ```
 
-![](/img/ch20-12.png)
+![](./img/ch20-12.png)
 
 ```cpp
 #include <iostream>
@@ -814,7 +814,7 @@ demo.cpp:6:8: note:                 ‘void A::f()’
 
 类图：
 
-![](/img/ch20-13.png)
+![](./img/ch20-13.png)
 
 ### 共同基类成员名相同
 
@@ -856,9 +856,9 @@ int main() {
 
 类图：
 
-![](/img/ch20-14.png)
+![](./img/ch20-14.png)
 
-![](/img/ch20-15.png)
+![](./img/ch20-15.png)
 
 - 类A 是派生类C 两条继承路径上的一个公共基类，因此这个公共基类会在派生类对象中产生两个基类子对象。
 - ==如果要<strong style="color:red">使这个公共基类在派生类中只产生一个基类子对象</strong>，则需要将这个基类设置为<strong style="color:red">虚基类</strong>==
@@ -910,7 +910,7 @@ class D : public B, public C {
 
 类A 是类D 的虚基类。类A，类B，类C 和类D 之间的关系用DAG图示如下：
 
-![img](/img/ch20-16.png)
+![img](./img/ch20-16.png)
 
 虚基类子对象被合并成一个子对象，这种“合并”作用，使得可能出现的二义性被消除。
 
