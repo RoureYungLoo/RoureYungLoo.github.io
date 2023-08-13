@@ -75,6 +75,20 @@
 | /var  | primary  | 20GB                  |
 | swap  | primary  | 8GB（物理内存1～2倍） |
 
+## 修改终端显示路径
+
+```bash
+vim ~/.bashrc 
+
+# 把小写w改为大写W
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+
+```
+
 
 
 ## [修改软件源](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)
