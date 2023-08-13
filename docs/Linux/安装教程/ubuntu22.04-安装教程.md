@@ -89,17 +89,32 @@ fi
 
 ```
 
+## 自定义文件夹路径
 
+```bash
+mkdir desktop xiazai template public docs music video picture
+vim ~/.config/user-dirs.dirs
+    XDG_DESKTOP_DIR="$HOME/desktop"
+    XDG_DOWNLOAD_DIR="$HOME/xiazai"
+    XDG_TEMPLATES_DIR="$HOME/template"
+    XDG_PUBLICSHARE_DIR="$HOME/public"
+    XDG_DOCUMENTS_DIR="$HOME/docs"
+    XDG_MUSIC_DIR="$HOME/music"
+    XDG_PICTURES_DIR="$HOME/picture"
+    XDG_VIDEOS_DIR="$HOME/video"
+```
 
 ## [修改软件源](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)
 
-1、备份
+**1、备份**
 
 ```bash
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup  
 ```
 
-2、修改`/etc/apt/sources.list`：
+**2、修改**
+
+`/etc/apt/sources.list`
 
 ```
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
@@ -121,7 +136,7 @@ deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe m
 # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
 ```
 
-3、更新
+**3、更新**
 
 ```bash
 sudo apt update 
@@ -193,7 +208,7 @@ sudo apt update
 |  浏览器  | Edge，Google Chrome                               |
 | 聊天办公 | QQ，微信，飞书，Xmind，向日葵，亿图图示，WPS 2019 |
 | 编程开发 | Visual Studio Code，Vim，Typora，Wireshark        |
-| 虚拟软件 | Virtual Box，VMware Workstation Pro               |
+| 虚拟软件 | Virtual Box，VMware Workstation Pro，Podman       |
 | 电子阅读 | Calibre                                           |
 | 影音娱乐 | OBS Studio，QQ音乐，VLC播放器，Steam              |
 | 系统工具 | GParted，FSearch                                  |
@@ -245,6 +260,29 @@ sudo apt install vim
 ```bash
 curl -O https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/linuxqq_3.1.1-11223_amd64.deb
 sudo dpkg -i linuxqq_3.1.1-11223_amd64.deb
+```
+
+### 安装[Podman](https://podman.io/)
+
+```bash
+sudo apt install podman -y
+sudo vim /etc/containers/registries.conf
+#末尾添加
+    [registries.search]
+    registries=["registry.access.redhat.com", "registry.fedoraproject.org", "docker.io"]
+# 插件
+sudo apt install cockpit cockpit-podman cockpit-machines
+```
+
+访问http://127.0.0.1:9090/
+
+### 安装podman-compose
+
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py
+cp ~/.local/bin/* /usr/bin/
+pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz
 ```
 
 ### 安装[Oracle VM Virtual Box](https://download.virtualbox.org/virtualbox)
