@@ -58,6 +58,9 @@ extra:
             感谢你的反馈！
 
 markdown_extensions:
+  - toc: 
+      permalink: true
+      toc_depth: 3
   - pymdownx.highlight:
       use_pygments: true
       pygments_lang_class: true
