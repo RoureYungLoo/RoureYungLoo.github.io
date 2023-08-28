@@ -60,7 +60,7 @@ extra:
 markdown_extensions:
   - toc: 
       permalink: true
-      toc_depth: 3
+      toc_depth: 6
   - pymdownx.highlight:
       use_pygments: true
       pygments_lang_class: true
