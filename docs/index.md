@@ -1,9 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
-
 # 首页
 
 ## 数据结构
