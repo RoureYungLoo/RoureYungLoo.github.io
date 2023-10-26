@@ -7,10 +7,14 @@ theme:
   favicon: assets/images/favicon.png
   features:
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.expand
     - navigation.tracking
     - navigation.path
     - navigation.footer
     - navigation.top
+    - navigation.indexes 
     - toc.follow
     - navigation.prune 
     - header.autohide
