@@ -2,4 +2,4 @@
 hide:
   - navigation
 ---
-# 禄若阳
+# 简介
