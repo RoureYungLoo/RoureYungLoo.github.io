@@ -45,7 +45,7 @@ extra:
       link: https://github.com/RoureYungLoo
       name: RoureYungLoo
     - icon: fontawesome/solid/paper-plane
-      link: mailto:luruoyang@petalmail.com
+      link: mailto:<luruoyang@petalmail.com>
       name: 禄若阳的花瓣邮箱
   analytics:
     provider: google
