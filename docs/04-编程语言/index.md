@@ -11,3 +11,11 @@
 [05-Python](./05-Python/index.md)
 
 [06-JavaScript](./06-JavaScript/index.md)
+
+[07-BourneShell](./07-BourneShell/index.md)
+
+[08-SQL](./08-SQL/index.md)
+
+[09-Go](./09-Go/index.md)
+
+[10-CSharp](./10-CSharp/index.md)
