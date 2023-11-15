@@ -4,13 +4,13 @@
 
 [02-CXX](./02-CXX/index.md) 古老而又强大的语言，没有任何人能精通C++，即使是**Bjarne Stroustrup**也不行
 
-[03-Lua](./03-Lua/index.md) 市场非常小的语言
+[03-Lua](./03-Lua/index.md) 不到半天就能学会的语言
 
 [04-Java](./04-Java/index.md) Web后端老大哥
 
-[05-Python](./05-Python/index.md) 简单到小孩都能学会的语言
+[05-Python](./05-Python/index.md) 零基础，学IT，就选Python: >>> print "hello world"
 
-[06-JavaScript](./06-JavaScript/index.md) Web前端老大哥，有句话叫“万物皆可JS”
+[06-JavaScript](./06-JavaScript/index.md) Web前端大哥大，有句话叫“万物皆可JS”
 
 [07-BourneShell](./07-BourneShell/index.md) Linux必会脚本语言
 
