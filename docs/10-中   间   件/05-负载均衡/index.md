@@ -1,3 +1,5 @@
 # 负载均衡
 
-待更新...
+1. LVS
+2. Nginx
+3. HAproxy
