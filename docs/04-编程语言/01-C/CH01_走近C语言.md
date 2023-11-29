@@ -19,7 +19,8 @@
 
 #### 计算机系统层次关系
 
-![img](./img/ch01-01.png)
+![img](./img/ch01-c-architecture.png)
+
 
 1. CodeBlocks
 2. VC++
