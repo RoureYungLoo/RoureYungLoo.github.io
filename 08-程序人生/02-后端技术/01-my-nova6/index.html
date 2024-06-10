@@ -1,0 +1,2622 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../01-%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/08-%E9%93%BE%E6%8E%A5%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/">
+      
+      
+        <link rel="next" href="../02-request-limit/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+    
+    
+      
+        <title>设备信息 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-Q4DFFNKQER",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              设备信息
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../01-%E6%96%B9%E6%B3%95%E8%AE%A1%E5%88%92/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    01 方法计划
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../02-%E8%AF%81%E4%B9%A6%E8%80%83%E7%BA%A7/%E7%9C%81%E8%80%83/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    02 证书考级
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../05-%E9%98%85%E8%AF%BB%E5%86%99%E4%BD%9C/01-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB%EF%BC%9A%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E3%80%8B/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    05 阅读写作
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../07-%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/%E8%83%A1%E8%AF%B4%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    07 自我提升
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    08 程序人生
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            08 程序人生
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../01-%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/01-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/01-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    01 基础原理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 后端技术
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 后端技术
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    设备信息
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-request-limit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    流量控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../01-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    01 编程语言
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../11-%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11 中间件
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../15-Make/01-resources-recommended/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15 Make
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../17-%E5%AD%98%E5%82%A8/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17 存储
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../23-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    23 开发框架
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../../03-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/01-%E5%9F%BA%E7%A1%80%E6%8A%80%E6%9C%AF/01-HTML/00-%E8%B5%84%E6%BA%90%E6%8E%A8%E8%8D%90/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    03 前端技术
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/01-JumpServer/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    06 运维技术
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">设备信息<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>id原值小写</th>
+<th>id原值大写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imei</td>
+<td>861842046265818</td>
+<td>861842046265818</td>
+</tr>
+<tr>
+<td>imei_md5</td>
+<td>8d55f4c8fd79ef90e4b5613d0b3b146d</td>
+<td>8d55f4c8fd79ef90e4b5613d0b3b146d</td>
+</tr>
+<tr>
+<td>imei_sha1</td>
+<td>fe67417790216980004fd0d3c00c0557926844cb</td>
+<td>fe67417790216980004fd0d3c00c0557926844cb</td>
+</tr>
+<tr>
+<td>oaid</td>
+<td>c4de2f2e-9b5a-4dd3-a0a6-aee47597013a</td>
+<td>C4DE2F2E-9B5A-4DD3-A0A6-AEE47597013A</td>
+</tr>
+<tr>
+<td>oaid_md5</td>
+<td>b6722931bec27fd759e3d99b054fbd6a</td>
+<td>1df7a72ff0add429bd85e0df2d5c8aba</td>
+</tr>
+<tr>
+<td>oaid_sha1</td>
+<td>7137035ae7f1646b1bc00540857dcf7980d36489</td>
+<td>becdf6c68ee33177a8a4e7d38cb43041ed8ad105</td>
+</tr>
+<tr>
+<td>android_id</td>
+<td>e525f5fde25bbod3</td>
+<td>E525F5FDE25BBOD3</td>
+</tr>
+<tr>
+<td>android_id_md5</td>
+<td>e20010cc85527ac4619809ca9b485c4a</td>
+<td>a91e6aa4af998cb3d92e0e488e729efe</td>
+</tr>
+<tr>
+<td>android_id_sha1</td>
+<td>9cfde57bbded8c2606839e3983b41d931a3c9372</td>
+<td>23c244d7d99438b35c6c7ddc172e4b4b4729dd0a</td>
+</tr>
+<tr>
+<td>paid</td>
+<td>1699235191:1693964791</td>
+<td></td>
+</tr>
+<tr>
+<td>ua</td>
+<td>Mozilla%2F5.0%20(Linux%3B%20Android%2012%3B%20HarmonyOS%3B%20WLZ-AL10%3B%20HMSCore%206.12.2.302%3B%20GMSCore%2022.12.56)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F99.0.4844.88%20HuaweiBrowser%2F14.0.0.330%20Mobile%20Safari%2F537.36</td>
+<td></td>
+</tr>
+<tr>
+<td>os</td>
+<td>android</td>
+<td></td>
+</tr>
+<tr>
+<td>osv</td>
+<td>6.12</td>
+<td></td>
+</tr>
+<tr>
+<td>make</td>
+<td>Huawei</td>
+<td></td>
+</tr>
+<tr>
+<td>model</td>
+<td>WLZ-AL10</td>
+<td></td>
+</tr>
+<tr>
+<td>width</td>
+<td>1080</td>
+<td></td>
+</tr>
+<tr>
+<td>height</td>
+<td>2400</td>
+<td></td>
+</tr>
+<tr>
+<td>ppi</td>
+<td>480</td>
+<td></td>
+</tr>
+<tr>
+<td>density</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>ip</td>
+<td>223.104.213.34</td>
+<td></td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>240e:56ca520:1bd5:179d:497edfd0:973a</td>
+<td></td>
+</tr>
+<tr>
+<td>ts</td>
+<td>1703735007</td>
+<td></td>
+</tr>
+<tr>
+<td>tsms</td>
+<td>1703735018960</td>
+<td></td>
+</tr>
+<tr>
+<td>idfa</td>
+<td>4fcfefa1-096d-4176-b352-1870ed6db777</td>
+<td></td>
+</tr>
+<tr>
+<td>idfa_md5</td>
+<td>0a85a2a233e8ab85b440f77b95674702</td>
+<td></td>
+</tr>
+<tr>
+<td>idfa_sha1</td>
+<td>c195158ca414bffe0f84248775685caa9a75a023</td>
+<td></td>
+</tr>
+<tr>
+<td>idfv</td>
+<td>583d2bb0-b19c-4a9a-a600-2a1eb2fb7e39</td>
+<td></td>
+</tr>
+<tr>
+<td>idfv_md5</td>
+<td>8ecc42c53de7b5795213a26d1ae7e799</td>
+<td></td>
+</tr>
+<tr>
+<td>idfv_sha1</td>
+<td>dfcca34596cda69ccefd397a9ad49d43fca47ccd</td>
+<td></td>
+</tr>
+<tr>
+<td>caids</td>
+<td>[{"version":"20230330","caid":"912ec803b2ce49e4a541068d495ab570"},{"version":"20220111","caid":"e332a76c29654fcb7f6e6b31ced090c7"}]</td>
+<td></td>
+</tr>
+<tr>
+<td>caid1</td>
+<td>bfb405dc6c3b16e8b1ba40bcd3a7c7c4:20201201</td>
+<td></td>
+</tr>
+<tr>
+<td>caid2</td>
+<td>e8b1ba40bcd3a7c7c4bfb405dc6c3b16:20210101</td>
+<td></td>
+</tr>
+<tr>
+<td>caid3</td>
+<td>a40bcd3a7c7c4bfb405dc6c3b16e8b1b:20220101</td>
+<td></td>
+</tr>
+<tr>
+<td>caid_url_encoded</td>
+<td>%5B%7B%22version%22%3A%2220230330%22%2C%22caid%22%3A%22912ec803b2ce49e4a541068d495ab570%22%7D%2C%7B%22version%22%3A%2220220111%22%2C%22caid%22%3A%22e332a76c29654fcb7f6e6b31ced090c7%22%7D%5D</td>
+<td></td>
+</tr>
+<tr>
+<td>caid_url_decoded</td>
+<td>[{"version":"20230330","caid":"912ec803b2ce49e4a541068d495ab570"},{"version":"20220111","caid":"e332a76c29654fcb7f6e6b31ced090c7"}]</td>
+<td></td>
+</tr>
+<tr>
+<td>WGS84(lng,lat)</td>
+<td>121.39316445218373,31.17247152772012</td>
+<td>地球坐标系，国际通用坐标系</td>
+</tr>
+<tr>
+<td>GCJ02(lng,lat)</td>
+<td>121.39781021899532,31.170606750512054</td>
+<td>火星坐标系，WGS84坐标系加密后的坐标系</td>
+</tr>
+<tr>
+<td>BD09(lng,lat)</td>
+<td>121.40434642254036,31.176385347711932</td>
+<td>百度坐标系，GCJ02坐标系加密后的坐标系</td>
+</tr>
+<tr>
+<td>CGCS2000(east,north)</td>
+<td>632819.1935247371,3450932.3383624903,40</td>
+<td>国家2000大地坐标系</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_2">用户已安装包列表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="n">lexue</span><span class="p">.</span><span class="n">mryyyd</span>
+</span><span id="__span-0-2"><span class="n">com</span><span class="p">.</span><span class="n">quark</span><span class="p">.</span><span class="n">browser</span>
+</span><span id="__span-0-3"><span class="n">com</span><span class="p">.</span><span class="n">hpbr</span><span class="p">.</span><span class="n">bosszhipin</span>
+</span><span id="__span-0-4"><span class="n">com</span><span class="p">.</span><span class="n">kimcy929</span><span class="p">.</span><span class="n">screenrecorder</span>
+</span><span id="__span-0-5"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">harmonyupdater</span>
+</span><span id="__span-0-6"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hinote</span>
+</span><span id="__span-0-7"><span class="n">com</span><span class="p">.</span><span class="n">daimajia</span><span class="p">.</span><span class="n">gold</span>
+</span><span id="__span-0-8"><span class="n">fm</span><span class="p">.</span><span class="n">qingting</span><span class="p">.</span><span class="n">qtradio</span>
+</span><span id="__span-0-9"><span class="n">com</span><span class="p">.</span><span class="n">alicloud</span><span class="p">.</span><span class="n">databox</span>
+</span><span id="__span-0-10"><span class="n">com</span><span class="p">.</span><span class="n">ichi2</span><span class="p">.</span><span class="n">anki</span>
+</span><span id="__span-0-11"><span class="n">com</span><span class="p">.</span><span class="n">shark</span><span class="p">.</span><span class="n">jizhang</span>
+</span><span id="__span-0-12"><span class="n">com</span><span class="p">.</span><span class="n">edifier</span><span class="p">.</span><span class="n">edifierconnect</span>
+</span><span id="__span-0-13"><span class="n">com</span><span class="p">.</span><span class="n">datayes</span><span class="p">.</span><span class="n">irr</span>
+</span><span id="__span-0-14"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">healthservice</span>
+</span><span id="__span-0-15"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">petalmail</span>
+</span><span id="__span-0-16"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">bankabc</span>
+</span><span id="__span-0-17"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">modernmedia</span><span class="p">.</span><span class="n">businessweek</span>
+</span><span id="__span-0-18"><span class="n">com</span><span class="p">.</span><span class="n">sankuai</span><span class="p">.</span><span class="n">meituan</span>
+</span><span id="__span-0-19"><span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">ucmooc</span>
+</span><span id="__span-0-20"><span class="n">com</span><span class="p">.</span><span class="n">douban</span><span class="p">.</span><span class="n">frodo</span>
+</span><span id="__span-0-21"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">langeasy</span><span class="p">.</span><span class="n">LangEasyLexis</span>
+</span><span id="__span-0-22"><span class="n">com</span><span class="p">.</span><span class="n">sinovatech</span><span class="p">.</span><span class="n">unicom</span><span class="p">.</span><span class="n">ui</span>
+</span><span id="__span-0-23"><span class="n">com</span><span class="p">.</span><span class="n">ai</span><span class="p">.</span><span class="n">voacsspeed</span>
+</span><span id="__span-0-24"><span class="n">com</span><span class="p">.</span><span class="n">wepie</span><span class="p">.</span><span class="n">ivy</span>
+</span><span id="__span-0-25"><span class="n">com</span><span class="p">.</span><span class="n">lemon</span><span class="p">.</span><span class="n">lv</span>
+</span><span id="__span-0-26"><span class="n">com</span><span class="p">.</span><span class="n">hexin</span><span class="p">.</span><span class="n">plat</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-0-27"><span class="n">com</span><span class="p">.</span><span class="n">guotai</span><span class="p">.</span><span class="n">dazhihui</span>
+</span><span id="__span-0-28"><span class="n">com</span><span class="p">.</span><span class="n">ghosun</span><span class="p">.</span><span class="n">dict</span>
+</span><span id="__span-0-29"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">open</span><span class="p">.</span><span class="n">mooc</span>
+</span><span id="__span-0-30"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">androidqqmail</span>
+</span><span id="__span-0-31"><span class="n">com</span><span class="p">.</span><span class="n">iguopin</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-32"><span class="n">com</span><span class="p">.</span><span class="n">jingyao</span><span class="p">.</span><span class="n">easybike</span>
+</span><span id="__span-0-33"><span class="n">com</span><span class="p">.</span><span class="n">taou</span><span class="p">.</span><span class="n">maimai</span>
+</span><span id="__span-0-34"><span class="n">au</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">shiftyjelly</span><span class="p">.</span><span class="n">pocketcasts</span>
+</span><span id="__span-0-35"><span class="n">cmb</span><span class="p">.</span><span class="n">pb</span>
+</span><span id="__span-0-36"><span class="n">com</span><span class="p">.</span><span class="n">tdx</span><span class="p">.</span><span class="n">AndroidNew</span>
+</span><span id="__span-0-37"><span class="n">indi</span><span class="p">.</span><span class="n">czc</span><span class="p">.</span><span class="n">qpython</span>
+</span><span id="__span-0-38"><span class="n">cn</span><span class="p">.</span><span class="n">gov</span><span class="p">.</span><span class="n">tax</span><span class="p">.</span><span class="n">its</span>
+</span><span id="__span-0-39"><span class="n">com</span><span class="p">.</span><span class="n">MobileTicket</span>
+</span><span id="__span-0-40"><span class="n">com</span><span class="p">.</span><span class="n">harmony</span><span class="p">.</span><span class="n">meituan</span>
+</span><span id="__span-0-41"><span class="n">com</span><span class="p">.</span><span class="n">v2ray</span><span class="p">.</span><span class="n">ang</span>
+</span><span id="__span-0-42"><span class="n">com</span><span class="p">.</span><span class="n">sony</span><span class="p">.</span><span class="n">store</span><span class="p">.</span><span class="n">china</span>
+</span><span id="__span-0-43"><span class="n">com</span><span class="p">.</span><span class="n">luojilab</span><span class="p">.</span><span class="n">player</span>
+</span><span id="__span-0-44"><span class="n">com</span><span class="p">.</span><span class="n">yinxiang</span>
+</span><span id="__span-0-45"><span class="n">me</span><span class="p">.</span><span class="n">ele</span>
+</span><span id="__span-0-46"><span class="n">com</span><span class="p">.</span><span class="n">hupu</span><span class="p">.</span><span class="n">games</span>
+</span><span id="__span-0-47"><span class="n">gov</span><span class="p">.</span><span class="n">bbg</span><span class="p">.</span><span class="n">voa</span>
+</span><span id="__span-0-48"><span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">skydrive</span>
+</span><span id="__span-0-49"><span class="n">com</span><span class="p">.</span><span class="n">cjtec</span><span class="p">.</span><span class="n">uncompress</span>
+</span><span id="__span-0-50"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mm</span>
+</span><span id="__span-0-51"><span class="n">com</span><span class="p">.</span><span class="n">bambuna</span><span class="p">.</span><span class="n">podcastaddict</span>
+</span><span id="__span-0-52"><span class="n">com</span><span class="p">.</span><span class="n">chinamworld</span><span class="p">.</span><span class="n">bocmbci</span>
+</span><span id="__span-0-53"><span class="n">com</span><span class="p">.</span><span class="n">xunlei</span><span class="p">.</span><span class="n">downloadprovider</span>
+</span><span id="__span-0-54"><span class="n">com</span><span class="p">.</span><span class="n">mango</span><span class="p">.</span><span class="n">voa</span>
+</span><span id="__span-0-55"><span class="n">com</span><span class="p">.</span><span class="n">easy</span><span class="p">.</span><span class="n">abroad</span>
+</span><span id="__span-0-56"><span class="n">com</span><span class="p">.</span><span class="n">oray</span><span class="p">.</span><span class="n">sunlogin</span>
+</span><span id="__span-0-57"><span class="n">com</span><span class="p">.</span><span class="n">zhaopin</span><span class="p">.</span><span class="n">social</span>
+</span><span id="__span-0-58"><span class="n">com</span><span class="p">.</span><span class="n">boohee</span><span class="p">.</span><span class="n">one</span>
+</span><span id="__span-0-59"><span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">rdc</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-0-60"><span class="n">com</span><span class="p">.</span><span class="n">icbc</span>
+</span><span id="__span-0-61"><span class="n">com</span><span class="p">.</span><span class="n">mapp</span>
+</span><span id="__span-0-62"><span class="n">app</span><span class="p">.</span><span class="n">podcast</span><span class="p">.</span><span class="n">cosmos</span>
+</span><span id="__span-0-63"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">sina</span><span class="p">.</span><span class="n">finance</span>
+</span><span id="__span-0-64"><span class="n">com</span><span class="p">.</span><span class="n">iyuba</span><span class="p">.</span><span class="n">englishread</span>
+</span><span id="__span-0-65"><span class="n">bin</span><span class="p">.</span><span class="n">mt</span><span class="p">.</span><span class="n">plus</span>
+</span><span id="__span-0-66"><span class="n">com</span><span class="p">.</span><span class="n">yuque</span><span class="p">.</span><span class="n">mobile</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-67"><span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">emmx</span>
+</span><span id="__span-0-68"><span class="n">com</span><span class="p">.</span><span class="n">apkpure</span><span class="p">.</span><span class="n">aegon</span>
+</span><span id="__span-0-69"><span class="n">com</span><span class="p">.</span><span class="n">liuzh</span><span class="p">.</span><span class="n">deviceinfo</span>
+</span><span id="__span-0-70"><span class="n">com</span><span class="p">.</span><span class="n">eastmoney</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">berlin</span>
+</span><span id="__span-0-71"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">spdb</span><span class="p">.</span><span class="n">mobilebank</span><span class="p">.</span><span class="n">per</span>
+</span><span id="__span-0-72"><span class="n">com</span><span class="p">.</span><span class="n">estrongs</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">pop</span>
+</span><span id="__span-0-73"><span class="n">cmccwm</span><span class="p">.</span><span class="n">mobilemusic</span>
+</span><span id="__span-0-74"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mtt</span>
+</span><span id="__span-0-75"><span class="n">com</span><span class="p">.</span><span class="n">xunmeng</span><span class="p">.</span><span class="n">pinduoduo</span>
+</span><span id="__span-0-76"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">weishi</span>
+</span><span id="__span-0-77"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">weread</span>
+</span><span id="__span-0-78"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">wework</span>
+</span><span id="__span-0-79"><span class="n">com</span><span class="p">.</span><span class="n">mobi</span><span class="p">.</span><span class="n">shtp</span>
+</span><span id="__span-0-80"><span class="n">com</span><span class="p">.</span><span class="n">ibimuyu</span><span class="p">.</span><span class="n">lockscreen</span>
+</span><span id="__span-0-81"><span class="n">com</span><span class="p">.</span><span class="n">eusoft</span><span class="p">.</span><span class="n">eudic</span>
+</span><span id="__span-0-82"><span class="n">net</span><span class="p">.</span><span class="n">csdn</span><span class="p">.</span><span class="n">csdnplus</span>
+</span><span id="__span-0-83"><span class="n">com</span><span class="p">.</span><span class="n">hunantv</span><span class="p">.</span><span class="n">imgo</span><span class="p">.</span><span class="n">activity</span>
+</span><span id="__span-0-84"><span class="n">com</span><span class="p">.</span><span class="n">youdao</span><span class="p">.</span><span class="n">dict</span>
+</span><span id="__span-0-85"><span class="n">com</span><span class="p">.</span><span class="n">youdao</span><span class="p">.</span><span class="n">note</span>
+</span><span id="__span-0-86"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">chrome</span>
+</span><span id="__span-0-87"><span class="n">com</span><span class="p">.</span><span class="n">shanbay</span><span class="p">.</span><span class="n">news</span>
+</span><span id="__span-0-88"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">ugc</span><span class="p">.</span><span class="n">aweme</span>
+</span><span id="__span-0-89"><span class="n">com</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">gms</span>
+</span><span id="__span-0-90"><span class="n">com</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">gsf</span>
+</span><span id="__span-0-91"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mobileqq</span>
+</span><span id="__span-0-92"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="k">auto</span>
+</span><span id="__span-0-93"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">lark</span>
+</span><span id="__span-0-94"><span class="n">com</span><span class="p">.</span><span class="n">jianshu</span><span class="p">.</span><span class="n">haruki</span>
+</span><span id="__span-0-95"><span class="n">hello</span><span class="p">.</span><span class="n">litiaotiao</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-96"><span class="n">com</span><span class="p">.</span><span class="n">gotokeep</span><span class="p">.</span><span class="n">keep</span>
+</span><span id="__span-0-97"><span class="n">com</span><span class="p">.</span><span class="n">unionpay</span>
+</span><span id="__span-0-98"><span class="n">com</span><span class="p">.</span><span class="n">wo</span><span class="p">.</span><span class="n">voice2</span>
+</span><span id="__span-0-99"><span class="n">com</span><span class="p">.</span><span class="n">seblong</span><span class="p">.</span><span class="n">idream</span>
+</span><span id="__span-0-100"><span class="n">com</span><span class="p">.</span><span class="n">ximalaya</span><span class="p">.</span><span class="n">ting</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-0-101"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">BaiduMap</span>
+</span><span id="__span-0-102"><span class="n">com</span><span class="p">.</span><span class="n">eastmoney</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">fund</span>
+</span><span id="__span-0-103"><span class="n">com</span><span class="p">.</span><span class="n">zhihu</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-0-104"><span class="n">com</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">gzuliyujiang</span><span class="p">.</span><span class="n">demo</span><span class="p">.</span><span class="n">oaid</span>
+</span><span id="__span-0-105"><span class="n">com</span><span class="p">.</span><span class="n">cmschina</span><span class="p">.</span><span class="n">stock</span>
+</span><span id="__span-0-106"><span class="n">com</span><span class="p">.</span><span class="n">ai</span><span class="p">.</span><span class="n">obc</span><span class="p">.</span><span class="n">cbn</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-107"><span class="n">com</span><span class="p">.</span><span class="n">sonelli</span><span class="p">.</span><span class="n">juicessh</span>
+</span><span id="__span-0-108"><span class="n">cn</span><span class="p">.</span><span class="n">wps</span><span class="p">.</span><span class="n">yun</span>
+</span><span id="__span-0-109"><span class="n">com</span><span class="p">.</span><span class="n">xiaomi</span><span class="p">.</span><span class="n">youpin</span>
+</span><span id="__span-0-110"><span class="n">cn</span><span class="p">.</span><span class="n">cj</span><span class="p">.</span><span class="n">pe</span>
+</span><span id="__span-0-111"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ucdlockscreen</span>
+</span><span id="__span-0-112"><span class="n">com</span><span class="p">.</span><span class="n">orion</span><span class="p">.</span><span class="n">notein</span>
+</span><span id="__span-0-113"><span class="n">com</span><span class="p">.</span><span class="n">xueqiu</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-0-114"><span class="n">com</span><span class="p">.</span><span class="n">adobe</span><span class="p">.</span><span class="n">reader</span>
+</span><span id="__span-0-115"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">docs</span>
+</span><span id="__span-0-116"><span class="n">com</span><span class="p">.</span><span class="n">fileunzip</span><span class="p">.</span><span class="n">zxwknight</span>
+</span><span id="__span-0-117"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hag</span><span class="p">.</span><span class="n">fa</span><span class="p">.</span><span class="n">logistics</span>
+</span><span id="__span-0-118"><span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">mail</span>
+</span><span id="__span-0-119"><span class="n">com</span><span class="p">.</span><span class="n">gtja</span><span class="p">.</span><span class="n">junhong</span><span class="p">.</span><span class="n">hm</span><span class="p">.</span><span class="n">servicecard</span>
+</span><span id="__span-0-120"><span class="n">com</span><span class="p">.</span><span class="n">jingdong</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">mall</span>
+</span><span id="__span-0-121"><span class="n">com</span><span class="p">.</span><span class="n">mubu</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-122"><span class="n">com</span><span class="p">.</span><span class="n">liuzho</span><span class="p">.</span><span class="n">file</span><span class="p">.</span><span class="n">explorer</span>
+</span><span id="__span-0-123"><span class="n">com</span><span class="p">.</span><span class="n">primatelabs</span><span class="p">.</span><span class="n">geekbench6</span>
+</span><span id="__span-0-124"><span class="n">com</span><span class="p">.</span><span class="n">autonavi</span><span class="p">.</span><span class="n">minimap</span>
+</span><span id="__span-0-125"><span class="n">ctrip</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">view</span>
+</span><span id="__span-0-126"><span class="n">cn</span><span class="p">.</span><span class="n">yonghui</span><span class="p">.</span><span class="n">hyd</span>
+</span><span id="__span-0-127"><span class="n">com</span><span class="p">.</span><span class="n">alibaba</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">rimet</span>
+</span><span id="__span-0-128"><span class="n">cn</span><span class="p">.</span><span class="n">ticktick</span><span class="p">.</span><span class="n">task</span>
+</span><span id="__span-0-129"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">genexcloud</span><span class="p">.</span><span class="n">speedtest</span>
+</span><span id="__span-0-130"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">wemeet</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-131"><span class="n">com</span><span class="p">.</span><span class="n">zxscnew</span>
+</span><span id="__span-0-132"><span class="n">me</span><span class="p">.</span><span class="n">ele</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">hmservice</span>
+</span><span id="__span-0-133"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">phoenix</span>
+</span><span id="__span-0-134"><span class="n">com</span><span class="p">.</span><span class="n">ingka</span><span class="p">.</span><span class="n">ikea</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">cn</span><span class="p">.</span><span class="n">prod</span>
+</span><span id="__span-0-135"><span class="n">chuxin</span><span class="p">.</span><span class="n">shimo</span><span class="p">.</span><span class="n">shimowendang</span>
+</span><span id="__span-0-136"><span class="n">com</span><span class="p">.</span><span class="n">sina</span><span class="p">.</span><span class="n">weibo</span>
+</span><span id="__span-0-137"><span class="n">com</span><span class="p">.</span><span class="n">yuchuang</span><span class="p">.</span><span class="n">xycadbtool</span>
+</span><span id="__span-0-138"><span class="n">com</span><span class="p">.</span><span class="n">hopeweather</span><span class="p">.</span><span class="n">mach</span>
+</span><span id="__span-0-139"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">youavideo</span>
+</span><span id="__span-0-140"><span class="n">com</span><span class="p">.</span><span class="n">One</span><span class="p">.</span><span class="n">WoodenLetter</span>
+</span><span id="__span-0-141"><span class="n">com</span><span class="p">.</span><span class="n">smile</span><span class="p">.</span><span class="n">gifmaker</span>
+</span><span id="__span-0-142"><span class="n">com</span><span class="p">.</span><span class="n">intsig</span><span class="p">.</span><span class="n">camscanner</span>
+</span><span id="__span-0-143"><span class="n">com</span><span class="p">.</span><span class="n">kekeclient_</span>
+</span><span id="__span-0-144"><span class="n">com</span><span class="p">.</span><span class="n">yingyonghui</span><span class="p">.</span><span class="n">market</span>
+</span><span id="__span-0-145"><span class="n">com</span><span class="p">.</span><span class="n">huxiupro</span>
+</span><span id="__span-0-146"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">haokan</span>
+</span><span id="__span-0-147"><span class="n">com</span><span class="p">.</span><span class="n">alibaba</span><span class="p">.</span><span class="n">aliyun</span>
+</span><span id="__span-0-148"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">article</span><span class="p">.</span><span class="n">video</span>
+</span><span id="__span-0-149"><span class="n">com</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-0-150"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">netdisk</span>
+</span><span id="__span-0-151"><span class="n">com</span><span class="p">.</span><span class="n">taobao</span><span class="p">.</span><span class="n">taobao</span>
+</span><span id="__span-0-152"><span class="n">com</span><span class="p">.</span><span class="n">lingkou</span><span class="p">.</span><span class="n">leetcode</span>
+</span><span id="__span-0-153"><span class="n">com</span><span class="p">.</span><span class="n">xiaomi</span><span class="p">.</span><span class="n">smarthome</span>
+</span><span id="__span-0-154"><span class="n">cn</span><span class="p">.</span><span class="n">samsclub</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-0-155"><span class="n">com</span><span class="p">.</span><span class="n">cmbchina</span><span class="p">.</span><span class="n">ccd</span><span class="p">.</span><span class="n">pluto</span><span class="p">.</span><span class="n">cmbActivity</span>
+</span><span id="__span-0-156"><span class="n">com</span><span class="p">.</span><span class="n">foobar2000</span><span class="p">.</span><span class="n">foobar2000</span>
+</span><span id="__span-0-157"><span class="n">com</span><span class="p">.</span><span class="n">lanjingren</span><span class="p">.</span><span class="n">ivwen</span>
+</span><span id="__span-0-158"><span class="n">com</span><span class="p">.</span><span class="n">xiaomi</span><span class="p">.</span><span class="n">hm</span><span class="p">.</span><span class="n">health</span>
+</span><span id="__span-0-159"><span class="n">com</span><span class="p">.</span><span class="n">ct</span><span class="p">.</span><span class="n">client</span>
+</span><span id="__span-0-160"><span class="n">tv</span><span class="p">.</span><span class="n">danmaku</span><span class="p">.</span><span class="n">bili</span>
+</span><span id="__span-0-161"><span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">yanxuan</span>
+</span><span id="__span-0-162"><span class="n">com</span><span class="p">.</span><span class="n">unnoo</span><span class="p">.</span><span class="n">quan</span>
+</span><span id="__span-0-163"><span class="n">org</span><span class="p">.</span><span class="n">geekbang</span><span class="p">.</span><span class="n">geekTime</span>
+</span><span id="__span-0-164"><span class="n">com</span><span class="p">.</span><span class="n">eg</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">AlipayGphone</span>
+</span><span id="__span-0-165"><span class="n">com</span><span class="p">.</span><span class="n">caing</span><span class="p">.</span><span class="n">news</span>
+</span><span id="__span-0-166"><span class="n">com</span><span class="p">.</span><span class="n">maxmpz</span><span class="p">.</span><span class="n">audioplayer</span>
+</span><span id="__span-0-167"><span class="n">cn</span><span class="p">.</span><span class="n">wps</span><span class="p">.</span><span class="n">moffice_eng</span>
+</span><span id="__span-0-168"><span class="n">com</span><span class="p">.</span><span class="n">greenpoint</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">mc10086</span><span class="p">.</span><span class="n">activity</span>
+</span><span id="__span-0-169"><span class="n">com</span><span class="p">.</span><span class="n">jideos</span><span class="p">.</span><span class="n">jnotes</span>
+</span><span id="__span-0-170"><span class="n">com</span><span class="p">.</span><span class="n">pigcha</span><span class="p">.</span><span class="n">pigchaproxy</span>
+</span><span id="__span-0-171"><span class="n">com</span><span class="p">.</span><span class="n">taobao</span><span class="p">.</span><span class="n">trip</span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="_3">系统已安装包列表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">security</span><span class="p">.</span><span class="n">hsdr</span>
+</span><span id="__span-1-2"><span class="n">lexue</span><span class="p">.</span><span class="n">mryyyd</span>
+</span><span id="__span-1-3"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">cts</span><span class="p">.</span><span class="n">priv</span><span class="p">.</span><span class="n">ctsshim</span>
+</span><span id="__span-1-4"><span class="n">com</span><span class="p">.</span><span class="n">quark</span><span class="p">.</span><span class="n">browser</span>
+</span><span id="__span-1-5"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">camera</span>
+</span><span id="__span-1-6"><span class="n">com</span><span class="p">.</span><span class="n">hpbr</span><span class="p">.</span><span class="n">bosszhipin</span>
+</span><span id="__span-1-7"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">camerakit</span><span class="p">.</span><span class="n">impl</span>
+</span><span id="__span-1-8"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">synergy</span>
+</span><span id="__span-1-9"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">launcher</span>
+</span><span id="__span-1-10"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hms</span><span class="p">.</span><span class="n">dupdateengine</span>
+</span><span id="__span-1-11"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">easygo</span>
+</span><span id="__span-1-12"><span class="n">com</span><span class="p">.</span><span class="n">kimcy929</span><span class="p">.</span><span class="n">screenrecorder</span>
+</span><span id="__span-1-13"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">mediacenter</span>
+</span><span id="__span-1-14"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">smarthome</span>
+</span><span id="__span-1-15"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">telephony</span>
+</span><span id="__span-1-16"><span class="n">com</span><span class="p">.</span><span class="n">unionpay</span><span class="p">.</span><span class="n">tsmservice</span>
+</span><span id="__span-1-17"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">harmonyos</span><span class="p">.</span><span class="n">foundation</span>
+</span><span id="__span-1-18"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwpreview</span>
+</span><span id="__span-1-19"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">calendar</span>
+</span><span id="__span-1-20"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">featurelayer</span><span class="p">.</span><span class="n">featureframework</span>
+</span><span id="__span-1-21"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">harmonyupdater</span>
+</span><span id="__span-1-22"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">health</span>
+</span><span id="__span-1-23"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hicard</span>
+</span><span id="__span-1-24"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hidisk</span>
+</span><span id="__span-1-25"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hinote</span>
+</span><span id="__span-1-26"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwddmp</span>
+</span><span id="__span-1-27"><span class="n">com</span><span class="p">.</span><span class="n">daimajia</span><span class="p">.</span><span class="n">gold</span>
+</span><span id="__span-1-28"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">iaware</span>
+</span><span id="__span-1-29"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">collaborationcenter</span>
+</span><span id="__span-1-30"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">bluetooth</span>
+</span><span id="__span-1-31"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">media</span>
+</span><span id="__span-1-32"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">localBackup</span>
+</span><span id="__span-1-33"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">thememanager</span>
+</span><span id="__span-1-34"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">chr</span>
+</span><span id="__span-1-35"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">hsf</span>
+</span><span id="__span-1-36"><span class="n">fm</span><span class="p">.</span><span class="n">qingting</span><span class="p">.</span><span class="n">qtradio</span>
+</span><span id="__span-1-37"><span class="n">com</span><span class="p">.</span><span class="n">alicloud</span><span class="p">.</span><span class="n">databox</span>
+</span><span id="__span-1-38"><span class="n">com</span><span class="p">.</span><span class="n">ichi2</span><span class="p">.</span><span class="n">anki</span>
+</span><span id="__span-1-39"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">wallpapercropper</span>
+</span><span id="__span-1-40"><span class="n">com</span><span class="p">.</span><span class="n">shark</span><span class="p">.</span><span class="n">jizhang</span>
+</span><span id="__span-1-41"><span class="n">com</span><span class="p">.</span><span class="n">edifier</span><span class="p">.</span><span class="n">edifierconnect</span>
+</span><span id="__span-1-42"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">onekeylock</span><span class="p">.</span><span class="n">hmservice</span>
+</span><span id="__span-1-43"><span class="n">com</span><span class="p">.</span><span class="n">datayes</span><span class="p">.</span><span class="n">irr</span>
+</span><span id="__span-1-44"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">healthservice</span>
+</span><span id="__span-1-45"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">petalmail</span>
+</span><span id="__span-1-46"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">nearby</span>
+</span><span id="__span-1-47"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">filemanager</span>
+</span><span id="__span-1-48"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">FloatTasks</span>
+</span><span id="__span-1-49"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">bankabc</span>
+</span><span id="__span-1-50"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">modernmedia</span><span class="p">.</span><span class="n">businessweek</span>
+</span><span id="__span-1-51"><span class="n">com</span><span class="p">.</span><span class="n">sankuai</span><span class="p">.</span><span class="n">meituan</span>
+</span><span id="__span-1-52"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">desktop</span><span class="p">.</span><span class="n">systemui</span>
+</span><span id="__span-1-53"><span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">ucmooc</span>
+</span><span id="__span-1-54"><span class="n">com</span><span class="p">.</span><span class="n">douban</span><span class="p">.</span><span class="n">frodo</span>
+</span><span id="__span-1-55"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">intelligent</span>
+</span><span id="__span-1-56"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">motionservice</span>
+</span><span id="__span-1-57"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">langeasy</span><span class="p">.</span><span class="n">LangEasyLexis</span>
+</span><span id="__span-1-58"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">appmarket</span>
+</span><span id="__span-1-59"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">recsys</span>
+</span><span id="__span-1-60"><span class="n">com</span><span class="p">.</span><span class="n">sinovatech</span><span class="p">.</span><span class="n">unicom</span><span class="p">.</span><span class="n">ui</span>
+</span><span id="__span-1-61"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">parentcontrol</span>
+</span><span id="__span-1-62"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">search</span>
+</span><span id="__span-1-63"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">secime</span>
+</span><span id="__span-1-64"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">wifi</span><span class="p">.</span><span class="n">resources</span><span class="p">.</span><span class="n">overlay</span>
+</span><span id="__span-1-65"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">documentsui</span>
+</span><span id="__span-1-66"><span class="n">com</span><span class="p">.</span><span class="n">ai</span><span class="p">.</span><span class="n">voacsspeed</span>
+</span><span id="__span-1-67"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">numberidentity</span>
+</span><span id="__span-1-68"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">externalstorage</span>
+</span><span id="__span-1-69"><span class="n">com</span><span class="p">.</span><span class="n">wepie</span><span class="p">.</span><span class="n">ivy</span>
+</span><span id="__span-1-70"><span class="n">com</span><span class="p">.</span><span class="n">lemon</span><span class="p">.</span><span class="n">lv</span>
+</span><span id="__span-1-71"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">multimedia</span><span class="p">.</span><span class="n">audioengine</span>
+</span><span id="__span-1-72"><span class="n">com</span><span class="p">.</span><span class="n">sohu</span><span class="p">.</span><span class="n">sohuvideo</span><span class="p">.</span><span class="n">emplayer</span>
+</span><span id="__span-1-73"><span class="n">com</span><span class="p">.</span><span class="n">hexin</span><span class="p">.</span><span class="n">plat</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-1-74"><span class="n">com</span><span class="p">.</span><span class="n">guotai</span><span class="p">.</span><span class="n">dazhihui</span>
+</span><span id="__span-1-75"><span class="n">com</span><span class="p">.</span><span class="n">ghosun</span><span class="p">.</span><span class="n">dict</span>
+</span><span id="__span-1-76"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">open</span><span class="p">.</span><span class="n">mooc</span>
+</span><span id="__span-1-77"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">companiondevicemanager</span>
+</span><span id="__span-1-78"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">regservice</span>
+</span><span id="__span-1-79"><span class="n">com</span><span class="p">.</span><span class="n">iflytek</span><span class="p">.</span><span class="n">speechsuite</span>
+</span><span id="__span-1-80"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">androidqqmail</span>
+</span><span id="__span-1-81"><span class="n">com</span><span class="p">.</span><span class="n">iguopin</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-82"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">mms</span><span class="p">.</span><span class="n">service</span>
+</span><span id="__span-1-83"><span class="n">com</span><span class="p">.</span><span class="n">jingyao</span><span class="p">.</span><span class="n">easybike</span>
+</span><span id="__span-1-84"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">wallet</span>
+</span><span id="__span-1-85"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">waudio</span>
+</span><span id="__span-1-86"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">totemweather</span>
+</span><span id="__span-1-87"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">downloads</span>
+</span><span id="__span-1-88"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">gameassistant</span>
+</span><span id="__span-1-89"><span class="n">com</span><span class="p">.</span><span class="n">taou</span><span class="p">.</span><span class="n">maimai</span>
+</span><span id="__span-1-90"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">networkstack</span><span class="p">.</span><span class="n">inprocess</span>
+</span><span id="__span-1-91"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwdiagnosis</span>
+</span><span id="__span-1-92"><span class="n">au</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">shiftyjelly</span><span class="p">.</span><span class="n">pocketcasts</span>
+</span><span id="__span-1-93"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">findmyphone</span>
+</span><span id="__span-1-94"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">trustcircle</span>
+</span><span id="__span-1-95"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">fastapp</span>
+</span><span id="__span-1-96"><span class="n">cmb</span><span class="p">.</span><span class="n">pb</span>
+</span><span id="__span-1-97"><span class="n">com</span><span class="p">.</span><span class="n">tdx</span><span class="p">.</span><span class="n">AndroidNew</span>
+</span><span id="__span-1-98"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">onehopsvchost</span>
+</span><span id="__span-1-99"><span class="n">indi</span><span class="p">.</span><span class="n">czc</span><span class="p">.</span><span class="n">qpython</span>
+</span><span id="__span-1-100"><span class="n">cn</span><span class="p">.</span><span class="n">gov</span><span class="p">.</span><span class="n">tax</span><span class="p">.</span><span class="n">its</span>
+</span><span id="__span-1-101"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">phoneservice</span>
+</span><span id="__span-1-102"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">desktop</span><span class="p">.</span><span class="n">explorer</span>
+</span><span id="__span-1-103"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">screenrecorder</span>
+</span><span id="__span-1-104"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hmos</span><span class="p">.</span><span class="n">compass</span>
+</span><span id="__span-1-105"><span class="n">com</span><span class="p">.</span><span class="n">MobileTicket</span>
+</span><span id="__span-1-106"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">airlink</span>
+</span><span id="__span-1-107"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">videoeditor</span>
+</span><span id="__span-1-108"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">securitymgr</span>
+</span><span id="__span-1-109"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hms5gkit</span><span class="p">.</span><span class="n">agentservice</span>
+</span><span id="__span-1-110"><span class="n">com</span><span class="p">.</span><span class="n">harmony</span><span class="p">.</span><span class="n">meituan</span>
+</span><span id="__span-1-111"><span class="n">com</span><span class="p">.</span><span class="n">v2ray</span><span class="p">.</span><span class="n">ang</span>
+</span><span id="__span-1-112"><span class="n">com</span><span class="p">.</span><span class="n">sony</span><span class="p">.</span><span class="n">store</span><span class="p">.</span><span class="n">china</span>
+</span><span id="__span-1-113"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">inputmethod</span>
+</span><span id="__span-1-114"><span class="n">com</span><span class="p">.</span><span class="n">luojilab</span><span class="p">.</span><span class="n">player</span>
+</span><span id="__span-1-115"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">soundrecorder</span>
+</span><span id="__span-1-116"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">iconnect</span>
+</span><span id="__span-1-117"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">AutoRegSms</span>
+</span><span id="__span-1-118"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">dsdscardmanager</span>
+</span><span id="__span-1-119"><span class="n">com</span><span class="p">.</span><span class="n">yinxiang</span>
+</span><span id="__span-1-120"><span class="n">me</span><span class="p">.</span><span class="n">ele</span>
+</span><span id="__span-1-121"><span class="n">com</span><span class="p">.</span><span class="n">hupu</span><span class="p">.</span><span class="n">games</span>
+</span><span id="__span-1-122"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">distributedpasteboard</span>
+</span><span id="__span-1-123"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">downloads</span><span class="p">.</span><span class="n">ui</span>
+</span><span id="__span-1-124"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">pacprocessor</span>
+</span><span id="__span-1-125"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">simappdialog</span>
+</span><span id="__span-1-126"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">systemui</span><span class="p">.</span><span class="n">overlay</span>
+</span><span id="__span-1-127"><span class="n">gov</span><span class="p">.</span><span class="n">bbg</span><span class="p">.</span><span class="n">voa</span>
+</span><span id="__span-1-128"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">smarthome</span>
+</span><span id="__span-1-129"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">smartshot</span>
+</span><span id="__span-1-130"><span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">skydrive</span>
+</span><span id="__span-1-131"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">connectivity</span><span class="p">.</span><span class="n">resources</span>
+</span><span id="__span-1-132"><span class="n">androidhwext</span>
+</span><span id="__span-1-133"><span class="n">com</span><span class="p">.</span><span class="n">cjtec</span><span class="p">.</span><span class="n">uncompress</span>
+</span><span id="__span-1-134"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mm</span>
+</span><span id="__span-1-135"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">contacts</span>
+</span><span id="__span-1-136"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">input_huawei</span>
+</span><span id="__span-1-137"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">modulemetadata</span>
+</span><span id="__span-1-138"><span class="n">com</span><span class="p">.</span><span class="n">bambuna</span><span class="p">.</span><span class="n">podcastaddict</span>
+</span><span id="__span-1-139"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">certinstaller</span>
+</span><span id="__span-1-140"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">phone</span><span class="p">.</span><span class="n">recorder</span>
+</span><span id="__span-1-141"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">carrierconfig</span>
+</span><span id="__span-1-142"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">wallet</span><span class="p">.</span><span class="n">sdk</span><span class="p">.</span><span class="n">walletsdk</span>
+</span><span id="__span-1-143"><span class="n">com</span><span class="p">.</span><span class="n">chinamworld</span><span class="p">.</span><span class="n">bocmbci</span>
+</span><span id="__span-1-144"><span class="n">com</span><span class="p">.</span><span class="n">xunlei</span><span class="p">.</span><span class="n">downloadprovider</span>
+</span><span id="__span-1-145"><span class="n">com</span><span class="p">.</span><span class="n">mango</span><span class="p">.</span><span class="n">voa</span>
+</span><span id="__span-1-146"><span class="n">android</span>
+</span><span id="__span-1-147"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">imedia</span><span class="p">.</span><span class="n">sws</span>
+</span><span id="__span-1-148"><span class="n">com</span><span class="p">.</span><span class="n">easy</span><span class="p">.</span><span class="n">abroad</span>
+</span><span id="__span-1-149"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hiai</span>
+</span><span id="__span-1-150"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwid</span>
+</span><span id="__span-1-151"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">msdp</span>
+</span><span id="__span-1-152"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">nemo</span>
+</span><span id="__span-1-153"><span class="n">com</span><span class="p">.</span><span class="n">oray</span><span class="p">.</span><span class="n">sunlogin</span>
+</span><span id="__span-1-154"><span class="n">com</span><span class="p">.</span><span class="n">zhaopin</span><span class="p">.</span><span class="n">social</span>
+</span><span id="__span-1-155"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">systemserver</span>
+</span><span id="__span-1-156"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">mycenter</span>
+</span><span id="__span-1-157"><span class="n">com</span><span class="p">.</span><span class="n">boohee</span><span class="p">.</span><span class="n">one</span>
+</span><span id="__span-1-158"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">mms</span>
+</span><span id="__span-1-159"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">mtp</span>
+</span><span id="__span-1-160"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">nfc</span>
+</span><span id="__span-1-161"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">ons</span>
+</span><span id="__span-1-162"><span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">rdc</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-1-163"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">backupconfirm</span>
+</span><span id="__span-1-164"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">calculator</span>
+</span><span id="__span-1-165"><span class="n">com</span><span class="p">.</span><span class="n">icbc</span>
+</span><span id="__span-1-166"><span class="n">com</span><span class="p">.</span><span class="n">mapp</span>
+</span><span id="__span-1-167"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">instantshare</span>
+</span><span id="__span-1-168"><span class="n">app</span><span class="p">.</span><span class="n">podcast</span><span class="p">.</span><span class="n">cosmos</span>
+</span><span id="__span-1-169"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">sina</span><span class="p">.</span><span class="n">finance</span>
+</span><span id="__span-1-170"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">himovie</span><span class="p">.</span><span class="n">partner1</span>
+</span><span id="__span-1-171"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">himovie</span><span class="p">.</span><span class="n">partner2</span>
+</span><span id="__span-1-172"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">trustagent</span>
+</span><span id="__span-1-173"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">profile</span>
+</span><span id="__span-1-174"><span class="n">com</span><span class="p">.</span><span class="n">iyuba</span><span class="p">.</span><span class="n">englishread</span>
+</span><span id="__span-1-175"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">trustspace</span>
+</span><span id="__span-1-176"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">calendar</span>
+</span><span id="__span-1-177"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">mediacontroller</span>
+</span><span id="__span-1-178"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">statementservice</span>
+</span><span id="__span-1-179"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">hiwindow</span>
+</span><span id="__span-1-180"><span class="n">ohos</span><span class="p">.</span><span class="n">media</span><span class="p">.</span><span class="n">medialibrary</span>
+</span><span id="__span-1-181"><span class="n">bin</span><span class="p">.</span><span class="n">mt</span><span class="p">.</span><span class="n">plus</span>
+</span><span id="__span-1-182"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">devicegroupmanage</span>
+</span><span id="__span-1-183"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">internal</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-184"><span class="n">com</span><span class="p">.</span><span class="n">yuque</span><span class="p">.</span><span class="n">mobile</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-185"><span class="n">com</span><span class="p">.</span><span class="n">microsoft</span><span class="p">.</span><span class="n">emmx</span>
+</span><span id="__span-1-186"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">dmsdp</span>
+</span><span id="__span-1-187"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">email</span>
+</span><span id="__span-1-188"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">gateway</span>
+</span><span id="__span-1-189"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">magazine</span>
+</span><span id="__span-1-190"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hicar</span>
+</span><span id="__span-1-191"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwasm</span>
+</span><span id="__span-1-192"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">wifiprobqeservice</span>
+</span><span id="__span-1-193"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">onehopsvcclient</span>
+</span><span id="__span-1-194"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">remotepassword</span>
+</span><span id="__span-1-195"><span class="n">com</span><span class="p">.</span><span class="n">apkpure</span><span class="p">.</span><span class="n">aegon</span>
+</span><span id="__span-1-196"><span class="n">com</span><span class="p">.</span><span class="n">liuzh</span><span class="p">.</span><span class="n">deviceinfo</span>
+</span><span id="__span-1-197"><span class="n">com</span><span class="p">.</span><span class="n">eastmoney</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">berlin</span>
+</span><span id="__span-1-198"><span class="n">cn</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">spdb</span><span class="p">.</span><span class="n">mobilebank</span><span class="p">.</span><span class="n">per</span>
+</span><span id="__span-1-199"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">settings</span>
+</span><span id="__span-1-200"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">sharedstoragebackup</span>
+</span><span id="__span-1-201"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hmos</span><span class="p">.</span><span class="n">himovie</span><span class="p">.</span><span class="n">fa</span>
+</span><span id="__span-1-202"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">frameworkres</span><span class="p">.</span><span class="n">overlay</span>
+</span><span id="__span-1-203"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">featurelayer</span><span class="p">.</span><span class="n">sharedfeature</span><span class="p">.</span><span class="n">map</span>
+</span><span id="__span-1-204"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">incallui</span>
+</span><span id="__span-1-205"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">systemmanager</span>
+</span><span id="__span-1-206"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">nb</span><span class="p">.</span><span class="n">service</span>
+</span><span id="__span-1-207"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">se</span>
+</span><span id="__span-1-208"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwpanpayservice</span>
+</span><span id="__span-1-209"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">inputdevices</span>
+</span><span id="__span-1-210"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">browser</span>
+</span><span id="__span-1-211"><span class="n">com</span><span class="p">.</span><span class="n">estrongs</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">pop</span>
+</span><span id="__span-1-212"><span class="n">cmccwm</span><span class="p">.</span><span class="n">mobilemusic</span>
+</span><span id="__span-1-213"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">securityserver</span>
+</span><span id="__span-1-214"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mtt</span>
+</span><span id="__span-1-215"><span class="n">com</span><span class="p">.</span><span class="n">xunmeng</span><span class="p">.</span><span class="n">pinduoduo</span>
+</span><span id="__span-1-216"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">controlcenter</span>
+</span><span id="__span-1-217"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">videoeditor</span>
+</span><span id="__span-1-218"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">commonwallpaper</span>
+</span><span id="__span-1-219"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">weishi</span>
+</span><span id="__span-1-220"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">weread</span>
+</span><span id="__span-1-221"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">wework</span>
+</span><span id="__span-1-222"><span class="n">com</span><span class="p">.</span><span class="n">mobi</span><span class="p">.</span><span class="n">shtp</span>
+</span><span id="__span-1-223"><span class="n">com</span><span class="p">.</span><span class="n">ibimuyu</span><span class="p">.</span><span class="n">lockscreen</span>
+</span><span id="__span-1-224"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">privatespace</span>
+</span><span id="__span-1-225"><span class="n">com</span><span class="p">.</span><span class="n">hicloud</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">clone</span>
+</span><span id="__span-1-226"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">contacts</span><span class="p">.</span><span class="n">sync</span>
+</span><span id="__span-1-227"><span class="n">com</span><span class="p">.</span><span class="n">eusoft</span><span class="p">.</span><span class="n">eudic</span>
+</span><span id="__span-1-228"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hilink</span><span class="p">.</span><span class="n">framework</span>
+</span><span id="__span-1-229"><span class="n">android</span><span class="p">.</span><span class="n">ext</span><span class="p">.</span><span class="n">shared</span>
+</span><span id="__span-1-230"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">HwMultiScreenShot</span>
+</span><span id="__span-1-231"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">vassistant</span>
+</span><span id="__span-1-232"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">featurelayer</span><span class="p">.</span><span class="n">sharedfeature</span><span class="p">.</span><span class="n">xrkit</span>
+</span><span id="__span-1-233"><span class="n">net</span><span class="p">.</span><span class="n">csdn</span><span class="p">.</span><span class="n">csdnplus</span>
+</span><span id="__span-1-234"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">server</span><span class="p">.</span><span class="n">telecom</span>
+</span><span id="__span-1-235"><span class="n">com</span><span class="p">.</span><span class="n">hunantv</span><span class="p">.</span><span class="n">imgo</span><span class="p">.</span><span class="n">activity</span>
+</span><span id="__span-1-236"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwdockbar</span>
+</span><span id="__span-1-237"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">cellbroadcastservice</span>
+</span><span id="__span-1-238"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">multimedia</span><span class="p">.</span><span class="n">hivideoplayengine</span>
+</span><span id="__span-1-239"><span class="n">com</span><span class="p">.</span><span class="n">youdao</span><span class="p">.</span><span class="n">dict</span>
+</span><span id="__span-1-240"><span class="n">com</span><span class="p">.</span><span class="n">youdao</span><span class="p">.</span><span class="n">note</span>
+</span><span id="__span-1-241"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">keychain</span>
+</span><span id="__span-1-242"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">searchservice</span>
+</span><span id="__span-1-243"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">chrome</span>
+</span><span id="__span-1-244"><span class="n">com</span><span class="p">.</span><span class="n">shanbay</span><span class="p">.</span><span class="n">news</span>
+</span><span id="__span-1-245"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">printservice</span><span class="p">.</span><span class="n">recommendation</span>
+</span><span id="__span-1-246"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">languagedownloader</span>
+</span><span id="__span-1-247"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">gallery3d</span>
+</span><span id="__span-1-248"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">browser</span><span class="p">.</span><span class="n">fa</span>
+</span><span id="__span-1-249"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">ugc</span><span class="p">.</span><span class="n">aweme</span>
+</span><span id="__span-1-250"><span class="n">com</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">gms</span>
+</span><span id="__span-1-251"><span class="n">com</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">gsf</span>
+</span><span id="__span-1-252"><span class="n">android</span><span class="p">.</span><span class="n">ext</span><span class="p">.</span><span class="n">services</span>
+</span><span id="__span-1-253"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">wifi</span><span class="p">.</span><span class="n">resources</span>
+</span><span id="__span-1-254"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwstartupguide</span>
+</span><span id="__span-1-255"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">calllogbackup</span>
+</span><span id="__span-1-256"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mobileqq</span>
+</span><span id="__span-1-257"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">security</span><span class="p">.</span><span class="n">privacycenter</span>
+</span><span id="__span-1-258"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">fido</span><span class="p">.</span><span class="n">uafclient</span>
+</span><span id="__span-1-259"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="k">auto</span>
+</span><span id="__span-1-260"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">lark</span>
+</span><span id="__span-1-261"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">localtransport</span>
+</span><span id="__span-1-262"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">packageinstaller</span>
+</span><span id="__span-1-263"><span class="n">com</span><span class="p">.</span><span class="n">jianshu</span><span class="p">.</span><span class="n">haruki</span>
+</span><span id="__span-1-264"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwireader</span>
+</span><span id="__span-1-265"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">wallet</span><span class="p">.</span><span class="n">facard</span>
+</span><span id="__span-1-266"><span class="n">hello</span><span class="p">.</span><span class="n">litiaotiao</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-267"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">proxyhandler</span>
+</span><span id="__span-1-268"><span class="n">com</span><span class="p">.</span><span class="n">gotokeep</span><span class="p">.</span><span class="n">keep</span>
+</span><span id="__span-1-269"><span class="n">com</span><span class="p">.</span><span class="n">unionpay</span>
+</span><span id="__span-1-270"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">contactscamcard</span>
+</span><span id="__span-1-271"><span class="n">com</span><span class="p">.</span><span class="n">wo</span><span class="p">.</span><span class="n">voice2</span>
+</span><span id="__span-1-272"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hicloud</span>
+</span><span id="__span-1-273"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">himovie</span>
+</span><span id="__span-1-274"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hitouch</span>
+</span><span id="__span-1-275"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">meetime</span>
+</span><span id="__span-1-276"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">compass</span>
+</span><span id="__span-1-277"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">coauthservice</span>
+</span><span id="__span-1-278"><span class="n">com</span><span class="p">.</span><span class="n">seblong</span><span class="p">.</span><span class="n">idream</span>
+</span><span id="__span-1-279"><span class="n">com</span><span class="p">.</span><span class="n">ximalaya</span><span class="p">.</span><span class="n">ting</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-1-280"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">BaiduMap</span>
+</span><span id="__span-1-281"><span class="n">com</span><span class="p">.</span><span class="n">eastmoney</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">fund</span>
+</span><span id="__span-1-282"><span class="n">com</span><span class="p">.</span><span class="n">zhihu</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-1-283"><span class="n">com</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">gzuliyujiang</span><span class="p">.</span><span class="n">demo</span><span class="p">.</span><span class="n">oaid</span>
+</span><span id="__span-1-284"><span class="n">com</span><span class="p">.</span><span class="n">cmschina</span><span class="p">.</span><span class="n">stock</span>
+</span><span id="__span-1-285"><span class="n">com</span><span class="p">.</span><span class="n">ai</span><span class="p">.</span><span class="n">obc</span><span class="p">.</span><span class="n">cbn</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-286"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">securitypluginbase</span>
+</span><span id="__span-1-287"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">hwaps</span>
+</span><span id="__span-1-288"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">hwouc</span>
+</span><span id="__span-1-289"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">wfdft</span>
+</span><span id="__span-1-290"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">qqlivehuawei</span>
+</span><span id="__span-1-291"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">himovie</span><span class="p">.</span><span class="n">local</span>
+</span><span id="__span-1-292"><span class="n">com</span><span class="p">.</span><span class="n">sonelli</span><span class="p">.</span><span class="n">juicessh</span>
+</span><span id="__span-1-293"><span class="n">com</span><span class="p">.</span><span class="n">bjbyhd</span><span class="p">.</span><span class="n">screenreader_huawei</span>
+</span><span id="__span-1-294"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">wallpaper</span><span class="p">.</span><span class="n">livepicker</span>
+</span><span id="__span-1-295"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">mms</span>
+</span><span id="__span-1-296"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">mmitest</span>
+</span><span id="__span-1-297"><span class="n">cn</span><span class="p">.</span><span class="n">wps</span><span class="p">.</span><span class="n">yun</span>
+</span><span id="__span-1-298"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">apps</span><span class="p">.</span><span class="n">tag</span>
+</span><span id="__span-1-299"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">powergenie</span>
+</span><span id="__span-1-300"><span class="n">com</span><span class="p">.</span><span class="n">xiaomi</span><span class="p">.</span><span class="n">youpin</span>
+</span><span id="__span-1-301"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">behaviorauth</span>
+</span><span id="__span-1-302"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">webview</span>
+</span><span id="__span-1-303"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">devicemanager</span>
+</span><span id="__span-1-304"><span class="n">cn</span><span class="p">.</span><span class="n">cj</span><span class="p">.</span><span class="n">pe</span>
+</span><span id="__span-1-305"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">suggestion</span>
+</span><span id="__span-1-306"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">iconnect</span><span class="p">.</span><span class="n">ui</span>
+</span><span id="__span-1-307"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ucdlockscreen</span>
+</span><span id="__span-1-308"><span class="n">com</span><span class="p">.</span><span class="n">orion</span><span class="p">.</span><span class="n">notein</span>
+</span><span id="__span-1-309"><span class="n">com</span><span class="p">.</span><span class="n">xueqiu</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-1-310"><span class="n">com</span><span class="p">.</span><span class="n">adobe</span><span class="p">.</span><span class="n">reader</span>
+</span><span id="__span-1-311"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">docs</span>
+</span><span id="__span-1-312"><span class="n">com</span><span class="p">.</span><span class="n">fileunzip</span><span class="p">.</span><span class="n">zxwknight</span>
+</span><span id="__span-1-313"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hag</span><span class="p">.</span><span class="n">fa</span><span class="p">.</span><span class="n">logistics</span>
+</span><span id="__span-1-314"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">instantonline</span>
+</span><span id="__span-1-315"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">storagemanager</span>
+</span><span id="__span-1-316"><span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">mail</span>
+</span><span id="__span-1-317"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">settings</span>
+</span><span id="__span-1-318"><span class="n">com</span><span class="p">.</span><span class="n">gtja</span><span class="p">.</span><span class="n">junhong</span><span class="p">.</span><span class="n">hm</span><span class="p">.</span><span class="n">servicecard</span>
+</span><span id="__span-1-319"><span class="n">com</span><span class="p">.</span><span class="n">jingdong</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">mall</span>
+</span><span id="__span-1-320"><span class="n">com</span><span class="p">.</span><span class="n">mubu</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-321"><span class="n">com</span><span class="p">.</span><span class="n">liuzho</span><span class="p">.</span><span class="n">file</span><span class="p">.</span><span class="n">explorer</span>
+</span><span id="__span-1-322"><span class="n">com</span><span class="p">.</span><span class="n">primatelabs</span><span class="p">.</span><span class="n">geekbench6</span>
+</span><span id="__span-1-323"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">networkstack</span><span class="p">.</span><span class="n">tethering</span><span class="p">.</span><span class="n">inprocess</span>
+</span><span id="__span-1-324"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">networkstack</span><span class="p">.</span><span class="n">permissionconfig</span>
+</span><span id="__span-1-325"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">camera</span>
+</span><span id="__span-1-326"><span class="n">com</span><span class="p">.</span><span class="n">vmall</span><span class="p">.</span><span class="n">client</span>
+</span><span id="__span-1-327"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">deviceauth</span>
+</span><span id="__span-1-328"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">pcassistant</span>
+</span><span id="__span-1-329"><span class="n">com</span><span class="p">.</span><span class="n">autonavi</span><span class="p">.</span><span class="n">minimap</span>
+</span><span id="__span-1-330"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">projectmenu</span>
+</span><span id="__span-1-331"><span class="n">ctrip</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">view</span>
+</span><span id="__span-1-332"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">cts</span><span class="p">.</span><span class="n">ctsshim</span>
+</span><span id="__span-1-333"><span class="n">cn</span><span class="p">.</span><span class="n">yonghui</span><span class="p">.</span><span class="n">hyd</span>
+</span><span id="__span-1-334"><span class="n">com</span><span class="p">.</span><span class="n">alibaba</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">rimet</span>
+</span><span id="__span-1-335"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">filemanager</span><span class="p">.</span><span class="n">fa</span>
+</span><span id="__span-1-336"><span class="n">cn</span><span class="p">.</span><span class="n">ticktick</span><span class="p">.</span><span class="n">task</span>
+</span><span id="__span-1-337"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">genexcloud</span><span class="p">.</span><span class="n">speedtest</span>
+</span><span id="__span-1-338"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">pushagent</span>
+</span><span id="__span-1-339"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">wemeet</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-340"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">health</span>
+</span><span id="__span-1-341"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hidisk</span><span class="p">.</span><span class="n">fa</span>
+</span><span id="__span-1-342"><span class="n">com</span><span class="p">.</span><span class="n">zxscnew</span>
+</span><span id="__span-1-343"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">vpndialogs</span>
+</span><span id="__span-1-344"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">security</span><span class="p">.</span><span class="n">privacycenter</span>
+</span><span id="__span-1-345"><span class="n">me</span><span class="p">.</span><span class="n">ele</span><span class="p">.</span><span class="n">widget</span><span class="p">.</span><span class="n">hmservice</span>
+</span><span id="__span-1-346"><span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">phoenix</span>
+</span><span id="__span-1-347"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">hwupgradeguide</span>
+</span><span id="__span-1-348"><span class="n">com</span><span class="p">.</span><span class="n">ingka</span><span class="p">.</span><span class="n">ikea</span><span class="p">.</span><span class="n">app</span><span class="p">.</span><span class="n">cn</span><span class="p">.</span><span class="n">prod</span>
+</span><span id="__span-1-349"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">mirror</span>
+</span><span id="__span-1-350"><span class="n">chuxin</span><span class="p">.</span><span class="n">shimo</span><span class="p">.</span><span class="n">shimowendang</span>
+</span><span id="__span-1-351"><span class="n">com</span><span class="p">.</span><span class="n">sina</span><span class="p">.</span><span class="n">weibo</span>
+</span><span id="__span-1-352"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">phone</span>
+</span><span id="__span-1-353"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">shell</span>
+</span><span id="__span-1-354"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">wallpaperbackup</span>
+</span><span id="__span-1-355"><span class="n">com</span><span class="p">.</span><span class="n">yuchuang</span><span class="p">.</span><span class="n">xycadbtool</span>
+</span><span id="__span-1-356"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">blockednumber</span>
+</span><span id="__span-1-357"><span class="n">com</span><span class="p">.</span><span class="n">hopeweather</span><span class="p">.</span><span class="n">mach</span>
+</span><span id="__span-1-358"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">userdictionary</span>
+</span><span id="__span-1-359"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">media</span><span class="p">.</span><span class="n">module</span>
+</span><span id="__span-1-360"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">youavideo</span>
+</span><span id="__span-1-361"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">emergency</span>
+</span><span id="__span-1-362"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">photos</span>
+</span><span id="__span-1-363"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">scanner</span>
+</span><span id="__span-1-364"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">distributed</span><span class="p">.</span><span class="n">kms</span>
+</span><span id="__span-1-365"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">hotspot2</span><span class="p">.</span><span class="n">osulogin</span>
+</span><span id="__span-1-366"><span class="n">com</span><span class="p">.</span><span class="n">One</span><span class="p">.</span><span class="n">WoodenLetter</span>
+</span><span id="__span-1-367"><span class="n">com</span><span class="p">.</span><span class="n">smile</span><span class="p">.</span><span class="n">gifmaker</span>
+</span><span id="__span-1-368"><span class="n">com</span><span class="p">.</span><span class="n">intsig</span><span class="p">.</span><span class="n">camscanner</span>
+</span><span id="__span-1-369"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">internal</span><span class="p">.</span><span class="n">systemui</span><span class="p">.</span><span class="n">navbar</span><span class="p">.</span><span class="n">gestural</span>
+</span><span id="__span-1-370"><span class="n">com</span><span class="p">.</span><span class="n">kekeclient_</span>
+</span><span id="__span-1-371"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">suggestion</span>
+</span><span id="__span-1-372"><span class="n">com</span><span class="p">.</span><span class="n">yingyonghui</span><span class="p">.</span><span class="n">market</span>
+</span><span id="__span-1-373"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">music</span><span class="p">.</span><span class="n">local</span>
+</span><span id="__span-1-374"><span class="n">com</span><span class="p">.</span><span class="n">huxiupro</span>
+</span><span id="__span-1-375"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">haokan</span>
+</span><span id="__span-1-376"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">location</span><span class="p">.</span><span class="n">fused</span>
+</span><span id="__span-1-377"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">deskclock</span>
+</span><span id="__span-1-378"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">search</span>
+</span><span id="__span-1-379"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">systemui</span>
+</span><span id="__span-1-380"><span class="n">com</span><span class="p">.</span><span class="n">alibaba</span><span class="p">.</span><span class="n">aliyun</span>
+</span><span id="__span-1-381"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">bluetoothmidiservice</span>
+</span><span id="__span-1-382"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">assetsync</span>
+</span><span id="__span-1-383"><span class="n">com</span><span class="p">.</span><span class="n">ss</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">article</span><span class="p">.</span><span class="n">video</span>
+</span><span id="__span-1-384"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">permissioncontroller</span>
+</span><span id="__span-1-385"><span class="n">com</span><span class="p">.</span><span class="n">job</span><span class="p">.</span><span class="n">android</span>
+</span><span id="__span-1-386"><span class="n">com</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">netdisk</span>
+</span><span id="__span-1-387"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hwvoipservice</span>
+</span><span id="__span-1-388"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">karaoke</span>
+</span><span id="__span-1-389"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">game</span><span class="p">.</span><span class="n">kitserver</span>
+</span><span id="__span-1-390"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">notepad</span>
+</span><span id="__span-1-391"><span class="n">com</span><span class="p">.</span><span class="n">taobao</span><span class="p">.</span><span class="n">taobao</span>
+</span><span id="__span-1-392"><span class="n">com</span><span class="p">.</span><span class="n">lingkou</span><span class="p">.</span><span class="n">leetcode</span>
+</span><span id="__span-1-393"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ca</span>
+</span><span id="__span-1-394"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">skytone</span>
+</span><span id="__span-1-395"><span class="n">com</span><span class="p">.</span><span class="n">xiaomi</span><span class="p">.</span><span class="n">smarthome</span>
+</span><span id="__span-1-396"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">assetsyncservice</span>
+</span><span id="__span-1-397"><span class="n">cn</span><span class="p">.</span><span class="n">samsclub</span><span class="p">.</span><span class="n">app</span>
+</span><span id="__span-1-398"><span class="n">com</span><span class="p">.</span><span class="n">cmbchina</span><span class="p">.</span><span class="n">ccd</span><span class="p">.</span><span class="n">pluto</span><span class="p">.</span><span class="n">cmbActivity</span>
+</span><span id="__span-1-399"><span class="n">com</span><span class="p">.</span><span class="n">foobar2000</span><span class="p">.</span><span class="n">foobar2000</span>
+</span><span id="__span-1-400"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">def</span>
+</span><span id="__span-1-401"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hbm</span>
+</span><span id="__span-1-402"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hff</span>
+</span><span id="__span-1-403"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ims</span>
+</span><span id="__span-1-404"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">lbs</span>
+</span><span id="__span-1-405"><span class="n">com</span><span class="p">.</span><span class="n">lanjingren</span><span class="p">.</span><span class="n">ivwen</span>
+</span><span id="__span-1-406"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">bluetooth</span>
+</span><span id="__span-1-407"><span class="n">com</span><span class="p">.</span><span class="n">xiaomi</span><span class="p">.</span><span class="n">hm</span><span class="p">.</span><span class="n">health</span>
+</span><span id="__span-1-408"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">providers</span><span class="p">.</span><span class="n">contacts</span>
+</span><span id="__span-1-409"><span class="n">com</span><span class="p">.</span><span class="n">ct</span><span class="p">.</span><span class="n">client</span>
+</span><span id="__span-1-410"><span class="n">tv</span><span class="p">.</span><span class="n">danmaku</span><span class="p">.</span><span class="n">bili</span>
+</span><span id="__span-1-411"><span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">captiveportallogin</span>
+</span><span id="__span-1-412"><span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">yanxuan</span>
+</span><span id="__span-1-413"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">audioaccessorymanager</span>
+</span><span id="__span-1-414"><span class="n">com</span><span class="p">.</span><span class="n">unnoo</span><span class="p">.</span><span class="n">quan</span>
+</span><span id="__span-1-415"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">hiaction</span>
+</span><span id="__span-1-416"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">trustedthingsauth</span>
+</span><span id="__span-1-417"><span class="n">org</span><span class="p">.</span><span class="n">geekbang</span><span class="p">.</span><span class="n">geekTime</span>
+</span><span id="__span-1-418"><span class="n">com</span><span class="p">.</span><span class="n">eg</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">AlipayGphone</span>
+</span><span id="__span-1-419"><span class="n">com</span><span class="p">.</span><span class="n">caing</span><span class="p">.</span><span class="n">news</span>
+</span><span id="__span-1-420"><span class="n">com</span><span class="p">.</span><span class="n">maxmpz</span><span class="p">.</span><span class="n">audioplayer</span>
+</span><span id="__span-1-421"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">airsharing</span>
+</span><span id="__span-1-422"><span class="n">cn</span><span class="p">.</span><span class="n">wps</span><span class="p">.</span><span class="n">moffice_eng</span>
+</span><span id="__span-1-423"><span class="n">com</span><span class="p">.</span><span class="n">greenpoint</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">mc10086</span><span class="p">.</span><span class="n">activity</span>
+</span><span id="__span-1-424"><span class="n">com</span><span class="p">.</span><span class="n">jideos</span><span class="p">.</span><span class="n">jnotes</span>
+</span><span id="__span-1-425"><span class="n">com</span><span class="p">.</span><span class="n">pigcha</span><span class="p">.</span><span class="n">pigchaproxy</span>
+</span><span id="__span-1-426"><span class="n">com</span><span class="p">.</span><span class="n">taobao</span><span class="p">.</span><span class="n">trip</span>
+</span><span id="__span-1-427"><span class="n">com</span><span class="p">.</span><span class="n">huawei</span><span class="p">.</span><span class="n">ohos</span><span class="p">.</span><span class="n">famanager</span>
+</span></code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../01-%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/08-%E9%93%BE%E6%8E%A5%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 读书笔记">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                读书笔记
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-request-limit/" class="md-footer__link md-footer__link--next" aria-label="Next: 流量控制">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                流量控制
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
