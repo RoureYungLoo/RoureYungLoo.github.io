@@ -65,6 +65,12 @@ extra:
             感谢你的反馈！
 
 markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - abbr
+  - pymdownx.snippets
+  - attr_list
   - toc: 
       permalink: true
       toc_depth: 6
@@ -75,4 +81,15 @@ markdown_extensions:
       linenums: true
       linenums_style: inline  pymdownx-inline
       line_spans: __span
-  - pymdownx.superfences
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
+  - pymdownx.keys
+  - pymdownx.tabbed
+  - def_list
+  
