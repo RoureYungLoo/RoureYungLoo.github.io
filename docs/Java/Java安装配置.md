@@ -12,7 +12,7 @@
 
 ## 免费商用版本
 
-下载地址：https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+下载地址：[Download Java SE](https://www.oracle.com/java/technologies/downloads/archive/)
 
 jdk 8u202
 
