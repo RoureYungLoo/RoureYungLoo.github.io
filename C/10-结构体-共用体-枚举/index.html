@@ -1,0 +1,1896 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../09-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/">
+      
+      
+        <link rel="next" href="../tinyhttpd/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>结构体、共用体、枚举、位域 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              结构体、共用体、枚举、位域
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    什么是C语言？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E8%B5%B0%E8%BF%91C%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E8%B5%B0%E8%BF%91C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言程序设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-%E7%BB%93%E6%9E%84%E5%8C%96%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结构化的C程序设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C程序控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-C%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言数组
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-C%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    格式化输入和输出
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    结构体、共用体、枚举、位域
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    结构体、共用体、枚举、位域
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体变量的定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="结构体变量的定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法一
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法二
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法三
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      内部声明和外部声明
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体类型变量初始化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体变量的引用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体传参
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态分配内存
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动态分配内存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#malloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      malloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free" class="md-nav__link">
+    <span class="md-ellipsis">
+      free
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      calloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      realloc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      共用体union
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      位操作
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      位域
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      - 当结构体中有**整型**成员时，可以指定其存储位数。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      枚举类型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      章小节
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tinyhttpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tinyhttpd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CPP/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Java/01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体变量的定义
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="结构体变量的定义">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法一
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法二
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      方法三
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      内部声明和外部声明
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体类型变量初始化
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体变量的引用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构体传参
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态分配内存
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动态分配内存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#malloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      malloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free" class="md-nav__link">
+    <span class="md-ellipsis">
+      free
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      calloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      realloc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      共用体union
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      位操作
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      位域
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      - 当结构体中有**整型**成员时，可以指定其存储位数。
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      枚举类型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      章小节
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">结构体、共用体、枚举、位域<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">本章大纲<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>结构体及其参数传递方法</li>
+<li>共用体及其特点</li>
+<li>枚举类型</li>
+<li>位运算</li>
+</ul>
+<h2 id="_3">结构体定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>定义一种新的数据类型，把不同类型的数据作为一个整体来处理，这种新的数据类型就叫做**结构体**。</p>
+<p>1、结构体是多种数据类型组合的数据类型</p>
+<p>2、同一个结构体可以储存多种类型的数据</p>
+<p>3、比数组更加灵活</p>
+<p>结构体是<code>C++</code>面向对象(类)的基石</p>
+<p>数组：相同数据类型的数据集合</p>
+<p>结构体：不同数据类型的数据集合</p>
+<p>结构体属于派生数据类型，即：用其他数据类型来构造的。</p>
+<p>定义结构体的语法</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">struct</span><span class="w"> </span><span class="nc">名称</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="w">    </span><span class="n">类型名1</span><span class="w"> </span><span class="n">变量名1</span><span class="p">;</span>
+</span><span id="__span-0-3"><span class="w">    </span><span class="n">类型名2</span><span class="w"> </span><span class="n">变量名2</span><span class="p">;</span>
+</span><span id="__span-0-4"><span class="p">};</span>
+</span><span id="__span-0-5"><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-6"><span class="w">    </span><span class="c1">//结构声明     </span>
+</span><span id="__span-0-7"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">  </span><span class="c1">//一个int成员</span>
+</span><span id="__span-0-8"><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w">    </span><span class="c1">//一个char数组成员</span>
+</span><span id="__span-0-9"><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w">            </span><span class="c1">//一个char成员</span>
+</span><span id="__span-0-10"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">             </span><span class="c1">//一个int成员</span>
+</span><span id="__span-0-11"><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w">        </span><span class="c1">//一个float成员</span>
+</span><span id="__span-0-12"><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w">    </span><span class="c1">//一个char数组成员 </span>
+</span><span id="__span-0-13"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="D:/code/RoureYungLoo.github.io/docs/04-编程语言/01-C/img/cfbc47cb-ef6b-4882-81e1-db5c65d62d3e.png" /></p>
+<p><strong>说明</strong></p>
+<p>1、结构体类型是一种构造数据类型，可以用来定义变量</p>
+<p>2、结构体类型不分配任何存储空间，相应结构体类型的变量、数组及动态开辟的存储单元占存储空间</p>
+<h2 id="_4">结构体变量的定义<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">方法一<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>先定义结构体类型，再单独进行定义</p>
+<p>结构体类型名 变量1，变量2；</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="k">struct</span><span class="w"> </span><span class="nc">结构体名</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><span class="w">  </span><span class="c1">// 成员列表</span>
+</span><span id="__span-1-3"><span class="p">};</span>
+</span><span id="__span-1-4"><span class="k">struct</span><span class="w"> </span><span class="nc">结构体名</span><span class="w"> </span><span class="n">变量名列表</span><span class="p">;</span>
+</span><span id="__span-1-5">
+</span><span id="__span-1-6"><span class="c1">// 示例</span>
+</span><span id="__span-1-7"><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 结构声明</span>
+</span><span id="__span-1-8"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">        </span><span class="c1">// 一个int成员</span>
+</span><span id="__span-1-9"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w">  </span><span class="c1">// 一个char数组成员</span>
+</span><span id="__span-1-10"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w">       </span><span class="c1">// 一个char成员</span>
+</span><span id="__span-1-11"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">        </span><span class="c1">// 一个int成员</span>
+</span><span id="__span-1-12"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w">    </span><span class="c1">// 一个float成员</span>
+</span><span id="__span-1-13"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w">  </span><span class="c1">// 一个char数组成员</span>
+</span><span id="__span-1-14"><span class="p">};</span>
+</span><span id="__span-1-15">
+</span><span id="__span-1-16"><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="n">stu1</span><span class="p">,</span><span class="w"> </span><span class="n">stu2</span><span class="p">,</span><span class="w"> </span><span class="n">stus</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">p_stu</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_6">方法二<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>在定义结构体的同时定义变量</p>
+<p>紧接着定义变量</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="k">struct</span><span class="w"> </span><span class="nc">结构体名</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><span class="w">  </span><span class="c1">// 成员列表</span>
+</span><span id="__span-2-3"><span class="p">}</span><span class="w"> </span><span class="n">变量名列表</span><span class="p">;</span>
+</span><span id="__span-2-4">
+</span><span id="__span-2-5"><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 结构声明</span>
+</span><span id="__span-2-6"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">        </span><span class="c1">// 一个int成员</span>
+</span><span id="__span-2-7"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w">  </span><span class="c1">// 一个char数组成员</span>
+</span><span id="__span-2-8"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w">       </span><span class="c1">// 一个char成员</span>
+</span><span id="__span-2-9"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">        </span><span class="c1">// 一个int成员</span>
+</span><span id="__span-2-10"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w">    </span><span class="c1">// 一个float成员</span>
+</span><span id="__span-2-11"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w">  </span><span class="c1">// 一个char数组成员</span>
+</span><span id="__span-2-12"><span class="p">}</span><span class="w"> </span><span class="n">stu1</span><span class="p">,</span><span class="w"> </span><span class="n">stu2</span><span class="p">,</span><span class="w"> </span><span class="n">stus</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">p_stu</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_7">方法三<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>直接定义结构体类型变量</p>
+<p>不出现结构体名</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><span class="w">  </span><span class="c1">// 成员列表</span>
+</span><span id="__span-3-3"><span class="p">}</span><span class="w"> </span><span class="n">变量名列表</span><span class="p">;</span>
+</span><span id="__span-3-4">
+</span><span id="__span-3-5"><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">          </span><span class="c1">// 结构声明</span>
+</span><span id="__span-3-6"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span><span class="w">        </span><span class="c1">// 一个int成员</span>
+</span><span id="__span-3-7"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w">  </span><span class="c1">// 一个char数组成员</span>
+</span><span id="__span-3-8"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w">       </span><span class="c1">// 一个char成员</span>
+</span><span id="__span-3-9"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">        </span><span class="c1">// 一个int成员</span>
+</span><span id="__span-3-10"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w">    </span><span class="c1">// 一个float成员</span>
+</span><span id="__span-3-11"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span><span class="w">  </span><span class="c1">// 一个char数组成员</span>
+</span><span id="__span-3-12"><span class="p">}</span><span class="w"> </span><span class="n">stu1</span><span class="p">,</span><span class="w"> </span><span class="n">stu2</span><span class="p">,</span><span class="w"> </span><span class="n">stus</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">p_stu</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>关于结构体类型的几点说明</strong></p>
+<p>1、类型与变量是完全不同的概念</p>
+<p>先定义结构体类型，再定义该类型的变量。</p>
+<p>类型：不可赋值、存贮、运算；系统不分配空间</p>
+<p>变量：可赋值、存贮、运算；系统要分配空间</p>
+<p>2、结构体中的成员可以像变量一样使用</p>
+<p>结构体的成员可以是另一个结构体类型变量</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/*声明一个结构体类型strcut date*/</span>
+</span><span id="__span-4-2"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="p">;</span>
+</span><span id="__span-4-3"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+</span><span id="__span-4-4"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">;</span>
+</span><span id="__span-4-5"><span class="p">};</span>
+</span><span id="__span-4-6">
+</span><span id="__span-4-7"><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/*声明一个结构体类型strcut student*/</span>
+</span><span id="__span-4-8"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+</span><span id="__span-4-9"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</span><span id="__span-4-10"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span>
+</span><span id="__span-4-11"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-4-12"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+</span><span id="__span-4-13"><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Date</span><span class="w"> </span><span class="n">birthday</span><span class="p">;</span><span class="w"> </span><span class="cm">/*birthday是struct date类型*/</span>
+</span><span id="__span-4-14"><span class="p">};</span>
+</span><span id="__span-4-15"><span class="c1">// 或者</span>
+</span><span id="__span-4-16"><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/*声明一个结构体类型strcut student*/</span>
+</span><span id="__span-4-17"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+</span><span id="__span-4-18"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</span><span id="__span-4-19"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span>
+</span><span id="__span-4-20"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-4-21"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+</span><span id="__span-4-22"><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-23"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">;</span>
+</span><span id="__span-4-24"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="p">;</span>
+</span><span id="__span-4-25"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+</span><span id="__span-4-26"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">birthday</span><span class="p">;</span><span class="w"> </span><span class="cm">/*birthday是匿名struct类型*/</span>
+</span><span id="__span-4-27"><span class="w">  </span><span class="p">;</span>
+</span><span id="__span-4-28"><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="o">*</span><span class="n">stu</span><span class="p">;</span>
+</span><span id="__span-4-29"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+<p>3、结构体类型的变量在内存按成员的顺序排列，所占空间是其全体成员所占空间的总和</p>
+<p>4、对结构体中各个成员可以单独引用、赋值，其作用与普通变量等同</p>
+<p>格式：变量名.成员名  stu1.name;    ‘.’——成员运算符（优先级最高）</p>
+<p>5、成员名可与程序中的变量名相同，但二者无关。</p>
+<p>6、结构体的成员可以是另一个结构体类型变量</p>
+<h2 id="_8"><strong>内部声明和外部声明</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>内部声明：放在main ( )函数内部，<strong>外部声明可以被其后面的任何函数使用</strong></p>
+<p>外部声明：放在main( )函数外部，<strong>内部声明只能被该声明所属的函数使用</strong></p>
+<p>通常应使用外部声明，这样所有函数都可以使用这种类型的结构。</p>
+<h2 id="_9"><strong>结构体类型变量初始化</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+</span><span id="__span-5-3"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">12</span><span class="p">];</span>
+</span><span id="__span-5-4"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span>
+</span><span id="__span-5-5"><span class="p">}</span><span class="w"> </span><span class="n">stu1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10001</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LiMing&quot;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;M&#39;</span><span class="p">};</span>
+</span><span id="__span-5-6">
+</span><span id="__span-5-7"><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="n">stu2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-8"><span class="w">    </span><span class="mi">10002</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LiSi&quot;</span><span class="p">,</span>
+</span><span id="__span-5-9"><span class="w">    </span><span class="sc">&#39;F&#39;</span><span class="p">};</span><span class="w">  </span><span class="c1">// 对应赋初值，不允许跳跃赋值。可只给前面的成员赋值,可以从后面缺省。</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_10">结构体变量的引用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>1、不能将一个结构体变量作为一个整体进行输入和输出。</p>
+<p><strong>结构体变量数组</strong></p>
+<p><strong>一维数组</strong></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="k">struct</span><span class="w"> </span><span class="nc">BookCard</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">num</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</span><span id="__span-6-3"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+</span><span id="__span-6-4"><span class="p">};</span>
+</span><span id="__span-6-5"><span class="k">struct</span><span class="w"> </span><span class="nc">BookCard</span><span class="w"> </span><span class="n">bc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="s">&quot;NO.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">35.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">25.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.3&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">}</span>
+</span><span id="__span-6-6">
+</span><span id="__span-6-7"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>二维数组</strong></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="k">struct</span><span class="w"> </span><span class="nc">BookCard</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">num</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+</span><span id="__span-7-3"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+</span><span id="__span-7-4"><span class="p">};</span>
+</span><span id="__span-7-5"><span class="k">struct</span><span class="w"> </span><span class="nc">BookCard</span><span class="w"> </span><span class="n">bc</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-6"><span class="w">    </span><span class="p">{{</span><span class="s">&quot;NO.11&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">35.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.12&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">25.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.13&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.14&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">}},</span>
+</span><span id="__span-7-7"><span class="w">    </span><span class="p">{{</span><span class="s">&quot;NO.21&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">35.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.22&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">25.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.23&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.24&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">}},</span>
+</span><span id="__span-7-8"><span class="w">    </span><span class="p">{{</span><span class="s">&quot;NO.31&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">35.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.32&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">25.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.33&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;NO.34&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">15.5</span><span class="p">}}};</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>使用结构体中的成员</strong></p>
+<p>①结构体变量．成员名</p>
+<p>②（*ｐ）．成员名</p>
+<p>③ ｐ-&gt;成员名</p>
+<p>结构体变量的成员可以像普通变量一样进行各种运算</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="p">;</span>
+</span><span id="__span-8-3"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">;</span>
+</span><span id="__span-8-5"><span class="p">};</span>
+</span><span id="__span-8-6"><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+</span><span id="__span-8-8"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span>
+</span><span id="__span-8-9"><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">date</span><span class="w"> </span><span class="n">birthday</span><span class="p">;</span>
+</span><span id="__span-8-10"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sc</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span><span id="__span-8-11"><span class="p">}</span><span class="w"> </span><span class="n">std1</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+</span><span id="__span-8-12"><span class="w">    </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w">  </span><span class="c1">// （1）使用成员sex   std1.sex;//通过结构体变量引用   arr[0].sex;//</span>
+</span><span id="__span-8-13"><span class="w">         </span><span class="c1">// arr.sex;//错误的方法   p-&gt;sex;   (*p).sex;</span>
+</span><span id="__span-8-14"><span class="w">         </span><span class="c1">// //（2）使用数组sc中的元素   std1.sc[1];//通过结构体变量引用</span>
+</span><span id="__span-8-15"><span class="w">         </span><span class="c1">// //（3）使用字符串类型成员name   std1.name;//通过结构体变量引用</span>
+</span><span id="__span-8-16"><span class="w">         </span><span class="c1">// //（4）使用内嵌结构体类型的成员date的成员   std1.birthday.year;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>操作结构体变量中的成员</strong></p>
+<p>对结构体变量中的每个成员，可对它进行同类变量所允许的任何操作。</p>
+<h2 id="_11">结构体传参<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>1、传递结构体的某个成员：值传递</p>
+<p>2、传递整个结构体：值传递</p>
+<p>若结构体包含数组，该数组为值传递</p>
+<p>3、传递指向结构体的指针：引用</p>
+<p>typedef类型别名</p>
+<p>用法：typedef datatype alias</p>
+<p><strong>链表</strong></p>
+<p>结构体的不足：只能静态存储数据：①定长②连续存放</p>
+<p>链表：</p>
+<ul>
+<li>不定长</li>
+<li>链表的每一个元素称为结点，其组成：</li>
+<li>若干数据成员;</li>
+<li>指向下一个结点的指针成员;</li>
+<li>按需分配结点存放数据,不用时随时释放;</li>
+<li>头结点;</li>
+<li>头指针: head;</li>
+<li>尾结点;</li>
+<li>空指针: NULL</li>
+<li>#define NULL 0</li>
+</ul>
+<p>定义：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+</span><span id="__span-9-3"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+</span><span id="__span-9-4"><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+</span><span id="__span-9-5"><span class="p">};</span>
+</span><span id="__span-9-6"><span class="k">struct</span><span class="w"> </span><span class="nc">student</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>建立链表的过程</p>
+<p>生成头结点；//head指向头结点</p>
+<p>将其余结点逐个加入链表；</p>
+<p>生成尾结点；//尾结点指针域为ＮＵＬＬ</p>
+<h2 id="_12">动态分配内存<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="malloc">malloc<a class="headerlink" href="#malloc" title="Permanent link">&para;</a></h3>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="c1">        </span>
+</span><span id="__span-10-2"><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w">       </span>
+</span><span id="__span-10-3"><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-10-4"><span class="w"> </span><span class="n">返回值</span><span class="err">：</span><span class="n">a</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">to</span><span class="w">  </span><span class="n">the</span><span class="w">  </span><span class="n">allocated</span><span class="w"> </span><span class="n">memory</span><span class="w">  </span><span class="n">that</span><span class="w">  </span><span class="n">is</span><span class="w">  </span><span class="n">suitably</span><span class="w"> </span><span class="n">aligned</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">kind</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">variable</span><span class="p">.</span><span class="w">  </span><span class="n">On</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">functions</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">.</span><span class="w">   </span>
+</span><span id="__span-10-5"><span class="w"> </span><span class="n">参数</span><span class="err">：</span><span class="n">size</span><span class="err">，</span><span class="n">要分配内存的大小</span><span class="w"> </span>
+</span><span id="__span-10-6"><span class="w"> </span><span class="n">示例</span><span class="err">：</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="p">;</span><span class="w">   </span><span class="n">arr</span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</span></code></pre></div></td></tr></table></div>
+<p>要点：</p>
+<p>1、必须进行指针类型转换</p>
+<p>2、void* 存在的意义（通用指针）</p>
+<p>3、sizeof和strlen的区别</p>
+<p><img alt="" src="D:/code/RoureYungLoo.github.io/docs/04-编程语言/01-C/img/Snipaste_2023-12-03_14-35-13.png" /></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
+</span><span id="__span-11-3"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">str1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">};</span>
+</span><span id="__span-11-4"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">str2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">};</span>
+</span><span id="__span-11-5"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">str3</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;w&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">};</span>
+</span><span id="__span-11-6"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">ch</span><span class="p">));</span>
+</span><span id="__span-11-7"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str1</span><span class="p">));</span>
+</span><span id="__span-11-8"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str2</span><span class="p">));</span>
+</span><span id="__span-11-9"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str3</span><span class="p">));</span>
+</span><span id="__span-11-10"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">str2</span><span class="p">));</span>
+</span><span id="__span-11-11"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">str3</span><span class="p">));</span>
+</span><span id="__span-11-12"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-11-13"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="D:/code/RoureYungLoo.github.io/docs/04-编程语言/01-C/img/Snipaste_2023-12-03_14-35-39.png" /></p>
+<h3 id="free">free<a class="headerlink" href="#free" title="Permanent link">&para;</a></h3>
+<p>free函数的参数必须是动态内存分配出来的（使用malloc函数分配的内存）</p>
+<p><strong>动态内存分配特点</strong></p>
+<ul>
+<li>内存空间大小可以是一个变量，其值在运行时确定</li>
+<li>内存空间在运行时分配，在程序结束时收回；内存的分配由操作系统参与完成</li>
+<li>动态分配的内存空间在未释放之前均可以被引用，保证其生命期</li>
+</ul>
+<p>示例：设计一个学生链表，其每个结点是一个学生信息的集合。每个结点包含如下信息：学生姓名、学号、C语言成绩三项。初始时拥有3个学生，添加一个学生(使用一个函数实现此操作)，再删除一个学生(使用另一个函数实现此操作)，并打印该学生的信息。</p>
+<h3 id="calloc">calloc<a class="headerlink" href="#calloc" title="Permanent link">&para;</a></h3>
+<p>The memory is set to zero.</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-12-3"><span class="w">  </span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">pn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">calloc</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+</span><span id="__span-12-4"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pn</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-12-5"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-12-6"><span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">pn</span><span class="p">);</span>
+</span><span id="__span-12-7"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-12-8"><span class="p">}</span><span class="w">  </span><span class="c1">// 输出结果为  0000000000</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="realloc">realloc<a class="headerlink" href="#realloc" title="Permanent link">&para;</a></h3>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="c1"> </span>
+</span><span id="__span-13-2"><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">realloc</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">memblock</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-13-3"><span class="n">返回值</span><span class="err">：</span><span class="w">   </span><span class="n">成功</span><span class="err">：</span><span class="w">   </span><span class="n">失败</span><span class="err">：</span><span class="w"> </span>
+</span><span id="__span-13-4"><span class="n">参数</span><span class="err">：</span><span class="w">   </span><span class="n">memlock</span><span class="err">，</span><span class="n">由malloc或calloc申请的内存块</span><span class="w">   </span><span class="n">size</span><span class="err">，</span><span class="n">调整后的字节数</span>
+</span></code></pre></div></td></tr></table></div>
+<p>假设有一个p指针指向一个数组空间，想在想要使这个数组的空间变为原来的2倍，realloc函数就会在p指向的这个数组空间后面申请一段空间，</p>
+<p>若申请成功：函数执行完成。</p>
+<p>若没有申请成功：则realloc函数会调用<a href="https://so.csdn.net/so/search?q=malloc&amp;spm=1001.2101.3001.7020">malloc</a>函数另外开辟一个数组空间B。</p>
+<p>若开辟新的数组空间B成功：将原数组中的数据拷贝到新的数组中，释放掉原数组，并放回一个数组首地址，需要用一个指针来接。</p>
+<p>若开辟新的数组空间B失败：不会释放掉原数组，会返回一个空地址，表示开辟新数组失败，原来的数组空间没动。</p>
+<h2 id="union">共用体union<a class="headerlink" href="#union" title="Permanent link">&para;</a></h2>
+<p>几种不同类型的变量存放到同一段内存单元中。这种使几个不同的变量共占同一段内存的结构，称为共用体(union)类型的结构。</p>
+<ul>
+<li>共用体能够存储不同的数据类型，但每次只能存储其中的一种类型；</li>
+<li>共用体的长度为其最大成员的长度</li>
+</ul>
+<p>语法：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><span class="k">union</span><span class="w"> </span><span class="nc">共用体类型名</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="n">成员表列</span><span class="w"> </span><span class="err">｝；</span>
+</span></code></pre></div></td></tr></table></div>
+<p>变量声明：共用体类型名 共用体变量名;</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><span class="k">union</span><span class="w"> </span><span class="nc">data</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span>
+</span><span id="__span-15-3"><span class="w">  </span><span class="kt">short</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-15-4"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+</span><span id="__span-15-5"><span class="p">};</span>
+</span><span id="__span-15-6"><span class="k">union</span><span class="w"> </span><span class="nc">data</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="D:/code/RoureYungLoo.github.io/docs/04-编程语言/01-C/img/Snipaste_2023-12-03_14-37-33.png" /></p>
+<p>共用体数据类型的特点：</p>
+<ul>
+<li>使用共用体变量的目的是希望用同一个内存段存放几种不同类型的数据。但请注意： 在每一瞬时只能存放其中一种，而不是同时存放几种</li>
+<li>能够访问的是共用体变量中最后一次被赋值的成员，在对一个新的成员赋值后原有的成员就失去作用。</li>
+<li>共用体变量的地址和它的各成员的地址都是同一地址</li>
+<li>不能对共用体变量名赋值；不能企图引用变量名来得到一个值；不能在定义共用体变量时对它初始化；不能用共用体变量名作为函数参数。</li>
+</ul>
+<h2 id="_13">位操作<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>位运算符：位运算符用于处理整型操作数的各个二进制数位。将各类数据当作**无符号整型**数处理</p>
+<ul>
+<li>按位与 ：&amp; ,  按位或 ：| ,  按位异或 ：^</li>
+<li>左移 ：&lt;&lt;, 右移 ：&gt;&gt;</li>
+<li>按位取反 ：~</li>
+</ul>
+<p>优先级</p>
+<p><img alt="" src="D:/code/RoureYungLoo.github.io/docs/04-编程语言/01-C/img/Snipaste_2023-12-03_14-38-36.png" /></p>
+<p>1、位运算符中除～以外，均为二目（元）运算符，即要求两侧各有一个运算量。</p>
+<p>2、运算量只能是**整型或字符型的**数据，不能为实型数据。</p>
+<h2 id="_14">位域<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="-">- 当结构体中有**整型**成员时，可以指定其存储位数。<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><span class="k">struct</span><span class="w"> </span><span class="nc">bitCard</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">face</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w">  </span><span class="cm">/* 1-13 */</span>
+</span><span id="__span-16-3"><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">suit</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="cm">/* 0-4 */</span>
+</span><span id="__span-16-4"><span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 0-1 */</span>
+</span><span id="__span-16-5"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_15">枚举类型<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>若一个变量只能取几种可能的整数值，而这些整数值又有特定的含义，则可为每个特定的整数值起一个英文名字。这类变量的类型叫枚举类型。</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><span class="k">enum</span><span class="w"> </span><span class="n">枚举类型名</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-2"><span class="w">  </span><span class="n">标识符</span><span class="p">[</span><span class="o">=</span><span class="w"> </span><span class="n">整型常数</span><span class="p">],</span>
+</span><span id="__span-17-3"><span class="w">  </span><span class="n">标识符</span><span class="p">[</span><span class="o">=</span><span class="w"> </span><span class="n">整型常数</span><span class="p">],</span>
+</span><span id="__span-17-4"><span class="w">  </span><span class="p">...,</span>
+</span><span id="__span-17-5"><span class="w">  </span><span class="n">标识符</span><span class="p">[</span><span class="o">=</span><span class="w"> </span><span class="n">整型常数</span><span class="p">]</span>
+</span><span id="__span-17-6"><span class="p">};</span>
+</span><span id="__span-17-7"><span class="k">enum</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-17-8"><span class="w">  </span><span class="n">red</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-9"><span class="w">  </span><span class="n">yellow</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-10"><span class="w">  </span><span class="n">blue</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-11"><span class="w">  </span><span class="n">white</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-12"><span class="w">  </span><span class="n">black</span><span class="w"> </span>
+</span><span id="__span-17-13"><span class="p">};</span>
+</span><span id="__span-17-14"><span class="k">enum</span><span class="w"> </span><span class="n">weekday</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-17-15"><span class="w">  </span><span class="n">sun</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-16"><span class="w">  </span><span class="n">mon</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-17"><span class="w">  </span><span class="n">tue</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-18"><span class="w">  </span><span class="n">wed</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-19"><span class="w">  </span><span class="n">thu</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-20"><span class="w">  </span><span class="n">fri</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-17-21"><span class="w">  </span><span class="n">sat</span><span class="w"> </span>
+</span><span id="__span-17-22"><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>枚举成员之间用逗号隔开，方括号中的"整型常数"是枚举成员的初值。</li>
+<li>如果不给枚举成员赋初值，即省掉了标识符后的"=整型常数"时，则编译器为每一个枚举成员给一个不同的整型值，第一个成员为0，第二个为1，等等。当枚举类型中的某个成员赋值后，其后的成员则按依次加1的规则确定其值。</li>
+<li>由于枚举元素是常量，所以我们在程序中不能对它们进行赋值，如"sun = 0；mon= 1；"将产生错误。</li>
+</ul>
+<p>枚举存在的意义：</p>
+<p>1、增加了程序的可读性</p>
+<p>2、限制了变量取值的范围</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><span class="k">enum</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">red</span><span class="p">,</span><span class="w"> </span><span class="n">yellow</span><span class="p">,</span><span class="w"> </span><span class="n">blue</span><span class="p">,</span><span class="w"> </span><span class="n">white</span><span class="p">,</span><span class="w"> </span><span class="n">black</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-18-2"><span class="k">enum</span><span class="w"> </span><span class="n">color</span>
+</span><span id="__span-18-3"><span class="w">    </span><span class="n">a</span><span class="p">;</span><span class="w">  </span><span class="c1">// 定义color型变量a     a=red; //合法，将枚举量赋给枚举变量     //a=0;</span>
+</span><span id="__span-18-4"><span class="w">        </span><span class="c1">// //不合法，不能将整数赋予枚举变量     int  n=a;            //</span>
+</span><span id="__span-18-5"><span class="w">        </span><span class="c1">// 将枚举量赋值给整型变量，合法     a=color(0);</span>
+</span><span id="__span-18-6"><span class="w">        </span><span class="c1">// //合法，a=枚举值0，即red     a=color(15);    //a=枚举值12</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_16">章小节<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<ul>
+<li>结构体是在一个名字下的一组相关变量的集合，它可能会包含不同数据类型的变量。</li>
+<li>对结构体成员的访问可以使用成员运算符和指针运算符</li>
+<li>共用体的成员可以共享一个存储空间</li>
+<li>位运算是按照二进制位对整型数进行操作的</li>
+<li>枚举类型用一个用标识符表示的整型常量的集合。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../09-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 格式化输入和输出">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                格式化输入和输出
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tinyhttpd/" class="md-footer__link md-footer__link--next" aria-label="Next: tinyhttpd">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                tinyhttpd
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

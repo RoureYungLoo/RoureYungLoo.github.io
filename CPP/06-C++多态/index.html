@@ -1,0 +1,2744 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../05-C%2B%2B%E7%BB%A7%E6%89%BF/">
+      
+      
+        <link rel="next" href="../07-C%2B%2B%E6%A8%A1%E6%9D%BF/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>C++多态 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C++多态
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            CPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-C%2B%2B%E5%AF%B9%E8%B1%A1%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++对象技术简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类与对象简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E7%B1%BB%E7%9A%84%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E4%B8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类的深入剖析一
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-%E7%B1%BB%E7%9A%84%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E4%BA%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类的深入剖析二
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    运算符重载
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-C%2B%2B%E7%BB%A7%E6%89%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++继承
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C++多态
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    C++多态
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值兼容
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多态概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态的实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多态分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      编译时多态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行时多态
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      类继承层次中指针和对象之间的关系
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      virtual函数（虚函数)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="virtual函数（虚函数)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义虚函数的目的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚函数调用方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚函数的使用方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚析构函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="虚析构函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when" class="md-nav__link">
+    <span class="md-ellipsis">
+      When
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚函数的限制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象类和纯虚函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="抽象类和纯虚函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象类的作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象类的注意事项
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      强制转换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="强制转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic_cast
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-C%2B%2B%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-C%2B%2BIO%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ IO流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-C%2B%2B%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 异常
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-C%2B%2B11%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 C++11新特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../%E4%BE%AF%E6%8D%B7%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/C%2B%2B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/C%2B%2B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    侯捷课程笔记
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Java/01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值兼容
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多态概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态的实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多态分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      编译时多态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行时多态
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      类继承层次中指针和对象之间的关系
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      virtual函数（虚函数)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="virtual函数（虚函数)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义虚函数的目的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚函数调用方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚函数的使用方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚析构函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="虚析构函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when" class="md-nav__link">
+    <span class="md-ellipsis">
+      When
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚函数的限制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象类和纯虚函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="抽象类和纯虚函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象类的作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象类的注意事项
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      强制转换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="强制转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dynamic_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic_cast
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="c">C++多态<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
+<h2 id="_1">本章大纲<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>复制兼容</li>
+<li>多态概念</li>
+<li>虚函数</li>
+<li>虚析构函数</li>
+<li>抽象类和纯虚函数</li>
+<li>强制转换</li>
+</ul>
+<h2 id="_2">赋值兼容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>赋值兼容规则：可以将<strong style="color:red">公有</strong>派生类对象赋值给基类对象，反之是不允许的。</p>
+<p><img alt="图1.赋值兼容" src="../img/ch21-01.png" /></p>
+<p>结果：将派生类对象中从基类继承来的成员赋给基类对象。</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-0-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-0-3"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><span class="w"> </span><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-0-5"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">  </span><span class="c1">// 保护成员</span>
+</span><span id="__span-0-6"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-0-7"><span class="w">  </span><span class="n">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-0-9"><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-0-10"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-11"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">Show</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;point(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-0-12"><span class="p">};</span>
+</span><span id="__span-0-13"><span class="k">class</span><span class="w"> </span><span class="nc">Line</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Point</span><span class="w">  </span><span class="c1">// 公有继承</span>
+</span><span id="__span-0-14"><span class="p">{</span>
+</span><span id="__span-0-15"><span class="w"> </span><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-0-16"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="p">;</span>
+</span><span id="__span-0-17">
+</span><span id="__span-0-18"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-0-19"><span class="w">  </span><span class="n">Line</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
+</span><span id="__span-0-20"><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">  </span><span class="c1">// 调用基类构造函数</span>
+</span><span id="__span-0-21"><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-0-22"><span class="w">    </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+</span><span id="__span-0-23"><span class="w">    </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-0-24"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-25"><span class="p">};</span>
+</span><span id="__span-0-26"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-27"><span class="w">  </span><span class="n">Line</span><span class="w"> </span><span class="n">line</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+</span><span id="__span-0-28"><span class="w">  </span><span class="n">Point</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-0-29"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">;</span><span class="w">  </span><span class="c1">// A</span>
+</span><span id="__span-0-30"><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="n">Show</span><span class="p">();</span>
+</span><span id="__span-0-31"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-32"><span class="p">}</span>
+</span><span id="__span-0-33"><span class="c1">//输出：</span>
+</span><span id="__span-0-34"><span class="n">point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>赋值兼容要点：</p>
+<ol>
+<li>派生类对象可以赋值给基类对象，系统将派生类对象中从基类继承来的成员赋给基类对象</li>
+<li>不能将基类对象赋值给派生类对象</li>
+<li>**私有或保护继承**的派生类对象，不可以赋值给基类对象。</li>
+<li>
+<p>可将派生类对象的地址赋给基类指针变量。例 <code>Point *ptr = &amp;line;</code></p>
+</li>
+<li>
+<p><strong>派生类对象可初始化基类的引用</strong>。例如 <code>Point &amp;refp = line;</code></p>
+</li>
+<li>在后两种情况下，使用基类指针或引用时，只能访问<strong style="color:red">从相应基类中继承</strong>来的成员，而不允许访问<strong style="color:red">其他基类成员或派生类中增加</strong>的成员。</li>
+</ol>
+<h2 id="_3">多态概念<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>多态性是指发出<strong style="color:red">同样的消息</strong>被<strong style="color:red">不同</strong>类型的<strong style="color:red">对象</strong>接收时有可能导致完全<strong style="color:red">不同的行为</strong>。</p>
+<h3 id="_4">多态的实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>在C++程序设计中， 多态的实现</p>
+<ul>
+<li><strong>函数重载</strong></li>
+<li><strong>运算符重载</strong></li>
+<li><strong>虚函数</strong></li>
+</ul>
+<h3 id="_5">多态分类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">编译时多态<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>在程序编译时系统就能决定调用的是哪个函数。</p>
+<ul>
+<li>
+<p>函数重载</p>
+</li>
+<li>
+<p>运算符重载</p>
+</li>
+</ul>
+<h4 id="_7">运行时多态<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>通过继承关系和虚函数来实现。</strong></p>
+</li>
+<li>
+<p>在程序执行前，无法根据函数名和参数来确定该调用哪一个函数，必须在程序执行过程中，根据执行的具体情况来动态地确定。</p>
+</li>
+</ul>
+<h2 id="_8">类继承层次中指针和对象之间的关系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>基类指针、派生类指针、基类对象、派生类对象 之间的4种关系：</p>
+<ul>
+<li>直接用基类指针指向基类对象</li>
+<li>直接用派生类指针指向派生类对象</li>
+<li>派生类对象给基类指针赋值（基指针指向派对象）</li>
+<li>基类对象给派生类指针赋值。(编译会出错）</li>
+</ul>
+<p><img alt="图2.类继承关系" src="../img/ch21-02.png" /></p>
+<h2 id="virtual">virtual函数（虚函数)<a class="headerlink" href="#virtual" title="Permanent link">&para;</a></h2>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-1-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-1-3"><span class="k">class</span><span class="w"> </span><span class="nc">B0</span><span class="w">  </span><span class="c1">// 基类B0声明</span>
+</span><span id="__span-1-4"><span class="p">{</span>
+</span><span id="__span-1-5"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-6"><span class="w">  </span><span class="c1">// 外部接口</span>
+</span><span id="__span-1-7"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B0::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-8"><span class="p">};</span>
+</span><span id="__span-1-9"><span class="k">class</span><span class="w"> </span><span class="nc">B1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">B0</span><span class="w">  </span><span class="c1">// 公有派生</span>
+</span><span id="__span-1-10"><span class="p">{</span>
+</span><span id="__span-1-11"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-12"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B1::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-13"><span class="p">};</span>
+</span><span id="__span-1-14"><span class="k">class</span><span class="w"> </span><span class="nc">D1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">B1</span><span class="w">  </span><span class="c1">// 公有派生</span>
+</span><span id="__span-1-15"><span class="p">{</span>
+</span><span id="__span-1-16"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-17"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;D1::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-18"><span class="p">};</span>
+</span><span id="__span-1-19"><span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">B0</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w">  </span><span class="c1">// 普通函数</span>
+</span><span id="__span-1-20"><span class="p">{</span>
+</span><span id="__span-1-21"><span class="w">  </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-1-22"><span class="p">}</span>
+</span><span id="__span-1-23"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w">  </span><span class="c1">// 主函数</span>
+</span><span id="__span-1-24"><span class="p">{</span>
+</span><span id="__span-1-25"><span class="w">  </span><span class="n">B0</span><span class="w"> </span><span class="n">b0</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-1-26"><span class="w">  </span><span class="c1">// 声明基类对象和指针</span>
+</span><span id="__span-1-27"><span class="w">  </span><span class="n">B1</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span>
+</span><span id="__span-1-28"><span class="w">  </span><span class="c1">// 声明派生类对象</span>
+</span><span id="__span-1-29"><span class="w">  </span><span class="n">D1</span><span class="w"> </span><span class="n">d1</span><span class="p">;</span>
+</span><span id="__span-1-30"><span class="w">  </span><span class="c1">// 声明派生类对象</span>
+</span><span id="__span-1-31"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b0</span><span class="p">;</span>
+</span><span id="__span-1-32"><span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b1</span><span class="p">;</span>
+</span><span id="__span-1-33"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+</span><span id="__span-1-34"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span><span id="__span-1-35"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b1</span><span class="p">;</span>
+</span><span id="__span-1-36"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span><span id="__span-1-37"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d1</span><span class="p">;</span>
+</span><span id="__span-1-38"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="o">&lt;</span><span class="n">iostream</span><span class="o">&gt;</span>
+</span><span id="__span-1-39"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-1-40"><span class="k">class</span><span class="w"> </span><span class="nc">Base</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 基类Base声明</span>
+</span><span id="__span-1-41">
+</span><span id="__span-1-42"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-43"><span class="w">  </span><span class="c1">// 外部接口</span>
+</span><span id="__span-1-44"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Base::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-45"><span class="p">};</span>
+</span><span id="__span-1-46"><span class="k">class</span><span class="w"> </span><span class="nc">B1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 公有派生</span>
+</span><span id="__span-1-47">
+</span><span id="__span-1-48"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-49"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B1::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-50"><span class="p">};</span>
+</span><span id="__span-1-51"><span class="k">class</span><span class="w"> </span><span class="nc">D1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 公有派生</span>
+</span><span id="__span-1-52">
+</span><span id="__span-1-53"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-54"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;D1::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-55"><span class="p">};</span>
+</span><span id="__span-1-56"><span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">Base</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 普通函数</span>
+</span><span id="__span-1-57">
+</span><span id="__span-1-58"><span class="w">  </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-1-59"><span class="p">}</span>
+</span><span id="__span-1-60"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-61"><span class="w">  </span><span class="c1">// 声明基类对象和指针</span>
+</span><span id="__span-1-62"><span class="w">  </span><span class="n">Base</span><span class="w"> </span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ptr_base</span><span class="p">;</span>
+</span><span id="__span-1-63"><span class="w">  </span><span class="c1">// 声明派生类对象</span>
+</span><span id="__span-1-64"><span class="w">  </span><span class="n">B1</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ptr_b1</span><span class="p">;</span>
+</span><span id="__span-1-65"><span class="w">  </span><span class="c1">// 声明派生类对象</span>
+</span><span id="__span-1-66"><span class="w">  </span><span class="n">D1</span><span class="w"> </span><span class="n">d1</span><span class="p">;</span>
+</span><span id="__span-1-67"><span class="w">  </span><span class="n">ptr_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">base</span><span class="p">;</span>
+</span><span id="__span-1-68"><span class="w">  </span><span class="n">ptr_b1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b1</span><span class="p">;</span>
+</span><span id="__span-1-69"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">ptr_b1</span><span class="p">);</span><span class="w">    </span><span class="c1">// Base::display()</span>
+</span><span id="__span-1-70"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">ptr_base</span><span class="p">);</span><span class="w">  </span><span class="c1">// Base::display()</span>
+</span><span id="__span-1-71"><span class="w">  </span><span class="n">ptr_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b1</span><span class="p">;</span>
+</span><span id="__span-1-72"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">ptr_base</span><span class="p">);</span><span class="w">  </span><span class="c1">// Base::display()</span>
+</span><span id="__span-1-73"><span class="w">  </span><span class="n">ptr_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d1</span><span class="p">;</span>
+</span><span id="__span-1-74"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">ptr_base</span><span class="p">);</span><span class="w">  </span><span class="c1">// Base::display()</span>
+</span><span id="__span-1-75"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>若将**派生类对象的地址**赋给指向**基类的指针（基指派）**，则用**该指针**仅能访问**派生类中从基类继承**来的公有成员，<strong style="color:red">通过指针引起的普通成员函数调用，仅仅与指针的类型有关，而与指针正指向什么对象无关。</strong>在这种情况下，必须采用**显式的方式**调用派生类的函数成员。</li>
+<li>（虚函数引入背景）本来使用对象指针是为了表达一种动态的性质，即<strong style="color:red">当指针指向不同对象时执行不同的操作</strong>，现在看来并没有起到这种作用。要实现这种功能，就**需要引入虚函数的概念**。</li>
+</ul>
+<p>C++ 类中使用关键字**virtual** 修饰的成员函数</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="k">virtual</span><span class="w"> </span><span class="o">&lt;</span><span class="n">数据类型</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">函数名</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">形参表</span><span class="p">)</span>
+</span><span id="__span-2-2"><span class="p">{</span><span class="w">  </span>
+</span><span id="__span-2-3"><span class="w"> </span><span class="n">函数体</span><span class="w"> </span>
+</span><span id="__span-2-4"><span class="p">}</span>
+</span><span id="__span-2-5">
+</span><span id="__span-2-6"><span class="k">virtual</span><span class="w"> </span><span class="o">&lt;</span><span class="n">函数返回值</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">函数名</span><span class="o">&gt;</span><span class="p">(</span><span class="n">形参表</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>本质：**是覆盖(override)**而不是重载(overload)声明。</li>
+<li>虚函数是动态绑定的基础。是非静态的成员函数。</li>
+<li>在类的声明中，在函数原型之前写virtual。<strong>virtual 只用来说明类声明中的原型，不能用在函数实现时。</strong></li>
+<li>一个函数一经说明为虚函数，则无论说明它的类被继承了多少层，在每一层派生类中该函数将永远保持其 virtual 特性。</li>
+<li>具有继承性，基类中声明了虚函数，派生类中无论是否说明，同原型函数都自动为虚函数。</li>
+<li>当基类中的某个成员函数被声明为虚函数后，此虚函数就可以在一个或多个派生类中被重新定义，在派生类中重新定义时，其**函数原型**，包括**返回类型、函数名、参数个数、参数类型以及参数的顺序**都必须与基类中的原型完全相同。</li>
+</ul>
+<h3 id="_9">定义虚函数的目的<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>**为了让派生类覆盖（Overriding）它。**覆盖不同于重载，它要求重新定义的函数在参数和返回值方面与原函数完全相同。否则将属于重载（参数不同）或导致一个编译错误（返回值类型不同）。与函数重载相同，虚函数也体现了 OOP 技术的多态性。</p>
+<p><img alt="图2.类继承关系" src="../img/ch21-03.png" /></p>
+<ul>
+<li>一组虚函数中，两个虚函数**仅返回值不同**，参数和名字相同，<strong>编译报错</strong>。</li>
+</ul>
+<h3 id="_10">虚函数调用方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>通过**基类指针或引用**，执行时会**根据指针指向的对象的类**，决定调用哪个函数。</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-3-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-3-3"><span class="k">class</span><span class="w"> </span><span class="nc">B0</span><span class="w">  </span><span class="c1">// 基类B0声明</span>
+</span><span id="__span-3-4"><span class="p">{</span>
+</span><span id="__span-3-5"><span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w">                  </span><span class="c1">// 外部接口</span>
+</span><span id="__span-3-6"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w">  </span><span class="c1">// 虚成员函数</span>
+</span><span id="__span-3-7"><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-3-8"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B0::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-3-9"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-10"><span class="p">};</span>
+</span><span id="__span-3-11"><span class="k">class</span><span class="w"> </span><span class="nc">B1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">B0</span><span class="w">  </span><span class="c1">// 公有派生</span>
+</span><span id="__span-3-12"><span class="p">{</span>
+</span><span id="__span-3-13"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-3-14"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B1::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-15"><span class="p">};</span>
+</span><span id="__span-3-16"><span class="k">class</span><span class="w"> </span><span class="nc">D1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">B1</span><span class="w">  </span><span class="c1">// 公有派生</span>
+</span><span id="__span-3-17"><span class="p">{</span>
+</span><span id="__span-3-18"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-3-19"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;D1::display()&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-3-20"><span class="p">};</span>
+</span><span id="__span-3-21"><span class="kt">void</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">B0</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w">  </span><span class="c1">// 普通函数</span>
+</span><span id="__span-3-22"><span class="p">{</span>
+</span><span id="__span-3-23"><span class="w">  </span><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-3-24"><span class="p">}</span>
+</span><span id="__span-3-25"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w">  </span><span class="c1">// 主函数</span>
+</span><span id="__span-3-26"><span class="p">{</span>
+</span><span id="__span-3-27"><span class="w">  </span><span class="n">B0</span><span class="w"> </span><span class="n">b0</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span><span class="w">  </span><span class="c1">// 声明基类对象和指针</span>
+</span><span id="__span-3-28"><span class="w">  </span><span class="n">B1</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">q</span><span class="p">;</span><span class="w">  </span><span class="c1">// 声明派生类对象</span>
+</span><span id="__span-3-29"><span class="w">  </span><span class="n">D1</span><span class="w"> </span><span class="n">d1</span><span class="p">;</span><span class="w">      </span><span class="c1">// 声明派生类对象</span>
+</span><span id="__span-3-30"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b0</span><span class="p">;</span>
+</span><span id="__span-3-31"><span class="w">  </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b1</span><span class="p">;</span>
+</span><span id="__span-3-32"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+</span><span id="__span-3-33"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span><span class="c1">// 调用基类B0函数成员</span>
+</span><span id="__span-3-34"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b1</span><span class="p">;</span>
+</span><span id="__span-3-35"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span><span class="c1">// 调用派生类B1函数成员</span>
+</span><span id="__span-3-36"><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d1</span><span class="p">;</span>
+</span><span id="__span-3-37"><span class="w">  </span><span class="n">fun</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span><span class="c1">// 调用派生类D1函数成员</span>
+</span><span id="__span-3-38"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-4-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-4-3"><span class="k">class</span><span class="w"> </span><span class="nc">base</span>
+</span><span id="__span-4-4"><span class="p">{</span>
+</span><span id="__span-4-5"><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-4-6"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">fun1</span><span class="p">()</span>
+</span><span id="__span-4-7"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-8"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;base fun1&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-9"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-10"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">fun2</span><span class="p">()</span>
+</span><span id="__span-4-11"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-12"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;base fun2&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-13"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-14"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">fun3</span><span class="p">()</span>
+</span><span id="__span-4-15"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-16"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;base fun3&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-17"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-18"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">fun4</span><span class="p">()</span>
+</span><span id="__span-4-19"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-20"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;base fun4&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-21"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-22"><span class="p">};</span>
+</span><span id="__span-4-23"><span class="k">class</span><span class="w"> </span><span class="nc">derived</span><span class="o">:</span><span class="k">public</span><span class="w"> </span><span class="n">base</span>
+</span><span id="__span-4-24"><span class="p">{</span>
+</span><span id="__span-4-25"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fun1</span><span class="p">()</span>
+</span><span id="__span-4-26"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-27"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;derived fun1&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-28"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-29"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">fun2</span><span class="p">()</span>
+</span><span id="__span-4-30"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-31"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;derived fun2&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-32"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-33"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fun3</span><span class="p">()</span>
+</span><span id="__span-4-34"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-35"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;derived fun3&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-36"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-37"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">fun4</span><span class="p">()</span>
+</span><span id="__span-4-38"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-39"><span class="w">        </span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;derived fun4&quot;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-4-40"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-41"><span class="p">};</span>
+</span><span id="__span-4-42"><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-4-43"><span class="p">{</span>
+</span><span id="__span-4-44"><span class="w">    </span><span class="n">base</span><span class="w"> </span><span class="o">*</span><span class="n">pb</span><span class="p">;</span>
+</span><span id="__span-4-45"><span class="w">    </span><span class="n">derived</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-4-46"><span class="w">    </span><span class="n">pb</span><span class="o">=&amp;</span><span class="n">d</span><span class="p">;</span>
+</span><span id="__span-4-47"><span class="w">    </span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">fun1</span><span class="p">();</span>
+</span><span id="__span-4-48"><span class="w">    </span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">fun2</span><span class="p">();</span>
+</span><span id="__span-4-49"><span class="w">    </span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">fun3</span><span class="p">();</span>
+</span><span id="__span-4-50"><span class="w">    </span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">fun4</span><span class="p">();</span>
+</span><span id="__span-4-51"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>基类与派生类中有同名函数：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-5-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+</span><span id="__span-5-3"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-5-4"><span class="c1">// 声明基类Student</span>
+</span><span id="__span-5-5"><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-6"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-5-7"><span class="w">  </span><span class="n">Student</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">);</span><span class="w">  </span><span class="c1">// 声明构造函数</span>
+</span><span id="__span-5-8"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">();</span><span class="w">       </span><span class="c1">// 声明输出函数</span>
+</span><span id="__span-5-9"><span class="w"> </span><span class="k">protected</span><span class="o">:</span><span class="w">                     </span><span class="c1">// 受保护成员，派生类可以访问</span>
+</span><span id="__span-5-10"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+</span><span id="__span-5-11"><span class="w">  </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-5-12"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+</span><span id="__span-5-13"><span class="p">};</span>
+</span><span id="__span-5-14"><span class="c1">// Student类成员函数的实现</span>
+</span><span id="__span-5-15"><span class="n">Student</span><span class="o">::</span><span class="n">Student</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">nam</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w">  </span><span class="c1">// 定义构造函数</span>
+</span><span id="__span-5-16"><span class="p">{</span>
+</span><span id="__span-5-17"><span class="w">  </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-5-18"><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nam</span><span class="p">;</span>
+</span><span id="__span-5-19"><span class="w">  </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-5-20"><span class="p">}</span>
+</span><span id="__span-5-21"><span class="kt">void</span><span class="w"> </span><span class="n">Student</span><span class="o">::</span><span class="n">display</span><span class="p">()</span><span class="w">  </span><span class="c1">// 定义输出函数</span>
+</span><span id="__span-5-22"><span class="p">{</span>
+</span><span id="__span-5-23"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;num:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">name:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">score:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-5-24"><span class="p">}</span>
+</span><span id="__span-5-25">
+</span><span id="__span-5-26"><span class="c1">// 声明公用派生类Graduate</span>
+</span><span id="__span-5-27"><span class="k">class</span><span class="w"> </span><span class="nc">Graduate</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-28"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-5-29"><span class="w">  </span><span class="n">Graduate</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">);</span><span class="w">  </span><span class="c1">// 声明构造函数</span>
+</span><span id="__span-5-30"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">display</span><span class="p">();</span><span class="w">                       </span><span class="c1">// 声明输出函数</span>
+</span><span id="__span-5-31"><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-5-32"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">pay</span><span class="p">;</span>
+</span><span id="__span-5-33"><span class="p">};</span>
+</span><span id="__span-5-34"><span class="c1">// Graduate类成员函数的实现</span>
+</span><span id="__span-5-35"><span class="kt">void</span><span class="w"> </span><span class="nf">Graduate::display</span><span class="p">()</span><span class="w">  </span><span class="c1">// 定义输出函数</span>
+</span><span id="__span-5-36"><span class="p">{</span>
+</span><span id="__span-5-37"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;num:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">name:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">score:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">score</span>
+</span><span id="__span-5-38"><span class="w">       </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">pay=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pay</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-5-39"><span class="p">}</span>
+</span><span id="__span-5-40"><span class="n">Graduate</span><span class="o">::</span><span class="n">Graduate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">nam</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+</span><span id="__span-5-41"><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">nam</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">),</span><span class="w"> </span><span class="n">pay</span><span class="p">(</span><span class="n">p</span><span class="p">){};</span><span class="w">  </span><span class="c1">// 主函数</span>
+</span><span id="__span-5-42"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-43"><span class="w">  </span><span class="n">Student</span><span class="w"> </span><span class="n">stud1</span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Li&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">87.5</span><span class="p">);</span>
+</span><span id="__span-5-44"><span class="w">  </span><span class="n">Graduate</span><span class="w"> </span><span class="n">grad1</span><span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Wang&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">98.5</span><span class="p">,</span><span class="w"> </span><span class="mf">563.5</span><span class="p">);</span>
+</span><span id="__span-5-45"><span class="w">  </span><span class="n">Student</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">stud1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 定义指向基类对象的指针变量pt</span>
+</span><span id="__span-5-46"><span class="w">  </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-5-47"><span class="w">  </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">grad1</span><span class="p">;</span>
+</span><span id="__span-5-48"><span class="w">  </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-5-49"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-5-50"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>由虚函数实现的动态多态性：<strong>同一类族中不同类的对象，对同一函数调用作出不同的响应。</strong></p>
+<h3 id="_11">虚函数的使用方法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ol>
+<li>在基类用virtual声明成员函数为虚函数。在类外定义虚函数时，不能加virtual，会报错。</li>
+<li>在派生类中重新定义此函数。要求函数名、函数类型、函数参数个数和返回类型全部与基类的虚函数相同，并根据派生类的需要重新定义函数体。</li>
+<li>定义一个指向基类对象的指针变量，并使它指向同一类族中需要调用该函数的对象。</li>
+<li>
+<p>通过该指针变量调用此虚函数，此时调用的就是指针变量指向的对象的同名函数。</p>
+</li>
+<li>
+<p>C++规定，<strong>当一个成员函数被声明为虚函数后，其派生类中的同名函数都自动成为虚函数</strong>。<strong style="color:red">因此在派生类重新声明该虚函数时，可以加virtual，也可以不加</strong>，一般在每一层声明该函数时都加virtual，使程序更加清晰。</p>
+</li>
+<li>如果在派生类中没有对基类的虚函数重新定义，则派生类简单地继承其直接基类的虚函数。</li>
+<li>通过<strong style="color:red">虚函数</strong>和<strong style="color:red">指向基类对象的指针变量</strong>，能够方便地调用同一类族中不同类的同名函数，只要先用基类指针指向对应的派生类即可。</li>
+</ol>
+<p>说明：</p>
+<ul>
+<li>函数重载处理的是**同一层次**上的同名函数问题，而虚函数处理的是**不同派生层次**上的同名函数问题，前者是**横向重载**，后者可以理解为**纵向重载**。</li>
+<li>与重载不同的是: <strong>同一类族的虚函数的首部是相同的</strong>，而**函数重载时函数的首部是不同**的(参数个数或类型不同)。</li>
+</ul>
+<h2 id="_12">虚析构函数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">使用场景<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ol>
+<li>通过**基类指针**删除**派生类对象**时</li>
+<li>如果允许通过**基类指针**调用对象的析构函数（即delete 基类指针），并且被析构的对象是有析构函数的派生类的对象，就需要将基类的析构函数成为虚析构函数。</li>
+</ol>
+<h3 id="when">When<a class="headerlink" href="#when" title="Permanent link">&para;</a></h3>
+<p>派生类含有指针类型数据成员。</p>
+<h3 id="why">Why<a class="headerlink" href="#why" title="Permanent link">&para;</a></h3>
+<p>避免内存泄漏：<strong>delete</strong> 指向派生类对象的**基类指针**时自动**调用子类**的**析构函数**释放派生类对象已申请的**堆内存**，从而防止内存泄露。</p>
+<p>语法：<code>virtual ~ ClassName(){}</code></p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-6-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-6-3"><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-4"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-6-5"><span class="w">  </span><span class="o">~</span><span class="n">A</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;A::~A() is called.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-6"><span class="p">};</span>
+</span><span id="__span-6-7"><span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-8"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-6-9"><span class="w">  </span><span class="o">~</span><span class="n">B</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B::~B() is called.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-10"><span class="p">};</span>
+</span><span id="__span-6-11"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-12"><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="n">Ap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+</span><span id="__span-6-13"><span class="w">  </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="n">Bp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+</span><span id="__span-6-14"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;delete first object:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-6-15"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">Ap</span><span class="p">;</span>
+</span><span id="__span-6-16"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;delete second object:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-6-17"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">Bp2</span><span class="p">;</span>
+</span><span id="__span-6-18"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="图2.类继承关系" src="./img/ch21-/04.png" /></p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-7-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-7-3"><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-7-5"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">A</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;A::~A() is called.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-7-6"><span class="p">};</span>
+</span><span id="__span-7-7"><span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-8"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-7-9"><span class="w">  </span><span class="o">~</span><span class="n">B</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;B::~B() is called.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-7-10"><span class="p">};</span>
+</span><span id="__span-7-11"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-12"><span class="w">  </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="n">Ap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+</span><span id="__span-7-13"><span class="w">  </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="n">Bp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">B</span><span class="p">;</span>
+</span><span id="__span-7-14"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;delete first object:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-7-15"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">Ap</span><span class="p">;</span>
+</span><span id="__span-7-16"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;delete second object:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</span><span id="__span-7-17"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">Bp2</span><span class="p">;</span>
+</span><span id="__span-7-18"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="图2.类继承关系" src="../img/ch21-05.png" /></p>
+<ul>
+<li>定义了基类虚析构函数，<strong>基类指针指向的派生类动态对象也可以正确地用delete析构</strong></li>
+<li>设计类层次结构时，提供一个虚析构函数，能够使派生类对象在不同状态下正确调用析构函数</li>
+</ul>
+<h2 id="_14">虚函数的限制<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>如果将所有的成员函数都设置为虚函数，当然是很有益的。它除了会**增加一些额外的资源开销**，没有什么坏处。但设置虚函数须注意以下几点：</p>
+<ol>
+<li>只有<font style="color:red">成员函数</font>才能声明为虚函数。因为虚函数仅适用于**有继承关系的类对象**，所以普通函数不能声明为虚函数。</li>
+<li>虚函数必须是<font style="color:red">非静态成员函数</font>。这是因为静态成员函数不受限于某个对象</li>
+<li><font style="color:red">内联函数不能</font>声明为虚函数。因为内联函数不能在运行中动态确定其位置</li>
+<li><font style="color:red">构造函数不能</font>声明为虚函数。多态是指不同的对象对同一消息有不同的行为特性。<strong>虚函数作为运行过程中多态的基础，主要是针对对象的，而构造函数是在对象产生之前运行的</strong>，因此，虚构造函数是没有意义的。</li>
+<li><font style="color:blue">析构函数可以</font>声明为虚函数。析构函数的功能是在该类对象消亡之前进行一些必要的清理工作。析构函数没有类型，也没有参数，和普通成员函数相比，虚析构函数情况略为简单些。</li>
+</ol>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
+</span><span id="__span-8-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-8-3"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="k">class</span><span class="w"> </span><span class="nc">base</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">baseptr</span><span class="p">;</span>
+</span><span id="__span-8-6">
+</span><span id="__span-8-7"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-8-8"><span class="w">  </span><span class="n">base</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-9"><span class="w">    </span><span class="n">baseptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span><span id="__span-8-10"><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">baseptr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In class base&quot;</span><span class="p">);</span>
+</span><span id="__span-8-11"><span class="w">    </span><span class="n">fc</span><span class="p">();</span>
+</span><span id="__span-8-12"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-13"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">fc</span><span class="p">()</span><span class="w">  </span><span class="c1">// D</span>
+</span><span id="__span-8-14"><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-8-15"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">baseptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-16"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-17"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">base</span><span class="p">()</span><span class="w">  </span><span class="c1">// E</span>
+</span><span id="__span-8-18"><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-8-19"><span class="w">    </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">baseptr</span><span class="p">;</span>
+</span><span id="__span-8-20"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Delete [ ]baseptr&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-21"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-22"><span class="p">};</span>
+</span><span id="__span-8-23"><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-24"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">Aptr</span><span class="p">;</span>
+</span><span id="__span-8-25">
+</span><span id="__span-8-26"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-8-27"><span class="w">  </span><span class="n">A</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-28"><span class="w">    </span><span class="n">Aptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span><span id="__span-8-29"><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">Aptr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In class A&quot;</span><span class="p">);</span>
+</span><span id="__span-8-30"><span class="w">    </span><span class="n">fc</span><span class="p">();</span><span class="w">  </span><span class="c1">// F</span>
+</span><span id="__span-8-31"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-32"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-33"><span class="w">    </span><span class="n">fc</span><span class="p">();</span><span class="w">  </span><span class="c1">// G</span>
+</span><span id="__span-8-34"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-35"><span class="w">  </span><span class="o">~</span><span class="n">A</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-36"><span class="w">    </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">Aptr</span><span class="p">;</span>
+</span><span id="__span-8-37"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Delete [ ]Aptr&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-38"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-39"><span class="p">};</span>
+</span><span id="__span-8-40"><span class="k">class</span><span class="w"> </span><span class="nc">B</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-41"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">Bptr</span><span class="p">;</span>
+</span><span id="__span-8-42">
+</span><span id="__span-8-43"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-8-44"><span class="w">  </span><span class="n">B</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-45"><span class="w">    </span><span class="n">Bptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+</span><span id="__span-8-46"><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">Bptr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;In class B&quot;</span><span class="p">);</span>
+</span><span id="__span-8-47"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-48"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">fc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">Bptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-8-49"><span class="w">  </span><span class="o">~</span><span class="n">B</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-50"><span class="w">    </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">Bptr</span><span class="p">;</span>
+</span><span id="__span-8-51"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Delete [ ]Bptr&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-52"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-53"><span class="p">};</span>
+</span><span id="__span-8-54"><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-55"><span class="w">  </span><span class="n">B</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">              </span><span class="c1">// H</span>
+</span><span id="__span-8-56"><span class="w">  </span><span class="n">b</span><span class="p">.</span><span class="n">f</span><span class="p">();</span><span class="w">            </span><span class="c1">// K</span>
+</span><span id="__span-8-57"><span class="w">  </span><span class="n">base</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w">  </span><span class="c1">// M</span>
+</span><span id="__span-8-58"><span class="w">  </span><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w">         </span><span class="c1">// N</span>
+</span><span id="__span-8-59"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_15">抽象类和纯虚函数<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>带有**纯虚函数**的类称为**抽象类**。</p>
+</li>
+<li>
+<p>虚函数为一个类体系中所有类提供了一个统一的接口。然而在有些情况下，<strong>定义基类时**虽然**知道其子孙类应当具有某一接口</strong>，<strong>但**其自身由于某种原因却**无法实现该接口</strong>，换句话：</p>
+</li>
+<li>它**在该基类中没有定义具体的操作内容**。这里就应将该接口说明成一个<strong style="color:red">纯虚函数</strong>，其具体操作由各子孙类来定义</li>
+</ul>
+<p>纯虚函数：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="k">class</span><span class="w"> </span><span class="nc">类名</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="n">类型</span><span class="w"> </span><span class="nf">函数名</span><span class="p">(</span><span class="n">参数表</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 纯虚函数</span>
+</span><span id="__span-9-3"><span class="w">  </span><span class="c1">//...</span>
+</span><span id="__span-9-4"><span class="p">}</span>
+</span><span id="__span-9-5"><span class="c1">//纯虚函数与一般虚函数在书写形式上的不同在于其后面加了&quot;=0&quot;，</span>
+</span><span id="__span-9-6"><span class="c1">//表明在基类中不用定义该函数，它的实现部分——函数体留给派生类去做。</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_16">抽象类的作用<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li>抽象类为抽象和设计的目的而声明，将有关的**数据和行为组织在一个继承层次结构**中，保证派生类具有要求的行为。</li>
+<li>对于**暂时无法实现的函数，可以声明为纯虚函数**，留给派生类去实现。</li>
+</ul>
+<h3 id="_17">抽象类的注意事项<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li>抽象类只能作为基类来使用，不能声明抽象类的对象。</li>
+<li>抽象类不能用作**参数类型**、<strong>函数返回值**或**显式转换的类型</strong>。</li>
+<li>可以**声明一个抽象类的指针和引用**。通过指针或引用，可以指向并访问派生类对象，以访问派生类的成员。</li>
+<li>抽象类派生类</li>
+<li>若派生类**给出所有**纯虚函数的函数实现，这个派生类就可以声明自己的对象，因而不再是抽象类</li>
+<li>若派生类没有给出全部纯虚函数的实现，这时的派生类仍然是一个抽象类</li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-10-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-10-3"><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span>
+</span><span id="__span-10-4"><span class="k">class</span><span class="w"> </span><span class="nc">Shapes</span><span class="w">  </span><span class="c1">// 抽象基类Shapes声明</span>
+</span><span id="__span-10-5"><span class="p">{</span>
+</span><span id="__span-10-6"><span class="w"> </span><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-10-7"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-10-8">
+</span><span id="__span-10-9"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-10-10"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">setvalue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">xx</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">yy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-11"><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xx</span><span class="p">;</span>
+</span><span id="__span-10-12"><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yy</span><span class="p">;</span>
+</span><span id="__span-10-13"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-14"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 纯虚函数成员</span>
+</span><span id="__span-10-15"><span class="p">};</span>
+</span><span id="__span-10-16"><span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shapes</span><span class="w">  </span><span class="c1">// 派生类Rectangle声明</span>
+</span><span id="__span-10-17"><span class="p">{</span>
+</span><span id="__span-10-18"><span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w">  </span><span class="c1">// 虚成员函数</span>
+</span><span id="__span-10-19"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The area of rectangle is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-20"><span class="p">};</span>
+</span><span id="__span-10-21"><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shapes</span><span class="w">  </span><span class="c1">// 派生类Circle声明</span>
+</span><span id="__span-10-22"><span class="p">{</span>
+</span><span id="__span-10-23"><span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w">  </span><span class="c1">// 虚成员函数</span>
+</span><span id="__span-10-24"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">display</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The area of circle is: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-25"><span class="p">};</span>
+</span><span id="__span-10-26"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-27"><span class="w">  </span><span class="n">Shapes</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w">  </span><span class="c1">// 声明抽象基类指针</span>
+</span><span id="__span-10-28"><span class="w">  </span><span class="n">Rectangle</span><span class="w"> </span><span class="n">rect1</span><span class="p">;</span>
+</span><span id="__span-10-29"><span class="w">  </span><span class="n">Circle</span><span class="w"> </span><span class="n">cir1</span><span class="p">;</span>
+</span><span id="__span-10-30"><span class="w">  </span><span class="n">ptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rect1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 指针指向Rectangle类对象</span>
+</span><span id="__span-10-31"><span class="w">  </span><span class="n">ptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">setvalue</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+</span><span id="__span-10-32"><span class="w">  </span><span class="n">ptr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-10-33"><span class="w">  </span><span class="n">ptr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cir1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 指针指向Circle类对象</span>
+</span><span id="__span-10-34"><span class="w">  </span><span class="n">ptr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">setvalue</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span><span id="__span-10-35"><span class="w">  </span><span class="n">ptr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">display</span><span class="p">();</span>
+</span><span id="__span-10-36"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>应用实例：虚函数和抽象基类的应用。介绍了以Point为基类的点—圆—圆柱体类的层次结构。</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-11-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-11-3">
+</span><span id="__span-11-4"><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w">  </span><span class="c1">// 声明抽象基类Shape</span>
+</span><span id="__span-11-5"><span class="p">{</span>
+</span><span id="__span-11-6"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-11-7"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-8"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 虚函数</span>
+</span><span id="__span-11-9"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-10"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">volume</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-11"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 虚函数</span>
+</span><span id="__span-11-12"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-13"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">shapeName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// 纯虚函数</span>
+</span><span id="__span-11-14"><span class="p">};</span>
+</span><span id="__span-11-15"><span class="c1">// 声明Point类</span>
+</span><span id="__span-11-16"><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="w">  </span><span class="c1">// Point是Shape的公用派生类</span>
+</span><span id="__span-11-17"><span class="p">{</span>
+</span><span id="__span-11-18"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-11-19"><span class="w">  </span><span class="n">Point</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-11-20"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPoint</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">);</span>
+</span><span id="__span-11-21"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="nf">getX</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-22"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="nf">getY</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-23"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">shapeName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="c1">// 对虚函数进行再定义</span>
+</span><span id="__span-11-24"><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-11-25"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Point:&quot;</span><span class="p">;</span>
+</span><span id="__span-11-26"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-27"><span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span>
+</span><span id="__span-11-28">
+</span><span id="__span-11-29"><span class="w"> </span><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-11-30"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-11-31"><span class="p">};</span>
+</span><span id="__span-11-32"><span class="c1">// 定义Point类成员函数</span>
+</span><span id="__span-11-33"><span class="n">Point</span><span class="o">::</span><span class="n">Point</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-34"><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-11-35"><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-11-36"><span class="p">}</span>
+</span><span id="__span-11-37"><span class="kt">void</span><span class="w"> </span><span class="n">Point</span><span class="o">::</span><span class="n">setPoint</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-38"><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-11-39"><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-11-40"><span class="p">}</span>
+</span><span id="__span-11-41"><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-42"><span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="p">;</span>
+</span><span id="__span-11-43"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">;</span>
+</span><span id="__span-11-44"><span class="p">}</span>
+</span><span id="__span-11-45">
+</span><span id="__span-11-46"><span class="c1">// 声明Circle类</span>
+</span><span id="__span-11-47"><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-48"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-11-49"><span class="w">  </span><span class="n">Circle</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-11-50"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRadius</span><span class="p">(</span><span class="kt">float</span><span class="p">);</span>
+</span><span id="__span-11-51"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="nf">getRadius</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span><span id="__span-11-52"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">area</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span><span id="__span-11-53"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">shapeName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-54"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Circle:&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// 对虚函数进行定义</span>
+</span><span id="__span-11-55"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-56"><span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span>
+</span><span id="__span-11-57">
+</span><span id="__span-11-58"><span class="w"> </span><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-11-59"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+</span><span id="__span-11-60"><span class="p">};</span>
+</span><span id="__span-11-61"><span class="c1">// 声明Circle类成员函数</span>
+</span><span id="__span-11-62"><span class="n">Circle</span><span class="o">::</span><span class="n">Circle</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="n">radius</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-11-63">
+</span><span id="__span-11-64"><span class="kt">void</span><span class="w"> </span><span class="n">Circle</span><span class="o">::</span><span class="n">setRadius</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">radius</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-11-65">
+</span><span id="__span-11-66"><span class="kt">float</span><span class="w"> </span><span class="n">Circle</span><span class="o">::</span><span class="n">getRadius</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-67">
+</span><span id="__span-11-68"><span class="kt">float</span><span class="w"> </span><span class="n">Circle</span><span class="o">::</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">3.14159</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-69">
+</span><span id="__span-11-70"><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-71"><span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;], r=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">radius</span><span class="p">;</span>
+</span><span id="__span-11-72"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">;</span>
+</span><span id="__span-11-73"><span class="p">}</span>
+</span><span id="__span-11-74"><span class="c1">// 声明Cylinder类</span>
+</span><span id="__span-11-75"><span class="k">class</span><span class="w"> </span><span class="nc">Cylinder</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Circle</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-76"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-11-77"><span class="w">  </span><span class="n">Cylinder</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-11-78"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">setHeight</span><span class="p">(</span><span class="kt">float</span><span class="p">);</span>
+</span><span id="__span-11-79"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">area</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span><span id="__span-11-80"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="nf">volume</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span><span id="__span-11-81">
+</span><span id="__span-11-82"><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">shapeName</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="c1">// 对虚函数进行再定义</span>
+</span><span id="__span-11-83"><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-11-84"><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cylinder:&quot;</span><span class="p">;</span>
+</span><span id="__span-11-85"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-86"><span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cylinder</span><span class="w"> </span><span class="o">&amp;</span><span class="p">);</span>
+</span><span id="__span-11-87">
+</span><span id="__span-11-88"><span class="w"> </span><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-11-89"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+</span><span id="__span-11-90"><span class="p">};</span>
+</span><span id="__span-11-91"><span class="c1">// 定义Cylinder类成员函数</span>
+</span><span id="__span-11-92"><span class="n">Cylinder</span><span class="o">::</span><span class="n">Cylinder</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="p">)</span>
+</span><span id="__span-11-93"><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">),</span><span class="w"> </span><span class="n">height</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-11-94">
+</span><span id="__span-11-95"><span class="kt">void</span><span class="w"> </span><span class="n">Cylinder</span><span class="o">::</span><span class="n">setHeight</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-96">
+</span><span id="__span-11-97"><span class="kt">float</span><span class="w"> </span><span class="n">Cylinder</span><span class="o">::</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-98"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Circle</span><span class="o">::</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.14159</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+</span><span id="__span-11-99"><span class="p">}</span>
+</span><span id="__span-11-100">
+</span><span id="__span-11-101"><span class="kt">float</span><span class="w"> </span><span class="n">Cylinder</span><span class="o">::</span><span class="n">volume</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Circle</span><span class="o">::</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-102">
+</span><span id="__span-11-103"><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Cylinder</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-104"><span class="w">  </span><span class="n">output</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;[&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cy</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cy</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;], r=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cy</span><span class="p">.</span><span class="n">radius</span>
+</span><span id="__span-11-105"><span class="w">         </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, h=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cy</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+</span><span id="__span-11-106"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">;</span>
+</span><span id="__span-11-107"><span class="p">}</span>
+</span><span id="__span-11-108"><span class="c1">// main函数</span>
+</span><span id="__span-11-109"><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-110"><span class="w">  </span><span class="n">Point</span><span class="w"> </span><span class="nf">point</span><span class="p">(</span><span class="mf">3.2</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="p">);</span><span class="w">                   </span><span class="c1">// 建立Point类对象point</span>
+</span><span id="__span-11-111"><span class="w">  </span><span class="n">Circle</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span><span class="mf">2.4</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">);</span><span class="w">            </span><span class="c1">// 建立Circle类对象circle</span>
+</span><span id="__span-11-112"><span class="w">  </span><span class="n">Cylinder</span><span class="w"> </span><span class="nf">cylinder</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">5.2</span><span class="p">,</span><span class="w"> </span><span class="mf">10.5</span><span class="p">);</span><span class="w">  </span><span class="c1">// 建立Cylinder类对象cylinder</span>
+</span><span id="__span-11-113"><span class="w">  </span><span class="n">point</span><span class="p">.</span><span class="n">shapeName</span><span class="p">();</span><span class="w">                       </span><span class="c1">// 静态关联</span>
+</span><span id="__span-11-114"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-11-115">
+</span><span id="__span-11-116"><span class="w">  </span><span class="n">circle</span><span class="p">.</span><span class="n">shapeName</span><span class="p">();</span><span class="w">  </span><span class="c1">// 静态关联</span>
+</span><span id="__span-11-117"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">circle</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-11-118">
+</span><span id="__span-11-119"><span class="w">  </span><span class="n">cylinder</span><span class="p">.</span><span class="n">shapeName</span><span class="p">();</span><span class="w">  </span><span class="c1">// 静态关联</span>
+</span><span id="__span-11-120"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cylinder</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-11-121">
+</span><span id="__span-11-122"><span class="w">  </span><span class="n">Shape</span><span class="w"> </span><span class="o">*</span><span class="n">pt</span><span class="p">;</span><span class="w">  </span><span class="c1">// 定义基类指针</span>
+</span><span id="__span-11-123">
+</span><span id="__span-11-124"><span class="w">  </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">point</span><span class="p">;</span><span class="w">      </span><span class="c1">// 指针指向Point类对象</span>
+</span><span id="__span-11-125"><span class="w">  </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">shapeName</span><span class="p">();</span><span class="w">  </span><span class="c1">// 动态关联</span>
+</span><span id="__span-11-126"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;x=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,y=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">point</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span>
+</span><span id="__span-11-127"><span class="w">       </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">narea=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">nvolume=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">volume</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">n</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">;</span>
+</span><span id="__span-11-128">
+</span><span id="__span-11-129"><span class="w">  </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">circle</span><span class="p">;</span><span class="w">     </span><span class="c1">// 指针指向Circle类对象</span>
+</span><span id="__span-11-130"><span class="w">  </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">shapeName</span><span class="p">();</span><span class="w">  </span><span class="c1">// 动态关联</span>
+</span><span id="__span-11-131"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;x=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">circle</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,y=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">circle</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span>
+</span><span id="__span-11-132"><span class="w">       </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">narea=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">nvolume=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">volume</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">n</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">;</span>
+</span><span id="__span-11-133">
+</span><span id="__span-11-134"><span class="w">  </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cylinder</span><span class="p">;</span><span class="w">   </span><span class="c1">// 指针指向Cylinder类对象</span>
+</span><span id="__span-11-135"><span class="w">  </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">shapeName</span><span class="p">();</span><span class="w">  </span><span class="c1">// 动态关联</span>
+</span><span id="__span-11-136"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;x=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cylinder</span><span class="p">.</span><span class="n">getX</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;,y=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cylinder</span><span class="p">.</span><span class="n">getY</span><span class="p">()</span>
+</span><span id="__span-11-137"><span class="w">       </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">narea=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">nvolume=&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pt</span><span class="o">-&gt;</span><span class="n">volume</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">n</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">;</span>
+</span><span id="__span-11-138"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-11-139"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>一些结论：</p>
+<ol>
+<li>含有1个及以上**纯虚(成员)函数**的基类是抽象基类，抽象基类不能且没必要定义对象；</li>
+<li>抽象基类一般并不是现实存在的对象的抽象(如圆形是千千万万个实际的圆的抽象)，它可以没有任何物理上的或其他实际意义方面的含义；</li>
+<li>在类的层次结构中，顶层或最上面的几层可以是抽象基类。抽象基类体现了本类族中各类的共性，把各类中**共有的成员函数**集中在抽象基类中声明；</li>
+<li>抽象基类是本类族的公共接口。或者说，从同一基类派生出的多个类有同一接口；</li>
+<li>如果在**基类**声明了**虚函数**，则在**派生类**中凡是与该函数有相同的**函数名**、<strong>函数返回类型</strong>、**参数个数和类型**的函数，均为虚函数(不论在派生类中是否用virtual声明)；</li>
+<li>区别静态关联和动态关联。</li>
+</ol>
+<h2 id="_18">强制转换<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="dynamic_cast">dynamic_cast<a class="headerlink" href="#dynamic_cast" title="Permanent link">&para;</a></h3>
+<p>关键字dynamic_cast（动态强制转换）：操作符dynamic_cast将一个指向基类的指针转换为一个指向派生类的指针（如果不能正确转换，则返回0——空指针）。</p>
+<p><img alt="" src="../img/ch21-06.png" /></p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shape</span><span class="p">();</span>
+</span><span id="__span-12-3"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-12-4"><span class="p">};</span>
+</span><span id="__span-12-5"><span class="k">class</span><span class="w"> </span><span class="nc">Rollable</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-6"><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Rollable</span><span class="p">();</span>
+</span><span id="__span-12-7"><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">roll</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-12-8"><span class="p">};</span>
+</span><span id="__span-12-9"><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Rollable</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-10"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span><span id="__span-12-11"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">roll</span><span class="p">();</span>
+</span><span id="__span-12-12"><span class="p">};</span>
+</span><span id="__span-12-13"><span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-14"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">draw</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span><span id="__span-12-15"><span class="p">};</span>
+</span><span id="__span-12-16">
+</span><span id="__span-12-17"><span class="c1">//横向转型失败</span>
+</span><span id="__span-12-18"><span class="n">Shape</span><span class="w"> </span><span class="o">*</span><span class="n">pShape1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Square</span><span class="p">();</span>
+</span><span id="__span-12-19"><span class="n">Rollable</span><span class="w"> </span><span class="o">*</span><span class="n">pRollable1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Rollable</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pShape1</span><span class="p">);</span>
+</span><span id="__span-12-20"><span class="c1">//pRollable为NULL</span>
+</span><span id="__span-12-21">
+</span><span id="__span-12-22"><span class="c1">//横向转型成功</span>
+</span><span id="__span-12-23"><span class="n">Shape</span><span class="w"> </span><span class="o">*</span><span class="n">pShape2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Circle</span><span class="p">();</span>
+</span><span id="__span-12-24"><span class="n">Rollable</span><span class="w"> </span><span class="o">*</span><span class="n">pRollable2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Rollable</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pShape2</span><span class="p">);</span>
+</span><span id="__span-12-25"><span class="c1">//pRollable不为NULL</span>
+</span></code></pre></div></td></tr></table></div>
+<p>例子：设计shape类层次结构。每个TwoDShape类都包含成员函数getArea，用于计算二维形状的面积。每个ThreeDShape类都包含成员函数getArea和getVolume，分别用于计算三维形状的表面积和体积。编写一个程序，使用一个Shape指针的vector对象，他的元素指向类层次总每个具体类的对象。
+程序打印输出该vector对象的所有形状循环中，程序应判断每个形状是二维形状还是三维形状，如果是二维形状，显示面积，如果是三维形状，显示表面积和体积。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+  <h2 id="__comments">Comments</h2>
+  <!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="RoureYungLoo/RoureYungLoo.github.io"
+        data-repo-id="R_kgDOJJcXYw"
+        data-category="General"
+        data-category-id="DIC_kwDOJJcXY84CWm4i"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05-C%2B%2B%E7%BB%A7%E6%89%BF/" class="md-footer__link md-footer__link--prev" aria-label="Previous: C++继承">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                C++继承
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07-C%2B%2B%E6%A8%A1%E6%9D%BF/" class="md-footer__link md-footer__link--next" aria-label="Next: C++模板">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                C++模板
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

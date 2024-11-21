@@ -1,0 +1,1838 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02-%E7%B1%BB%E7%9A%84%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E4%B8%80/">
+      
+      
+        <link rel="next" href="../04-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>类的深入剖析二 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              类的深入剖析二
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            CPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-C%2B%2B%E5%AF%B9%E8%B1%A1%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++对象技术简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类与对象简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E7%B1%BB%E7%9A%84%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E4%B8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    类的深入剖析一
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    类的深入剖析二
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    类的深入剖析二
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      常对象
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      常成员函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      常数据成员
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象的常引用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对象的常引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程建议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      小总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      类的组合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类的组合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      组合类的构造函数的执行顺序
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      友元
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="友元">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      友元函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      友元类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this" class="md-nav__link">
+    <span class="md-ellipsis">
+      this指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      static数据成员
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      static成员函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      静态数据成员与全局变量：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      static成员函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    运算符重载
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-C%2B%2B%E7%BB%A7%E6%89%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++继承
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-C%2B%2B%E5%A4%9A%E6%80%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++多态
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-C%2B%2B%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++模板
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-C%2B%2BIO%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ IO流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-C%2B%2B%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 异常
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-C%2B%2B11%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 C++11新特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../%E4%BE%AF%E6%8D%B7%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/C%2B%2B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/C%2B%2B%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    侯捷课程笔记
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Java/01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      常对象
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      常成员函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      常数据成员
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象的常引用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对象的常引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      编程建议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      小总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      类的组合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类的组合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      组合类的构造函数的执行顺序
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      友元
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="友元">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      友元函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      友元类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this" class="md-nav__link">
+    <span class="md-ellipsis">
+      this指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      static数据成员
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      static成员函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      静态数据成员与全局变量：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      static成员函数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">类的深入剖析二<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">本章大纲<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>常对象、常成员函数和常数据成员</li>
+<li>对象常引用</li>
+<li>类的组合</li>
+<li>友元函数和友元类</li>
+<li>this指针</li>
+<li>static数据成员和static成员函数</li>
+</ul>
+<h2 id="_3"><strong>常对象</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>数据成员值在对象的整个生存期间内不能被改变的对象。</li>
+<li><strong>常对象在定义时必须进行初始化</strong>，而且不能被更新</li>
+<li>如果要修改常对象中某个数据成员的值，可以将该数据成员声明为**mutable**</li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">const</span><span class="w"> </span><span class="n">类名</span><span class="w"> </span><span class="n">对象名</span><span class="err">（</span><span class="p">[</span><span class="n">参数列表</span><span class="p">]);</span>
+</span><span id="__span-0-2"><span class="n">类名</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">对象名</span><span class="err">（</span><span class="p">[</span><span class="n">参数列表</span><span class="p">]);</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_4"><strong>常成员函数</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>const**关键字修饰的某个**成员函数</strong>，称为常成员函数</li>
+<li><strong style="color:red">常对象</strong>只能调用<strong style="color:red">常成员函数</strong>，保证常对象的数据成员不能被修改</li>
+<li>普通对象可以调用常成员函数，常对象不能调用普通成员函数</li>
+<li>常成员函数不能更新对象的数据成员，也不能调用该类中的非const成员函数</li>
+<li>const成员函数可以进行非const版本的重载</li>
+<li>如果调用对象是const，使用const版本的重载函数，</li>
+<li>如果调用对象是非const，使用非const版本的重载函数。</li>
+<li>构造函数和析构函数不能进行const声明，否则不能初始化和扫尾</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>普通成员函数</th>
+<th>const 成员函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通对象</td>
+<td>可以调用</td>
+<td>可以调用</td>
+</tr>
+<tr>
+<td>const 对象</td>
+<td><strong style="color:red">不可调用</strong></td>
+<td>可以调用</td>
+</tr>
+</tbody>
+</table>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="kt">int</span><span class="w"> </span><span class="nf">Time::getHour</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><span class="w">    </span><span class="c1">//...1.不能更新对象的数据成员</span>
+</span><span id="__span-1-3"><span class="w">    </span><span class="c1">//...2.不能调用该类的非const成员函数</span>
+</span><span id="__span-1-4"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_5"><strong>常数据成员</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>使用<code>const</code>修饰的类的数据成员</li>
+<li>常数据成员不能通过构造函数赋值，<strong style="color:red">只能通过初始化器初始化</strong></li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="k">class</span><span class="w"> </span><span class="nc">Time</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-2-3"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">hour</span><span class="p">;</span><span class="c1">//const数据成员</span>
+</span><span id="__span-2-4"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="p">;</span><span class="c1">//const数据成员</span>
+</span><span id="__span-2-5"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">minute</span><span class="p">;</span>
+</span><span id="__span-2-6">
+</span><span id="__span-2-7"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-2-8"><span class="w">  </span><span class="n">Time</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+</span><span id="__span-2-9"><span class="p">};</span>
+</span><span id="__span-2-10">
+</span><span id="__span-2-11"><span class="c1">//通过初始化器初始化类的const数据成员</span>
+</span><span id="__span-2-12"><span class="n">Time</span><span class="o">::</span><span class="n">Time</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">hour</span><span class="p">(</span><span class="n">h</span><span class="p">),</span><span class="w"> </span><span class="n">second</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-13"><span class="w">  </span><span class="n">minute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-2-14"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-15"><span class="c1">//Time::Time(int h, int s, int m) : hour(h), second(s), minute(m) {</span>
+</span><span id="__span-2-16"><span class="c1">//</span>
+</span><span id="__span-2-17"><span class="c1">//}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_6">对象的常引用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>一个对象的引用就是该对象的别名，对象名和引用名都指向同一段内存单元，即通过引用名可以访问对象中的公有成员</li>
+<li>如果希望通过引用名<strong style="color:red">只能调用</strong>对象中的数据成员，而<strong style="color:red">不能修改</strong>它们，可以将对象的引用声明为常引用</li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="k">const</span><span class="w"> </span><span class="n">类名</span><span class="w"> </span><span class="o">&amp;</span><span class="n">引用名</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">对象名</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_7">编程建议<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在C++面向对象程序设计中，经常用<code>const</code>指针和<code>const</code>引用作函数参数。这样既能保证数据安全，使数据不能被随意修改，在调用函数时又不必建立实参的拷贝。</li>
+<li>用<code>const</code>指针和<code>const</code>引用作函数参数，还可以提高程序运行效率</li>
+</ul>
+<h3 id="_8">小总结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>形式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Time const t1;const Time t1;</code></td>
+<td>t1是常对象，其值在任何情况下都不能改变</td>
+</tr>
+<tr>
+<td><code>void Time∷fun( )const {}</code></td>
+<td>fun是Time类中的常成员函数，可以引用，但不能修改本类中的数据成员</td>
+</tr>
+<tr>
+<td><code>Time * const p;</code></td>
+<td>p是指向Time对象的常指针，p的值(即p的指向)不能改变</td>
+</tr>
+<tr>
+<td><code>const Time *p;</code></td>
+<td>p是指向Time类常对象的指针，其指向的类对象的值不能通过指针来改变</td>
+</tr>
+<tr>
+<td><code>const Time &amp;t1=t;</code></td>
+<td>t1是Time类对象t的引用，二者指向同一段内存空间</td>
+</tr>
+</tbody>
+</table>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="c1">//cosnt 和&amp;、*在一起的用法辨析</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_9">类的组合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="n">类名</span><span class="o">::</span><span class="n">类名</span><span class="p">(</span><span class="n">形参表</span><span class="p">)</span><span class="o">:</span><span class="n">内嵌对象1</span><span class="p">(</span><span class="n">形参表</span><span class="p">),</span><span class="w"> </span><span class="n">内嵌对象2</span><span class="p">(</span><span class="n">形参表</span><span class="p">),</span><span class="err">…</span>
+</span><span id="__span-5-2"><span class="p">{</span>
+</span><span id="__span-5-3"><span class="w">  </span><span class="c1">//类的初始化</span>
+</span><span id="__span-5-4"><span class="p">}</span>
+</span><span id="__span-5-5"><span class="c1">//其中，“内嵌对象1(形参表), 内嵌对象2(形参表),…”为初始化列表，用来完成对内嵌对象的初始化。</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_10">组合类的构造函数的执行顺序<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ol>
+<li>如果有多个内嵌对象，按照**内嵌对象**在组合类的<strong style="color:red">声明</strong>中**出现的次序**，依次调用其内嵌对象的构造函数。（注意：并不是按照初始化列表中给出的顺序</li>
+<li>再执行本类的构造函数的函数体。</li>
+</ol>
+<p>注意： 内嵌对象调用的如果是被隐式定义的拷贝构造函数，则不包含任何被其调用时要显示的输出语句。</p>
+<h2 id="_11">友元<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>在一个类中，可以利用关键字<code>friend</code>将别的模块（一般**函数**、其它类的**成员函数**或其它**类**）声明为本类的友元，这样类中本来隐藏的信息（私有和保护成员）就可以被友元访问。</li>
+<li>友元提供了不同类或对象的成员函数之间、类的成员函数与一般函数之间进行数据共享的机制。</li>
+<li><strong>友元并不是类的成员</strong></li>
+</ul>
+<h3 id="_12">友元函数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ol>
+<li>在类体内说明，在函数的类型说明符前加关键字<code>friend</code>；</li>
+<li>在类体外定义，定义格式与普通函数相同；</li>
+<li><strong>友元函数是非成员函数</strong>，在调用上与普通函数相同；</li>
+<li><strong>友元函数可以直接访问该类中的私有成员</strong>、保护成员</li>
+</ol>
+<p>定义函数func是类A的友元函数：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="err">；</span>
+</span><span id="__span-6-3"><span class="w">  </span><span class="c1">//...</span>
+</span><span id="__span-6-4"><span class="p">};</span>
+</span><span id="__span-6-5"><span class="kt">int</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">){</span><span class="c1">//该函数可直接访问类A中的私有成员和保护成员</span>
+</span><span id="__span-6-6"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-6-7"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>
+<p>函数<code>func(int, double)</code>是定义在类A外的一个函数</p>
+</li>
+<li>
+<p>如果**函数频繁访问类A的私有成员和保护成员**，可以将该函数定义成类A的友元函数</p>
+</li>
+</ul>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="k">class</span><span class="w"> </span><span class="nc">Car</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-7-3"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">passwd</span><span class="p">;</span>
+</span><span id="__span-7-4"><span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="o">&amp;</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w">  </span><span class="c1">// 声明友元函数</span>
+</span><span id="__span-7-5"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-7-6"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">member_func</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+</span><span id="__span-7-7"><span class="p">};</span>
+</span><span id="__span-7-8">
+</span><span id="__span-7-9"><span class="kt">void</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">Car</span><span class="w"> </span><span class="o">&amp;</span><span class="n">car</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pwd</span><span class="p">)</span><span class="w">  </span><span class="c1">// 定义友元函数</span>
+</span><span id="__span-7-10"><span class="p">{</span>
+</span><span id="__span-7-11"><span class="w">  </span><span class="n">car</span><span class="p">.</span><span class="n">member_func</span><span class="p">;</span>
+</span><span id="__span-7-12"><span class="p">}</span>
+</span><span id="__span-7-13"><span class="kt">void</span><span class="w"> </span><span class="nf">X::member_func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w">  </span><span class="c1">// 成员函数定义</span>
+</span><span id="__span-7-14"><span class="p">{</span>
+</span><span id="__span-7-15"><span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">passwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
+</span><span id="__span-7-16"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_13">友元类<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>当声明类A为类B的友元时，友元类A中的所有成员函数都是类B的友元函数</p>
+</li>
+<li>
+<p>可以放在类B的任意位置，通常放在类定义的首部</p>
+</li>
+<li>
+<p>要求类A在程序中有定义，并未要求声明顺序</p>
+</li>
+<li>
+<p><code>cpp
+  class B {
+      friend class A;  //定义友元类A（类A的常规定义）
+  };</code></p>
+</li>
+</ul>
+<p>实例：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-8-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-8-3">
+</span><span id="__span-8-4"><span class="k">class</span><span class="w"> </span><span class="nc">Teacher</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">// 教师类</span>
+</span><span id="__span-8-5"><span class="w">  </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Stu</span><span class="p">;</span><span class="w">  </span><span class="c1">// Stu类是Teacher类的友元类</span>
+</span><span id="__span-8-6"><span class="w">                     </span><span class="c1">//  Stu类的所有成员函数是Teacher类的友元函数</span>
+</span><span id="__span-8-7"><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-8-8"><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">salary</span><span class="p">;</span>
+</span><span id="__span-8-9"><span class="w">  </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+</span><span id="__span-8-10">
+</span><span id="__span-8-11"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-8-12"><span class="w">  </span><span class="n">Teacher</span><span class="p">();</span>
+</span><span id="__span-8-13"><span class="w">  </span><span class="n">Teacher</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="p">);</span>
+</span><span id="__span-8-14"><span class="p">};</span>
+</span><span id="__span-8-15">
+</span><span id="__span-8-16"><span class="n">Teacher</span><span class="o">::</span><span class="n">Teacher</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-8-17">
+</span><span id="__span-8-18"><span class="n">Teacher</span><span class="o">::</span><span class="n">Teacher</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">_salary</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">_phone</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-19"><span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_salary</span><span class="p">;</span>
+</span><span id="__span-8-20"><span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_phone</span><span class="p">;</span>
+</span><span id="__span-8-21"><span class="p">}</span>
+</span><span id="__span-8-22">
+</span><span id="__span-8-23"><span class="k">class</span><span class="w"> </span><span class="nc">Stu</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 学生类</span>
+</span><span id="__span-8-24"><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-8-25"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-8-26"><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">weight</span><span class="p">;</span>
+</span><span id="__span-8-27">
+</span><span id="__span-8-28"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-8-29"><span class="w">  </span><span class="n">Stu</span><span class="p">();</span>
+</span><span id="__span-8-30"><span class="w">  </span><span class="n">Stu</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">);</span>
+</span><span id="__span-8-31"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">see_teacher</span><span class="p">(</span><span class="n">Teacher</span><span class="o">&amp;</span><span class="p">);</span>
+</span><span id="__span-8-32"><span class="p">};</span>
+</span><span id="__span-8-33">
+</span><span id="__span-8-34"><span class="n">Stu</span><span class="o">::</span><span class="n">Stu</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-8-35">
+</span><span id="__span-8-36"><span class="n">Stu</span><span class="o">::</span><span class="n">Stu</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">param_age</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">param_weight</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-37"><span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_age</span><span class="p">;</span>
+</span><span id="__span-8-38"><span class="w">  </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">param_weight</span><span class="p">;</span>
+</span><span id="__span-8-39"><span class="p">}</span>
+</span><span id="__span-8-40">
+</span><span id="__span-8-41"><span class="kt">void</span><span class="w"> </span><span class="n">Stu</span><span class="o">::</span><span class="n">see_teacher</span><span class="p">(</span><span class="n">Teacher</span><span class="o">&amp;</span><span class="w"> </span><span class="n">teacher</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-42"><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;教师工资：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">teacher</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; 手机：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">teacher</span><span class="p">.</span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-8-43"><span class="p">}</span>
+</span><span id="__span-8-44">
+</span><span id="__span-8-45"><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-46"><span class="w">  </span><span class="n">Teacher</span><span class="w"> </span><span class="n">thr</span><span class="p">(</span><span class="mi">3800</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;18539268715&quot;</span><span class="p">);</span>
+</span><span id="__span-8-47"><span class="w">  </span><span class="n">Stu</span><span class="w"> </span><span class="nf">sdt</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">);</span>
+</span><span id="__span-8-48"><span class="w">  </span><span class="n">sdt</span><span class="p">.</span><span class="n">see_teacher</span><span class="p">(</span><span class="n">thr</span><span class="p">);</span>
+</span><span id="__span-8-49"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-8-50"><span class="p">}</span>
+</span><span id="__span-8-51"><span class="c1">//===output===</span>
+</span><span id="__span-8-52"><span class="n">教师工资</span><span class="err">：</span><span class="mi">3800</span><span class="w"> </span><span class="n">手机</span><span class="err">：</span><span class="mi">18539268715</span>
+</span></code></pre></div></td></tr></table></div>
+<p>如果去掉<code>friend class Stu;</code>，将会编译报错：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="n">demo</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="err">‘</span><span class="kt">void</span><span class="w"> </span><span class="n">Stu</span><span class="o">::</span><span class="n">see_teacher</span><span class="p">(</span><span class="n">Teacher</span><span class="o">&amp;</span><span class="p">)</span><span class="err">’</span><span class="o">:</span>
+</span><span id="__span-9-2"><span class="n">demo</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span><span class="mi">42</span><span class="o">:</span><span class="mi">35</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="w"> </span><span class="err">‘</span><span class="kt">double</span><span class="w"> </span><span class="n">Teacher</span><span class="o">::</span><span class="n">salary</span><span class="err">’</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">context</span>
+</span><span id="__span-9-3"><span class="w">   </span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;教师工资：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">teacher</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; 手机：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">teacher</span><span class="p">.</span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-4"><span class="w">      </span><span class="o">|</span><span class="w">                                   </span><span class="o">^~~~~~</span>
+</span><span id="__span-9-5"><span class="n">demo</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span><span class="mi">8</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="w"> </span><span class="n">note</span><span class="o">:</span><span class="w"> </span><span class="n">declared</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">here</span>
+</span><span id="__span-9-6"><span class="w">    </span><span class="mi">8</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">salary</span><span class="p">;</span>
+</span><span id="__span-9-7"><span class="w">      </span><span class="o">|</span><span class="w">          </span><span class="o">^~~~~~</span>
+</span><span id="__span-9-8"><span class="n">demo</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span><span class="mi">42</span><span class="o">:</span><span class="mi">66</span><span class="o">:</span><span class="w"> </span><span class="n">error</span><span class="o">:</span><span class="w"> </span><span class="err">‘</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">Teacher</span><span class="o">::</span><span class="n">phone</span><span class="err">’</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">within</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">context</span>
+</span><span id="__span-9-9"><span class="w">   </span><span class="mi">42</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;教师工资：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">teacher</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; 手机：&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">teacher</span><span class="p">.</span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</span><span id="__span-9-10"><span class="w">      </span><span class="o">|</span><span class="w">                                                                  </span><span class="o">^~~~~</span>
+</span><span id="__span-9-11"><span class="n">demo</span><span class="p">.</span><span class="n">cpp</span><span class="o">:</span><span class="mi">9</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="w"> </span><span class="n">note</span><span class="o">:</span><span class="w"> </span><span class="n">declared</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="n">here</span>
+</span><span id="__span-9-12"><span class="w">    </span><span class="mi">9</span><span class="w"> </span><span class="o">|</span><span class="w">   </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>注意：
+- 友元关系是<strong style="color:red">不能传递</strong>的。B类是A类的友元，C类是B类的友元，C类和A类之间，如果没有声明，就没有任何友元关系，不能进行数据共享。
+- 友元关系是<strong style="color:red">单向的</strong>(不是对称的）。如果声明B类是A类的友元，B类的成员函数就可以访问A类的私有和保护数据，但A类的成员函数却不能访问B类的私有和保护数据。
+- 友元的作用主要是为了**提高程序的运行效率和方便编程**。但随着硬件性能的提高，友元的作用也不明显，相反，友元破坏了类的封装性，所以在使用时，应**权衡利弊**。</p>
+<h2 id="this">this指针<a class="headerlink" href="#this" title="Permanent link">&para;</a></h2>
+<ul>
+<li>不同对象都调用同一个函数代码段</li>
+<li>成员函数必须使用对象来调用。一个类的所有对象调用的成员函数都是同一个代码段</li>
+<li>在每个类的成员函数中，都隐含了一个**this 指针**。该指针指向<strong style="color:darkblue">正在调用该成员函数的对象</strong></li>
+<li>等同于执行<code>A *this=&amp;obj;//A为具体的类</code></li>
+<li>this指针的作用是使成员函数记住当前访问成员函数的对象，以便对对象中的数据成员进行访问。</li>
+</ul>
+<h2 id="static">static数据成员<a class="headerlink" href="#static" title="Permanent link">&para;</a></h2>
+<ul>
+<li>引入原因：某些数据成员是某个类的所有对象共享的，属于整个类</li>
+<li>所有对象的**static数据成员**的值都是一样的</li>
+<li>static数据成员不随对象的建立而分配空间，不随对象的撤销而释放</li>
+<li>static数据成员是在程序**编译时**被分配空间的，到**程序结束**时释放空间</li>
+<li>static数据成员初始化：</li>
+<li>**不能用构造函数**初始化赋值；</li>
+<li>不能放在main函数中初始化；</li>
+<li>在程序定义该类的任何对象之前，对类中的static数据成员单独初始化</li>
+<li>只能在类体外初始化</li>
+<li>static数据成员可通过**类名**来引用，可通过**对象名**引用</li>
+<li>私有static数据成员不能在类外直接引用（类名、对象名），而必须通过<strong style="color:cyan">公有成员函数</strong>引用</li>
+</ul>
+<p>具体的初始化规则：</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="n">文件范围内使用下边语句格式进行初始化</span><span class="err">：</span>
+</span><span id="__span-10-2"><span class="o">&lt;</span><span class="n">数据类型</span><span class="o">&gt;</span><span class="w">  </span><span class="o">&lt;</span><span class="n">类名</span><span class="o">&gt;::&lt;</span><span class="n">静态数据成员名</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">初始化值</span><span class="o">&gt;</span><span class="err">；</span>
+</span><span id="__span-10-3"><span class="n">在初始化语句中不必加static</span><span class="err">。</span><span class="n">如果未对静态数据成员赋初值</span><span class="err">，</span><span class="n">则编译系统会自动赋予初值0</span><span class="err">。</span>
+</span><span id="__span-10-4">
+</span><span id="__span-10-5"><span class="kt">int</span><span class="w"> </span><span class="n">Box</span><span class="err">∷</span><span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span><span class="w">              </span><span class="c1">//对静态数据成员height初始化</span>
+</span><span id="__span-10-6"><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">Box</span><span class="err">∷</span><span class="n">height</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">      </span><span class="c1">//通过类名引用静态数据成员</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>const static</code> 数据成员既可以在类内又可以在类外初始化!!!</p>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-11-2"><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+</span><span id="__span-11-3">
+</span><span id="__span-11-4"><span class="k">class</span><span class="w"> </span><span class="nc">Demo</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-5"><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+</span><span id="__span-11-6"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">attr</span><span class="p">;</span><span class="c1">//类内未初始化必须在类外初始化，否则编译不通过</span>
+</span><span id="__span-11-7"><span class="w">                        </span><span class="c1">//undefined reference to &#39;Demo::attr&#39;</span>
+</span><span id="__span-11-8"><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="c1">//类内初始化后不能再在类外初始化</span>
+</span><span id="__span-11-9">
+</span><span id="__span-11-10"><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-11-11"><span class="w">  </span><span class="n">Demo</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-11-12"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">show</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">attr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">//&#39;Demo::attr&#39;</span>
+</span><span id="__span-11-13"><span class="p">};</span>
+</span><span id="__span-11-14"><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Demo</span><span class="o">::</span><span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-11-15"><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Demo</span><span class="o">::</span><span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-11-16"><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Demo</span><span class="o">::</span><span class="n">attr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="c1">//编译报错</span>
+</span><span id="__span-11-17"><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Demo</span><span class="o">::</span><span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="c1">//编译报错</span>
+</span><span id="__span-11-18">
+</span><span id="__span-11-19"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-20"><span class="w">  </span><span class="n">Demo</span><span class="w"> </span><span class="n">demo</span><span class="p">;</span>
+</span><span id="__span-11-21"><span class="w">  </span><span class="n">demo</span><span class="p">.</span><span class="n">show</span><span class="p">();</span>
+</span><span id="__span-11-22"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-11-23"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="static_1">static成员函数<a class="headerlink" href="#static_1" title="Permanent link">&para;</a></h2>
+<h2 id="_14">静态数据成员与全局变量：<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<ul>
+<li>静态数据成员的作用域只限于定义该类的作用域内</li>
+<li>在类作用域内，可以通过类名和域运算符"∷"引用静态数据成员，而不论类对象是否存在。</li>
+</ul>
+<h2 id="static_2">static成员函数<a class="headerlink" href="#static_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>引入原因</li>
+<li>对static数据成员的访问。</li>
+<li>定义</li>
+<li>函数定义前加static关键字</li>
+<li>一般为公有，也可以定义为私有</li>
+<li>调用</li>
+<li><code>&lt;类名&gt;::&lt;static 成员函数名&gt;(&lt;参数表&gt;)</code></li>
+</ul>
+<h2 id="_15">本章总结<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>使用关键字const可以指定对象是不可以修改的。</li>
+<li>对象可以作为其它类的数据成员</li>
+<li>使用友元函数和友元类可以提高性能</li>
+<li>每个对象都可以通过this指针访问自己的地址</li>
+<li>使用静态数据成员可以表示类的实例共享的属性。</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+  <h2 id="__comments">Comments</h2>
+  <!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="RoureYungLoo/RoureYungLoo.github.io"
+        data-repo-id="R_kgDOJJcXYw"
+        data-category="General"
+        data-category-id="DIC_kwDOJJcXY84CWm4i"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-%E7%B1%BB%E7%9A%84%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E4%B8%80/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 类的深入剖析一">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                类的深入剖析一
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="md-footer__link md-footer__link--next" aria-label="Next: 运算符重载">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                运算符重载
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

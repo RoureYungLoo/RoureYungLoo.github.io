@@ -1,0 +1,1744 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01-%E8%B5%B0%E8%BF%91C%E8%AF%AD%E8%A8%80/">
+      
+      
+        <link rel="next" href="../03-%E7%BB%93%E6%9E%84%E5%8C%96%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>走近C语言程序设计 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              走近C语言程序设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    什么是C语言？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E8%B5%B0%E8%BF%91C%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    走近C语言程序设计
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言程序设计
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="本章大纲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      １. C语言程序的基本结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2c" class="md-nav__link">
+    <span class="md-ellipsis">
+      ２．C语言的字符集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. C语言的关键字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. C语言的标识符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. C语言的数据类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 存储单元
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="整数：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      （1）有符号正整数：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      （2）有符号的负整数：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      （3）无符号整数：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符的存储方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符的存储方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符编码：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符类型char
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数存储方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点数存储方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数常量：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数溢出：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型小结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++与C数据类型的不同
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C++与C数据类型的不同">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、struct的不同
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、union的不同
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、枚举的不同
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-%E7%BB%93%E6%9E%84%E5%8C%96%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结构化的C程序设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C程序控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-C%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言数组
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-C%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    格式化输入和输出
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E7%BB%93%E6%9E%84%E4%BD%93-%E5%85%B1%E7%94%A8%E4%BD%93-%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结构体、共用体、枚举、位域
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tinyhttpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tinyhttpd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CPP/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Java/01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="本章大纲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      １. C语言程序的基本结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2c" class="md-nav__link">
+    <span class="md-ellipsis">
+      ２．C语言的字符集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. C语言的关键字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. C语言的标识符
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. C语言的数据类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 存储单元
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数：
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="整数：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      （1）有符号正整数：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      （2）有符号的负整数：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      （3）无符号整数：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符的存储方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符的存储方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符编码：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符类型char
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数存储方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="浮点数存储方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数常量：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数溢出：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据类型小结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      C++与C数据类型的不同
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="C++与C数据类型的不同">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、struct的不同
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、union的不同
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、枚举的不同
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="c">走近C语言程序设计<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
+<h2 id="_1">本章大纲<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>C语言程序的基本结构</li>
+<li>C语言的字符集和关键字</li>
+<li>C语言的数据类型</li>
+<li>C语言的格式输入输出</li>
+<li>C语言的算数运算符和运算规则</li>
+<li>C语言的关系运算符和运算规则 </li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="cm">/* 在屏幕上显示Hello World! */</span>
+</span><span id="__span-0-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-3"><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 定义主函数 */</span>
+</span><span id="__span-0-4"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-5"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>/*... */</code> ：注释部分，以增加程序的可读性，不被执行</p>
+<p><code>#include</code>： 预处理命令，包含某一文件内容到本文件</p>
+<p>函数：C程序由函数组成，<strong>一个C程序有且仅有一个主函数（main函数）</strong></p>
+<p><code>void main()</code>; 函数说明：说明函数**返回值类型**、<strong>函数名**和**函数参数</strong></p>
+<p><code>{ ... }</code> ：函数体，包括变量说明和语句执行部分</p>
+<h3 id="1-c">１. C语言程序的基本结构<a class="headerlink" href="#1-c" title="Permanent link">&para;</a></h3>
+<p>（１）注释</p>
+<ul>
+<li>单行注释：<strong>／／注释内容</strong></li>
+<li>多行注释：<strong>／＊注释内容＊／</strong></li>
+</ul>
+<p>（２）预处理命令：<strong>#include</strong> 包含某个文件</p>
+<p>（３）函数：</p>
+<ul>
+<li>C程序由**函数**组成。</li>
+<li>一个C程序**有且仅有**一个主函数main（）</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="cm">/* 在屏幕上显示Hello World! */</span>
+</span><span id="__span-1-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1">  //预处理命令</span>
+</span><span id="__span-1-3"><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 函数说明：说明函数类型、函数名和函数参数</span>
+</span><span id="__span-1-4"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-1-5"><span class="p">}</span><span class="w">  </span><span class="c1">// ｛ ｝之间为函数体：包括变量说明和语句执行部分</span>
+</span></code></pre></div></td></tr></table></div>
+<p>（４）</p>
+<ul>
+<li>一个C程序由**一个或多个函数**组成，但**有且仅有**一个主函数（main函数）</li>
+<li>main函数是**程序执行的入口**，可置于程序的**任何位置**。</li>
+<li>程序中可以有**预处理命令**(如：include 命令)。预处理命令通常放在程序的最前面。</li>
+<li><strong>每个语句以分号结尾；预处理命令、函数头和花括号“}”之后不能加分号。</strong></li>
+<li>函数包括函数的说明部分和函数体；函数体包括变量说明部分和执行部分；函数体由一对花括号“{ }”括起来。</li>
+<li>括在<code>/*…*/</code>内的文本为多行注释。</li>
+<li>一行可以写多个语句，一个语句也可以写在多行上。</li>
+<li>程序**区分大小写字**母。一般变量、语句等用小写字母书写；符号常量、宏名等用大写字母书写。</li>
+<li>标识符和保留字之间须加空格以示分隔。</li>
+</ul>
+<h3 id="2c">２．C语言的字符集<a class="headerlink" href="#2c" title="Permanent link">&para;</a></h3>
+<p>来自<a href="https://www.asciitable.com/">ASCII</a>)表, American Standard Code for Information Interchange，美国信息互换标准代码</p>
+<ul>
+<li>Letters（52个大小写字母）</li>
+<li>Digits（10个）</li>
+<li>Blanks（空白符）：空格符、制表符、回车符、换行符</li>
+<li>图形符号（Graphic characters）：! # % ^ &amp; * ( _ ) - + = ~ [ ] ' |  ; : " {} , . &lt; &gt; / ?</li>
+</ul>
+<h3 id="3-c">3. C语言的关键字<a class="headerlink" href="#3-c" title="Permanent link">&para;</a></h3>
+<p>关键字也称为保留字</p>
+<ul>
+<li>类型说明</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="kt">int</span><span class="w">     </span><span class="kt">long</span><span class="w">    </span><span class="kt">short</span>
+</span><span id="__span-2-2"><span class="kt">float</span><span class="w">   </span><span class="kt">double</span>
+</span><span id="__span-2-3"><span class="kt">char</span>
+</span><span id="__span-2-4"><span class="kt">unsigned</span><span class="w">    </span><span class="kt">signed</span>
+</span><span id="__span-2-5"><span class="k">const</span><span class="w">   </span><span class="kt">void</span><span class="w">    </span><span class="k">volatile</span>
+</span><span id="__span-2-6"><span class="k">struct</span><span class="w">  </span><span class="nc">union</span><span class="w">   </span><span class="k">enum</span><span class="w"> </span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>语句定义</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="k">if</span><span class="w">      </span><span class="k">else</span>
+</span><span id="__span-3-2"><span class="k">goto</span>
+</span><span id="__span-3-3"><span class="k">switch</span><span class="w">  </span><span class="k">case</span><span class="w">    </span><span class="no">default</span>
+</span><span id="__span-3-4"><span class="no">do</span><span class="w">      </span><span class="no">while</span><span class="w">   </span><span class="no">for</span>
+</span><span id="__span-3-5"><span class="no">continue</span><span class="w">    </span><span class="no">break</span>
+</span><span id="__span-3-6"><span class="no">return</span><span class="w">  </span><span class="no">typedef</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>存储类别说明：</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="k">auto</span><span class="w">    </span><span class="k">register</span><span class="w">    </span><span class="k">extern</span><span class="w">  </span><span class="k">static</span>
+</span></code></pre></div></td></tr></table></div>
+<ul>
+<li>长度运算符：</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="k">sizeof</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="4-c">4. C语言的标识符<a class="headerlink" href="#4-c" title="Permanent link">&para;</a></h3>
+<p><strong>标识符</strong>（<code>Identifiers</code>）是程序中引用对象的名称，用来标识变量、符号常量、数组、函数、结构体、共用体、自定义类型等</p>
+<p><strong>命名规则</strong></p>
+<ul>
+<li>只能包括大小写**字母**、<strong>数字**和**下划线</strong>；</li>
+<li><strong>首字符必须是字母或下划线</strong>；</li>
+<li>一般标识符的**前31**个字符有效；（视具体编译器的规定）</li>
+<li>不能与关键字相同。</li>
+</ul>
+<h3 id="5-c">5. C语言的数据类型<a class="headerlink" href="#5-c" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基本类型：整型，字符型，浮点型，枚举类型</li>
+<li>构造类型： 结构体，共用体，数组</li>
+<li>指针类型:</li>
+<li>空类型:</li>
+</ul>
+<h3 id="6">6. 存储单元<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>计算机内部存储器的部分空间，一般规定了相应的字节长度</p>
+<p><strong>赋值： 破坏性的</strong></p>
+<p>读值：非破坏性的</p>
+<p>数据、常量、变量、数据类型、</p>
+<p>位、字节、字：</p>
+<p><img alt="img" src="../img/ch02-01.png" /> </p>
+<p>字 ：即机器字长，是自然的存储单位。计算机是多少位的，一个字就又多少位。（如64位的机器，一个机器字长就是64位）</p>
+<h3 id="_2"><strong>整数：</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="1">（1）有符号正整数：<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>以二进制补码形式存放，正整数的补码与原码相同</p>
+<p><img alt="img" src="../img/ch02-02.png" /></p>
+<p><img alt="img" src="../img/ch02-03.png" /></p>
+<h4 id="2">（2）有符号的负整数：<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>以二进制补码的形式存放</p>
+<p><img alt="img" src="../img/ch02-04.png" /></p>
+<p><img alt="img" src="../img/ch02-05.png" /></p>
+<p><img alt="img" src="../img/ch02-06.png" /></p>
+<h4 id="3">（3）无符号整数：<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>所有二进制位都存放数值</p>
+<p><img alt="img" src="../img/ch02-07.png" /><img alt="img" src="../img/ch02-08.png" /></p>
+<p><img alt="img" src="../img/ch02-09.png" /></p>
+<hr />
+<p><img alt="img" src="../img/ch02-10.png" /></p>
+<p>C标准只规定：<code>short ≤ int ≤ long</code></p>
+<p>最大最小值参考<code>&lt;limits.h&gt;</code></p>
+<p>整型常量：</p>
+<ul>
+<li>十进制<code>decimal</code>：<code>99</code>、<code>65535</code></li>
+<li>八进制<code>octal</code>：<code>0177</code>、<code>0173</code></li>
+<li>十六进制<code>hexadecimal</code>：<code>0xfff</code>、<code>0X43D</code></li>
+</ul>
+<p>整型常量**默认**类型是**int**，即有符号的基本整型。加上后缀 <strong>u 或 U</strong> 表示**无符号整数**，或者 l 或 L 表示长整数。0xb5Lu</p>
+<p>整型变量声明：</p>
+<p>类型说明符 变量名1，变量名2，...，变量名n；</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="c1">//变量声明创建了变量：为变量分配了存储空间（存储空间内部存储的是垃圾值 ）</span>
+</span><span id="__span-6-2">
+</span><span id="__span-6-3"><span class="n">height</span><span class="o">=</span><span class="mi">288</span><span class="p">;</span><span class="c1">//初始化变量height，破环了原有存储空间的值</span>
+</span></code></pre></div></td></tr></table></div>
+<p>整型变量初始化：</p>
+<p>破坏变量声明后的存储空间值，存入新的值</p>
+<p><img alt="img" src="../img/ch02-11.png" /></p>
+<p>整数溢出：超出整数类型的数值范围。</p>
+<h3 id="_3">字符的存储方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">字符编码：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>计算机使用一种数字编码（整数）来表示字符，每一个字符都对应一个特定的整数。</p>
+</li>
+<li>
+<p>常用的编码是ASCII（美国信息交换用标准码）。</p>
+</li>
+<li>
+<ul>
+<li>7位二进制数，十进制码值范围从0到127。</li>
+</ul>
+</li>
+<li>一般用一个字节保存，最高位为0。</li>
+</ul>
+<p>字符的存储方式与整数相同</p>
+<ul>
+<li>
+<p>举例</p>
+</li>
+<li>
+<ul>
+<li>字母A的ASCII码值为65，</li>
+</ul>
+</li>
+<li>那么在内存中以65的二进制形式存储，</li>
+<li>且占一个字节。</li>
+</ul>
+<p><img alt="img" src="../img/ch02-12.png" /></p>
+<p>字符类型和字符变量</p>
+<h4 id="char">字符类型char<a class="headerlink" href="#char" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>占一个字节；</p>
+</li>
+<li>
+<p>可视为一个有符号的整数。</p>
+</li>
+</ul>
+<p>字符常量</p>
+<ul>
+<li>
+<p>用单引号括起来的一个字符。</p>
+</li>
+<li>
+<p>C语言将字符常量视为int类型。</p>
+</li>
+</ul>
+<p>'x'   '9'   '+‘</p>
+<p>char c1, c2;</p>
+<p>c1='a';</p>
+<p>c2='bc';</p>
+<ul>
+<li>char类型为8位,一个字节，对于’bc’，将把’b’和’c’的ASCII码值存储在两个字节中，并把’c’赋值给变量c2。不同系统处理方式不同，结果不同。</li>
+</ul>
+<p><img alt="img" src="../img/ch02-13.png" /></p>
+<p>转义字符</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="err">\</span><span class="n">a</span><span class="w"> </span><span class="n">警报</span><span class="w">      </span><span class="err">\\</span><span class="w"> </span><span class="n">反斜杠</span><span class="err">（\）</span>
+</span><span id="__span-7-2">
+</span><span id="__span-7-3"><span class="err">\</span><span class="n">b</span><span class="w"> </span><span class="n">退格</span><span class="w">      </span><span class="err">\</span><span class="o">?</span><span class="w"> </span><span class="n">问号</span><span class="err">（</span><span class="o">?</span><span class="err">）</span>
+</span><span id="__span-7-4">
+</span><span id="__span-7-5"><span class="err">\</span><span class="n">f</span><span class="w"> </span><span class="n">走纸</span><span class="w">      </span><span class="err">\&#39;</span><span class="w"> </span><span class="n">单引号</span><span class="err">（’）</span>
+</span><span id="__span-7-6">
+</span><span id="__span-7-7"><span class="err">\</span><span class="n">n</span><span class="w"> </span><span class="n">换行</span><span class="w">     </span><span class="err">\</span><span class="s">&quot; 双引号（”）</span>
+</span><span id="__span-7-8">
+</span><span id="__span-7-9"><span class="err">\</span><span class="n">r</span><span class="w"> </span><span class="n">回车</span><span class="w">      </span><span class="err">\</span><span class="n">ooo</span><span class="w"> </span><span class="n">八进制值</span><span class="err">（</span><span class="n">o表示一个八进制数字</span><span class="err">）</span>
+</span><span id="__span-7-10">
+</span><span id="__span-7-11"><span class="err">\</span><span class="n">t</span><span class="w"> </span><span class="n">水平制表符</span><span class="w">  </span><span class="err">\</span><span class="n">xhh</span><span class="w"> </span><span class="n">十六进制值</span><span class="err">（</span><span class="n">h表示一个十六进制数字</span><span class="err">）</span>
+</span><span id="__span-7-12">
+</span><span id="__span-7-13"><span class="err">\</span><span class="n">v</span><span class="w"> </span><span class="n">垂直制表符</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_5">浮点数存储方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>浮点型数据在内存中按指数形式存放。</p>
+<p>314.15</p>
+<p><img alt="img" src="../img/ch02-14.png" /></p>
+<p><img alt="img" src="../img/ch02-15.png" /></p>
+<p>s = ±1</p>
+<p><img alt="img" src="../img/ch02-16.png" /></p>
+<h4 id="_6">浮点数常量：<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>十进制形式</li>
+</ul>
+<p>12.3  .65  0.534</p>
+<ul>
+<li>指数形式：&lt; 小数 &gt; &lt; e | E &gt; &lt; 整数 &gt;</li>
+</ul>
+<p>1.2e-2   .1E5   7E0</p>
+<ul>
+<li>默认类型是double。</li>
+<li>可以加上后缀 f 或 F 表示float类型，或者 l 或 L 表示long double类型，否则该常量是double类型。</li>
+</ul>
+<p>2.3f  1.2L  .1E5f</p>
+<p>float和double对应的格式说明符为%f、%e。</p>
+<p>浮点数舍入误差</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-8-2"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mf">123456.789e5</span><span class="p">;</span>
+</span><span id="__span-8-5"><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mi">20</span><span class="p">;</span>
+</span><span id="__span-8-6"><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a=%f</span><span class="se">\n</span><span class="s">b=%f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-8-7"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="img" src="../img/ch02-20.png" /></p>
+<p>a+20的理论值应该是：12345678920</p>
+<p>但是，一个实型变量能够保证的有效数字是7位，后面的数字将被舍去，是没有意义的。</p>
+<p>因此，最后得到</p>
+<p>b=12345678848.000000</p>
+<p>应当避免一个很大的数和一个很小的数直接相加或相减，否则就会“丢失”较小的数。</p>
+<h4 id="_7">浮点数溢出：<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>上溢出</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-9-2"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-9-3"><span class="p">{</span>
+</span><span id="__span-9-4"><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">toobig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.4e38</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100.0f</span><span class="p">;</span>
+</span><span id="__span-9-5"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; %f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">toobig</span><span class="p">);</span>
+</span><span id="__span-9-6"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="img" src="../img/ch02-17.png" /></p>
+<p>下溢出</p>
+<h2 id="_8">数据类型小结<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>基本的数据类型包括两大类：</p>
+</li>
+<li>
+<ul>
+<li>整数类型</li>
+</ul>
+</li>
+<li>
+<p>浮点类型</p>
+</li>
+<li>
+<p>一般使用int和float表示数，用char表示字符。</p>
+</li>
+<li>
+<p>在使用变量的函数的可执行语句之前声明该变量，并为它选择有意义的名字。</p>
+</li>
+<li>
+<p>初始化变量使用的常量应当与变量的类型相匹配。</p>
+</li>
+</ul>
+<p><img alt="img" src="../img/ch02-18.png" /></p>
+<p><img alt="img" src="../img/ch02-19.png" /></p>
+<h2 id="cc">C++与C数据类型的不同<a class="headerlink" href="#cc" title="Permanent link">&para;</a></h2>
+<h3 id="struct">一、struct的不同<a class="headerlink" href="#struct" title="Permanent link">&para;</a></h3>
+<p>1、C++中不再需要typedef 关键字对结构进行重定义，设计好结构后，定义结构变量时不再需要struct关键字
+2、C++中结构体的成员可以是函数，在成员函数中可以直接访问成员变量，不需要<code>.</code>或<code>-&gt;</code>
+3、C++中结构体中有一些隐藏的成员函数（构造、析构、拷贝、赋值）
+4、C++中可以给成员设置访问属性
+public公开，protected保护，private私有，且结构体中的成员默认是public
+5、在C++中可以继承其它结构体，也可以被其它结构体继承</p>
+<h3 id="union">二、union的不同<a class="headerlink" href="#union" title="Permanent link">&para;</a></h3>
+<p>1、不再需要 typedef 关键字对结构进行重定义，设计好联合后，定义联合变量时不再需要 union 关键字
+2、联合体的成员可以是函数，在成员函数中可以直接访问成员变量，不需要<code>.</code>或<code>-&gt;</code>
+3、联合体中有一些隐藏的成员函数(构造、析构、拷贝、赋值)
+4、可以给成员设置访问属性，成员默认是public</p>
+<h3 id="_9">三、枚举的不同<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>1、不再需要 typedef 关键字对结构进行重定义，设计好枚举后，定义枚举变量时不再需要 enum 关键字
+2、不能与整数数据进行转换，不能用整数数据直接给枚举变量赋值，必须使用枚举值</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-%E8%B5%B0%E8%BF%91C%E8%AF%AD%E8%A8%80/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 走近C语言">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                走近C语言
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-%E7%BB%93%E6%9E%84%E5%8C%96%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-footer__link md-footer__link--next" aria-label="Next: 结构化的C程序设计">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                结构化的C程序设计
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

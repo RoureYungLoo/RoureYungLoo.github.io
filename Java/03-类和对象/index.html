@@ -1,0 +1,1588 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02-%E9%80%89%E6%8B%A9%E4%B8%8E%E5%BE%AA%E7%8E%AF/">
+      
+      
+        <link rel="next" href="../Java%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>面向对象概述 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              面向对象概述
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../C/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CPP/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概述与基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E9%80%89%E6%8B%A9%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    选择结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    面向对象概述
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    面向对象概述
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构化程序设计
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象程序设计
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="面向对象基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象(Object)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象的两方面特征
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    <span class="md-ellipsis">
+      类(Class)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      类定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      实例(instance)或对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message" class="md-nav__link">
+    <span class="md-ellipsis">
+      消息(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      消息三要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      封装性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      继承性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象的优势
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="面向对象的优势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      易维护
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      可扩展
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      可重用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象的应用
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java安装配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java%E6%95%99%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UML%E7%B1%BB%E9%97%B4%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UML类间关系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      结构化程序设计
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象程序设计
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="面向对象基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象(Object)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      对象的两方面特征
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class" class="md-nav__link">
+    <span class="md-ellipsis">
+      类(Class)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      类定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      实例(instance)或对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message" class="md-nav__link">
+    <span class="md-ellipsis">
+      消息(message)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      消息三要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      封装性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      继承性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      多态性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象的优势
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="面向对象的优势">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      易维护
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      可扩展
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      可重用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象的应用
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">面向对象概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>两种程序设计方法</p>
+<p>结构化程序设计，典型代表Pascal，C</p>
+<p>面向对象程序设计（ Object Oriented Programming，OOP ），典型代表Java, C++, Python, C#</p>
+<h2 id="_2">结构化程序设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>模块分解与功能抽象和自顶向下、分而治之的方法。支持子程序、全局变量、丰富的控制结构。</li>
+<li>是面向过程的。</li>
+<li>不能很好的适应需求变化，在开发大型项目时，力不从心。</li>
+</ul>
+<h2 id="_3">面向对象程序设计<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>以接近人类思维的方法描述软件对象，降低了软件开发难度，提高了开发速度。</li>
+<li>软件具有易维护、可重用以及可扩展性。吸收了结构化程序设计思想精华，提出一些新的概念。</li>
+<li>OOP成为当今最流行的软件开发技术。</li>
+</ul>
+<h2 id="_4">面向对象基本概念<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="object">对象(Object)<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
+<p>现实世界中，一个人、一辆汽车、一台电视机、一所学校，一次会议、一场足球比赛、一个账户等  </p>
+<h3 id="_5">对象的定义<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>是其自身所具有的状态特征及可以对这些状态施加的操作结合在一起所构成的实体。</p>
+<h3 id="_6">对象的两方面特征<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>静态特征: 描述对象的状态。</p>
+<p>动态特征: 描述对象的行为。</p>
+<p>举例：一辆汽车。状态描述：生产厂家、颜色、出厂年份、价格等；行为描述：启动、加速、转弯和停止等 </p>
+<h3 id="class">类(Class)<a class="headerlink" href="#class" title="Permanent link">&para;</a></h3>
+<p>最重要的概念。如人类、鱼类、交通工具类等。</p>
+<h3 id="_7">类定义<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>具有相似特征和行为的对象的集合。</p>
+<ul>
+<li>人类具有的区别于其他动物的特征有直立行走、使用工具、使用语言交流、能工作等</li>
+<li>所有的事物都可以归到某类中。例如，汽车属于交通工具类，手机属于通信工具类。 </li>
+</ul>
+<h3 id="instance">实例(instance)或对象<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h3>
+<p>某个类的一个具体的对象称为该类的一个实例。例如，我的汽车是汽车类的实例，张三是学生类的实例。</p>
+<h3 id="message">消息(message)<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对象与对象之间不是孤立的，它们之间存在着某种联系，这种联系是通过消息传递的。</li>
+<li>例如，开汽车就是人向汽车传递消息。 </li>
+</ul>
+<h3 id="_8">消息三要素<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ol>
+<li>哪个对象发出的消息？接收者</li>
+<li>给哪个对象发送的消息？发送者</li>
+<li>发送了什么样的消息？消息内容(方法名+参数列表)</li>
+</ol>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="w"> </span><span class="n">receiver</span><span class="p">.</span><span class="na">Method</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_9">封装性<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对象是状态（属性）和行为（操作或方法）封装体。例如，汽车就是一个封装体，电视机是一个封装体。</li>
+<li>实现信息隐藏，通过接口与外界通信。</li>
+</ul>
+<h3 id="_10">继承性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>一个对象获得另一个对象的属性的过程。继承性实现了类之间的是一种（IS-A）关系。 汽车是一种（is a）交通工具。</li>
+</ul>
+<h3 id="_11">多态性<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>接口的多种不同的实现方式即为多态。</p>
+<h2 id="_12">面向对象的优势<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">易维护<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li>OOP方法很容易实现程序模块化，减少了维护的开销</li>
+<li>在OOP中，类就是一个模块，并且可以继承。可以实现“高内聚，低耦合”。</li>
+</ul>
+<h3 id="_14">可扩展<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>功能可以被扩展或增强。</li>
+<li>通过继承来实现。</li>
+</ul>
+<h3 id="_15">可重用<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<ul>
+<li>之前写好的代码可以被代码的创建者或其他人重用。</li>
+<li>可使用语言本身提供类库或API（应用编程接口）。</li>
+<li>问题的解决方案也可重用，这些方案称为设计模式。</li>
+</ul>
+<h2 id="_16">面向对象的应用<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>面向对象分析：OOA，Object Oriented Analysis</p>
+<p>面向对象设计：OOD，Object Oriented Design</p>
+<p>面向对象编程：OOP，Object Oriented Programming</p>
+<h1 id="_17">为对象定义类<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h1>
+<h2 id="_18">如何定义一个类<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<p>一个类的定义包括两个部分，分别是：</p>
+<ol>
+<li>类的声明</li>
+<li>类体的定义</li>
+</ol>
+<p>类声明的一般格式为：</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="cm">/* 基本格式 */</span>
+</span><span id="__span-1-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClassName</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><span class="w">    </span><span class="cm">/* 成员变量声明 */</span>
+</span><span id="__span-1-4"><span class="w">    </span><span class="cm">/* 构造方法定义 */</span>
+</span><span id="__span-1-5"><span class="w">    </span><span class="cm">/* 成员方法定义 */</span>
+</span><span id="__span-1-6"><span class="p">}</span>
+</span><span id="__span-1-7">
+</span><span id="__span-1-8"><span class="o">[</span><span class="kd">public</span><span class="o">]</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClassName</span><span class="w"> </span><span class="o">[</span><span class="kd">extends</span><span class="w"> </span><span class="n">SuperClass</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="kd">implements</span><span class="w"> </span><span class="n">InterfaceName</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">AbstractClass</span><span class="o">]</span><span class="p">{</span>
+</span><span id="__span-1-9"><span class="w">    </span><span class="c1">// 1.成员变量声明    ：定义状态</span>
+</span><span id="__span-1-10"><span class="w">    </span><span class="c1">// 2.构造方法的定义</span>
+</span><span id="__span-1-11"><span class="w">    </span><span class="c1">// 3.成员方法的定义  ：定义行为</span>
+</span><span id="__span-1-12"><span class="w">  </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_19">用类创建对象(实例)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>用构造方法创建对象</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="cm">/* 定义Employee类 */</span>
+</span><span id="__span-2-2"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Employee</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-2-4"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-2-5"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">salary</span><span class="p">;</span>
+</span><span id="__span-2-6">
+</span><span id="__span-2-7"><span class="w">    </span><span class="cm">/* 构造方法 */</span>
+</span><span id="__span-2-8"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Employee</span><span class="p">(){}</span>
+</span><span id="__span-2-9"><span class="p">}</span>
+</span><span id="__span-2-10">
+</span><span id="__span-2-11">
+</span><span id="__span-2-12"><span class="cm">/* 用类创建对象 */</span>
+</span><span id="__span-2-13"><span class="n">Employee</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+</span><span id="__span-2-14"><span class="n">employee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">();</span><span class="w">  </span><span class="c1">// 调用构造方法</span>
+</span><span id="__span-2-15"><span class="n">employee</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;李明&quot;</span><span class="p">;</span>
+</span><span id="__span-2-16"><span class="n">employee</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="p">;</span>
+</span><span id="__span-2-17"><span class="n">employee</span><span class="p">.</span><span class="na">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5000.00</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>用另一个对象创建对象</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="n">Employee</span><span class="w">  </span><span class="n">employee2</span><span class="p">;</span>
+</span><span id="__span-3-2"><span class="n">employee2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span><span class="w">   </span><span class="c1">//这是引用赋值   </span>
+</span><span id="__span-3-3"><span class="n">employee2</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;刘晨&quot;</span><span class="p">;</span>
+</span><span id="__span-3-4"><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">employee</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_20">理解堆和栈<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<ul>
+<li>JVM将内存空间在逻辑上分为栈（stack）与堆（heap）两种结构。</li>
+<li>被调用**方法参数**和方法中的**局部变量**都存储在内存**栈**中，当程序使用**new**运算符创建对象时，JVM将在**堆**中分配内存。</li>
+</ul>
+<h3 id="uml">用UML图表示类<a class="headerlink" href="#uml" title="Permanent link">&para;</a></h3>
+<p>UML，Unified Modeling Language，统一建模语言</p>
+<ul>
+<li>“+”为public成员</li>
+<li>“-”为private成员</li>
+<li>“#”为protected成员</li>
+<li>不加前缀的成员具有默认访问级别。</li>
+</ul>
+<p><img alt="img" src="../03-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1.assets/1716396658303-fab1afd2-7e24-496f-9fa5-60e71a94f3e6.png" /></p>
+<h1 id="_21">方法设计<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h1>
+<p>一个方法的定义包括两个部分，分别是：</p>
+<ol>
+<li>方法的声明</li>
+<li>方法体的定义</li>
+</ol>
+<p>方法声明的一般格式为</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="o">[</span><span class="kd">public</span><span class="o">]</span><span class="w"> </span><span class="n">returnType</span><span class="w">  </span><span class="nf">methodName</span><span class="w"> </span><span class="p">(</span><span class="o">[</span><span class="n">paramList</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><span class="w">    </span><span class="c1">//方法体</span>
+</span><span id="__span-4-3"><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-4-4">
+</span><span id="__span-4-5"><span class="cm">/* 方法签名 = 方法名+形参列表 */</span>
+</span><span id="__span-4-6"><span class="o">[</span><span class="n">访问修饰符</span><span class="o">]</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="o">[</span><span class="n">形参列表</span><span class="o">]</span><span class="p">){</span>
+</span><span id="__span-4-7"><span class="w">    </span><span class="c1">//方法体</span>
+</span><span id="__span-4-8"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="getter">访问方法(getter)<a class="headerlink" href="#getter" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能够返回成员变量值的方法称为访问方法（accessor method）</li>
+<li>访问方法名一般为getXxx()，因此，也称getter方法。如，String getName()</li>
+</ul>
+<h2 id="setter">修改方法(setter)<a class="headerlink" href="#setter" title="Permanent link">&para;</a></h2>
+<ul>
+<li>能够修改成员变量值的方法称为修改方法（mutator method）</li>
+<li>修改方法名一般为setXxx()，因此，也称setter方法。如，void setName(String name)</li>
+</ul>
+<h2 id="_22">方法调用<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<h3 id="_23">实例方法（成员方法）<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>创建一个对象，然后通过对象引用调用。</p>
+<h3 id="_24">静态方法（类方法）<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>通常使用类名调用。</p>
+<h3 id="_25">方法调用主要应用场景<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<ol>
+<li>用对象引用调用类的实例方法</li>
+<li>用类名直接调用static方法</li>
+<li>类中的方法调用本类中的其他方法（注意实例方法与类方法相互调用）</li>
+</ol>
+<h2 id="_26">方法重载<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<p>同名不同参。</p>
+<ul>
+<li>Java允许在一个类中定义多个同名的方法，这称为方法重载（overloading）</li>
+<li>实现方法重载，要求同名的方法，要么参数个数不同，要么参数类型不同</li>
+<li>仅返回值不同不能区分重载的方法</li>
+</ul>
+<h2 id="_27">构造方法(构造器)<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<p>构造方法也叫构造器(Constructor) 。Java每个类都有构造方法。</p>
+<p>构造方法与普通方法的区别是</p>
+<ul>
+<li>构造方法的名称必须与类名相同。</li>
+<li>构造方法不能有返回值，也不能返回void。</li>
+<li>必须在创建对象时用new运算符调用。</li>
+</ul>
+<p>构造方法定义格式：</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="w"> </span><span class="o">[</span><span class="kd">public</span><span class="o">]</span><span class="w"> </span><span class="nf">ClassName</span><span class="p">(</span><span class="o">[</span><span class="n">paramList</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//这里不能返回任何值</span>
+</span><span id="__span-5-2"><span class="w">     </span><span class="c1">// 方法体</span>
+</span><span id="__span-5-3"><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>构造方法分类：</p>
+<ol>
+<li>无参数构造方法（no-args  constructor）</li>
+<li>带参数构造方法</li>
+<li>默认构造方法（default  constructor）</li>
+<li>构造方法重载</li>
+</ol>
+<p>构造方法主要作用：<strong>创建对象并初始化对象的成员变量</strong>。类的成员变量，若声明时没有明确赋初值，则可用构造方法初始化。</p>
+<h3 id="_28">对象初始化<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1">Employee employee = new Employee();
+</span></code></pre></div></td></tr></table></div>
+<p>成员属性默认值：</p>
+<ul>
+<li>整型数据的默认值是0</li>
+<li>浮点型数默认值是0.0</li>
+<li>字符型是<code>'\u0000'</code></li>
+<li>布尔型是false</li>
+<li>引用类型是null</li>
+</ul>
+<h2 id="this">this关键字<a class="headerlink" href="#this" title="Permanent link">&para;</a></h2>
+<p>表示对象本身。</p>
+<p>应用场景：</p>
+<ol>
+<li>解决局部变量与成员变量同名的问题</li>
+<li>解决方法（构造方法）参数与成员变量同名的问题</li>
+<li>用来调用该类的另一个构造方法</li>
+</ol>
+<h2 id="_29">方法参数的传递<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h2>
+<ul>
+<li>调用带参数的方法，需要向它传递参数。</li>
+<li>定义方法指定的参数称为形式参数，调用方法指定的参数称为实际参数。</li>
+</ul>
+<p>Java语言中，方法的参数是按值传递（pass by value）的，即在调用方法时将实际参数的值的一个拷贝传递给方法中的形式参数，方法调用结束后实际参数的值并不改变。</p>
+<ul>
+<li>当参数是**基本类型**时，将实际参数**值**的一个**拷贝**传递给方法，方法调用结束后，对原来的值没有影响。</li>
+<li>当参数是**引用类型**时，实际传递的是**引用值**，因此在方法的内部有可能改变原来的对象。</li>
+</ul>
+<p>小试牛刀：</p>
+<h1 id="_30">静态变量和静态方法<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h1>
+<h2 id="_31">静态变量<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<ul>
+<li>用static修饰，也叫类变量</li>
+<li>所有实例共享一块内存空间</li>
+<li>通常使用类名访问</li>
+</ul>
+<p>实例变量：</p>
+<ul>
+<li>未用static修饰。</li>
+<li>每个实例具有自己的内存空间。</li>
+<li>必须使用实例名访问。</li>
+</ul>
+<p>类常量：</p>
+<ul>
+<li>通常，static与final一起使用来定义类常量。例如，Java类库中的Math类中就定义了两个类常量</li>
+<li>可以通过类名直接使用这些常量</li>
+</ul>
+<h2 id="_32">静态方法<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
+<ul>
+<li>用static修饰，也叫类方法。</li>
+<li>只能访问静态变量。</li>
+<li>通常使用类名访问</li>
+</ul>
+<p>实例方法：</p>
+<ul>
+<li>未用static修饰</li>
+<li>可访问实例变量和静态变量</li>
+<li>必须使用实例名调用</li>
+</ul>
+<p>相互调用关系：</p>
+<p><img alt="img" src="../03-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1.assets/1716446282804-59869c25-a0b0-4c46-aa10-f33a70313d83.png" /></p>
+<h2 id="_33">单例模式<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<p>定义：类只能有一个实例对象。</p>
+<p>设计：private构造器+static 创建方法</p>
+<h2 id="_34">递归<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<ul>
+<li>递归（recursio就是把问题逐渐简单化，最后实现问题n）是解决复杂问题的一种常见方法。其基本思想的求解。</li>
+<li>Java语言支持方法的递归调用。所谓方法的递归调用就是方法自己调用自己。</li>
+</ul>
+<p>趁热打铁1: 求正整数n的阶乘n!，就可以通过递归实现。n!可按递归定义如下：</p>
+<p>​    n! = n ×（n-1）!; n &gt; 0</p>
+<p>​    0! = 1;</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="c1">//设计算n!的方法为factor(n)，则该算法的简单描述如下：</span>
+</span><span id="__span-7-2"><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+</span><span id="__span-7-3"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-7-4"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-7-5"><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-7-6"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-7-7"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h1 id="_35">对象初始化和清除<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h1>
+<h2 id="_36">实例变量初始化<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
+<p>实例变量初始化方式：</p>
+<ol>
+<li>声明时初始化</li>
+<li>使用初始化块</li>
+<li>使用构造方法初始化</li>
+</ol>
+<p>实例变量默认值：在类的定义中如果没有为变量赋初值，则编译器为每个成员变量指定一个**默认值**</p>
+<ul>
+<li>引用类型的变量，默认值为null</li>
+<li>整型默认值是0，浮点型默认值是0.0，布尔型默认值是false，字符型是空字符（<code>'\u0000'</code>）</li>
+</ul>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</span><span id="__span-8-3"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">marks</span><span class="p">;</span>
+</span><span id="__span-8-5"><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">pass</span><span class="p">;</span>
+</span><span id="__span-8-6">
+</span><span id="__span-8-7"><span class="w">    </span><span class="c1">// int id = 10001;</span>
+</span><span id="__span-8-8"><span class="w">    </span><span class="c1">// String name = &quot;Tom&quot;;</span>
+</span><span id="__span-8-9"><span class="w">    </span><span class="c1">// double marks = 90.0;</span>
+</span><span id="__span-8-10"><span class="w">    </span><span class="c1">// boolean pass = true;</span>
+</span><span id="__span-8-11"><span class="p">}</span>
+</span><span id="__span-8-12"><span class="n">Student</span><span class="w"> </span><span class="n">stu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">();</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_37">初始化次序<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<p>如果在类中既为实例变量指定了初值，又有初始化块，还在构造方法中初始化了变量，那么它们执行的顺序如何，最后变量的值是多少？</p>
+<ol>
+<li>首先使用**默认值或指定的初值**初始化</li>
+<li>接下来执行**初始化块**</li>
+<li>最后再执行**构造方法**</li>
+</ol>
+<h2 id="_38">静态变量初始化<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
+<p>静态变量初始化方式：</p>
+<ol>
+<li>声明时初始化</li>
+<li>使用静态初始化块</li>
+<li>使用构造方法初始化</li>
+</ol>
+<h2 id="_39">垃圾回收<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h2>
+<p>垃圾回收：当一个对象不再被引用时，Java运行系统就在后台自动运行一个线程，销毁该对象并释放其所占的内存空间，这个过程称为垃圾回收（Garbage Collection，GC）</p>
+<p>垃圾回收器：后台运行的线程称为垃圾回收器（garbage collector）</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="n">Employee</span><span class="w"> </span><span class="n">emp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">();</span>
+</span><span id="__span-9-2"><span class="n">Employee</span><span class="w"> </span><span class="n">emp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Employee</span><span class="p">();</span>
+</span><span id="__span-9-3"><span class="n">emp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emp1</span><span class="p">;</span>
+</span><span id="__span-9-4"><span class="n">emp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>强制执行垃圾回收器：</p>
+<ul>
+<li>直接调用System类的gc()方法：     <code>System.gc();</code></li>
+<li>通过Runtime类的gc()实例方法：<code>Runtime rt = Runtime.getRuntime();    rt.gc();</code></li>
+</ul>
+<h1 id="_40">包与类的导入<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h1>
+<h2 id="package">包与package语句<a class="headerlink" href="#package" title="Permanent link">&para;</a></h2>
+<p>Java语言使用包（package）来组织类库。包实际是一组相关类或接口的集合。</p>
+<p>包主要有下面几个作用：</p>
+<ul>
+<li>功能相关的类和接口放到一个包中</li>
+<li>实现命名管理机制，同名的类可以放在不同包中</li>
+<li>实现对类的访问控制</li>
+</ul>
+<p>定义一个类属于某个包，使用package语句</p>
+<p>包名一般用域名的反转，减少冲突。</p>
+<p>创建包有两种方法：</p>
+<ul>
+<li>IDE自动创建</li>
+<li>带 –d 选项的编译命令</li>
+</ul>
+<p>类的完全限定名(fully qualified name)：<code>com.xxx.Employee</code></p>
+<h2 id="_41">类导入<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h2>
+<ul>
+<li>import 语句</li>
+<li>import static 语句</li>
+</ul>
+<h2 id="java">Java编译单元<a class="headerlink" href="#java" title="Permanent link">&para;</a></h2>
+<ul>
+<li>一个源程序文件通常称为一个编译单元（compile unit）。每个编译单元可以包含一个package语句、多个import语句以及类、接口和枚举定义。</li>
+<li>注意，一个编译单元中最多只能定义一个public类（或接口、枚举等），并且源文件的主文件名与该类的类名相同。</li>
+</ul>
+<p>小试牛刀：</p>
+<ol>
+<li>定义一个名为Person的类，其中含有一个String类型的成员变量name和一个int类型的成员变量age。分别为这两个变量定义访问方法和修改方法，另外再为该类定义一个名为speak的方法，在其中输出其name和age的值。画出该类的UML图。编写程序，使用上面定义的Person类，实现数据的访问、修改。</li>
+<li>定义一个名为Circle的类表圆，其中含有double型的成员变量centerX、centerY表示圆心坐标，radius表示圆的半径。定义求圆面积的方法getArea()方法和求圆周长的方法getPerimeter()。为半径radius定义访问方法和修改方法。定义一个带参数构造方法，通过给出圆的半径创建圆对象。定义默认构造方法，在该方法中调用有参数构造方法，将圆的半径设置为1.0。画出该类的UML图。编写程序测试这个圆类的所有方法。</li>
+<li>定义一个Triangle类表示三角形，其中包括三个double型变量a、b、c表示三条边长。为该类定义两个构造方法：默认构造方法设置三角形的三条边长都为0.0；带三个参数的构造方法通过传递3个参数创建三角形对象。定义求三角形面积的方法area()，面积计算公式为：area=Math.sqrt(s*(s-a)<em>(s-b)</em>(s-c))，其中s=a+b+c)/2。编写另一个程序测试这个三角形类的所有方法。</li>
+<li>
+<p>设计一个名为Stock的类表示股票，该类包括：</p>
+</li>
+<li>
+<p>一个名为symbol的字符串数据域表示股票代码。</p>
+</li>
+<li>一个名为name的字符串数据域表示股票名称。</li>
+<li>一个名为previousPrice的的double型数据域，它存储股票的前一日收盘价。</li>
+<li>一个名为currentPrice的double型数据域，它存储股票的当前价格。</li>
+<li>创建一个给定特定代码和名称的股票的构造方法。</li>
+<li>一个名为getChangePercent()方法，返回从前一日价格到当前价格变化的百分比。</li>
+</ol>
+<p>画出该类的UML图并实现这个类。</p>
+<p>编写一个测试程序，创建一个Stock对象，它的股票代码是“600000”，股票名称是“浦发银行”，前一日收盘价是25.50，当前的最新价是28.6，显示市值变化的百分比。。</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-%E9%80%89%E6%8B%A9%E4%B8%8E%E5%BE%AA%E7%8E%AF/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 选择结构">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                选择结构
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Java%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="md-footer__link md-footer__link--next" aria-label="Next: Java安装配置">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Java安装配置
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

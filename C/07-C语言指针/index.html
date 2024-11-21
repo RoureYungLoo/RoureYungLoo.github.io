@@ -1,0 +1,2713 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../06-C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/">
+      
+      
+        <link rel="next" href="../08-C%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>C语言指针 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C语言指针
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    什么是C语言？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E8%B5%B0%E8%BF%91C%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E8%B5%B0%E8%BF%91C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言程序设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-%E7%BB%93%E6%9E%84%E5%8C%96%E7%9A%84C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结构化的C程序设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C程序控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-C%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言数组
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C语言指针
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    C语言指针
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量的3种属性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接存取
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指针">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针的初始化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      取地址和解引用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="取地址和解引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      取地址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      解引用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义指针变量注意事项：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      引用传参
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针和const
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针和++、--、*
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      数组和指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sizeof" class="md-nav__link">
+    <span class="md-ellipsis">
+      sizeof运算符
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符指针变量VS字符数组
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符指针变量VS字符数组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、存储形式不同
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、赋值方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、初始化方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      多维数组和指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      洗牌发牌模拟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数指针
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数指针">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      调用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章小结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数指针
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数指针">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      声明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="声明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      声明简化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      调用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章小结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-C%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    格式化输入和输出
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E7%BB%93%E6%9E%84%E4%BD%93-%E5%85%B1%E7%94%A8%E4%BD%93-%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结构体、共用体、枚举、位域
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tinyhttpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tinyhttpd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CPP/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Java/01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      变量的3种属性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      直接存取
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指针">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针的初始化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      取地址和解引用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="取地址和解引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      取地址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      解引用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义指针变量注意事项：
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      引用传参
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针和const
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针和++、--、*
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      数组和指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sizeof" class="md-nav__link">
+    <span class="md-ellipsis">
+      sizeof运算符
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      字符指针变量VS字符数组
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字符指针变量VS字符数组">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1、存储形式不同
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2、赋值方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3、初始化方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      多维数组和指针
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      指针数组
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      洗牌发牌模拟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数指针
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数指针">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      调用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章小结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数指针
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数指针">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      声明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="声明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      声明简化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      调用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章小结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="c">C语言指针<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
+<h2 id="_1">本章大纲<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>指针和指针运算符</li>
+<li>按引用方式使用指针向函数传递实参</li>
+<li>指针与数组、字符串之间的关系</li>
+<li>函数指针</li>
+</ul>
+<h2 id="3">变量的3种属性<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>位置</li>
+<li>类型</li>
+<li>值</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="c1">//指出了值的类型和变量名，还让程序分配内存，并在内部将变量名与所分配的内存单元联系在一起</span>
+</span><span id="__span-0-2"><span class="c1">//假设为a分配的内存单元地址为2009~2012，则a的首地址为2009，a总是与2009地址联系在一起</span>
+</span><span id="__span-0-3">
+</span><span id="__span-0-4"><span class="n">a</span><span class="o">=</span><span class="mi">123</span><span class="p">;</span><span class="c1">//将123存储在首地址为2009的连续4个单元中</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_2">直接存取<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>按变量地址存取变量的值</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-1-2"><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-1-3"><span class="c1">//对于任一变量，编译程序为其分配若干个字节（连续的）的内存单元，以便保存变量的取值</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/ch0701.png" /></p>
+<h2 id="_3">指针<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>指针是一种变量，具有变量的一切属性。</p>
+<ul>
+<li>先定义后使用</li>
+<li>能进行某些系统指定的运算</li>
+<li>赋值的意义与其它变量一样</li>
+</ul>
+<p><strong>指针：即地址。</strong></p>
+<p>指针变量：用于存放地址的变量。在这种变量中存放的数值是**作为地址****使用**的，这个地址像是一个指针，指示存取数据的真正位置。<strong>即间接访问。</strong></p>
+<p>指针就是其值为内存单元地址的变量。变量名是直接引用一个值。指针是间接引用一个值。通过指针引用一个值，称为**间接寻址**。</p>
+<h3 id="_4">指针的定义<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>数据类型 * 指针变量名; </p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="kt">int</span><span class="w">  </span><span class="o">*</span><span class="n">nPtr</span><span class="p">;</span>
+</span><span id="__span-2-2"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">charPtr</span><span class="p">;</span>
+</span><span id="__span-2-3"><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fPtr</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_5">指针的初始化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>①空指针</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="kt">int</span><span class="w">  </span><span class="o">*</span><span class="n">nPtr</span><span class="p">;</span><span class="w"> </span><span class="c1">//定义一个指向int型数据的指针变量</span>
+</span><span id="__span-3-2"><span class="n">nPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="c1">//nPtr = 0;  将这个指针变量初始化为空指针</span>
+</span></code></pre></div></td></tr></table></div>
+<p>②非空指针</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="kt">int</span><span class="w">  </span><span class="o">*</span><span class="n">nPtr</span><span class="p">;</span><span class="c1">//定义一个指向int型数据的指针变量</span>
+</span><span id="__span-4-2"><span class="kt">int</span><span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="c1">//定义并初始化变量x值为6</span>
+</span><span id="__span-4-3"><span class="n">nPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">//将变量x的地址赋值给指针变量nPtr</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_6">取地址和解引用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">取地址<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>1、取地址运算符：&amp;</p>
+<p>功能：返回变量的内存地址。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="p">,</span><span class="n">m</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1">//定义 p 为指向 int 类型变量m的指针</span>
+</span><span id="__span-5-2"><span class="n">m</span><span class="o">=</span><span class="mi">200</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-5-3"><span class="n">p</span><span class="o">=&amp;</span><span class="n">m</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1">//将整型变量 m 的地址值赋给指针变量 p</span>
+</span></code></pre></div></td></tr></table></div>
+<p>图示：</p>
+<p><img alt="" src="../img/ch0702.png" /></p>
+<p>说明：</p>
+<p>①一个指针变量只能指向同一数据类型的变量，该数据类型是在定义指针变量时明确给定的。</p>
+<p>②C语言规定有效数据的指针不指向0单元(为非0值)，如果指针变量值为0，即NULL,表示空指针，即不指向任何变量。</p>
+<p>③不要把地址值与整数类型值相混淆。例如：地址2000与整型量2000是两个不同的概念。</p>
+<h3 id="_8">解引用<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>2、间接存取运算符（解引用运算符）：*****</p>
+<p>功能：访问指针指向的变量。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="o">=</span><span class="mi">200</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">;</span>
+</span><span id="__span-6-2"><span class="n">p</span><span class="o">=&amp;</span><span class="n">m</span><span class="w"> </span><span class="p">;</span><span class="w">   </span><span class="c1">// p 指向整型变量 m</span>
+</span><span id="__span-6-3"><span class="n">n</span><span class="o">=*</span><span class="n">p</span><span class="w"> </span><span class="p">;</span><span class="w">   </span><span class="n">将p指向的值</span><span class="p">(</span><span class="n">即m的值</span><span class="p">)</span><span class="n">赋给</span><span class="w"> </span><span class="n">n</span>
+</span><span id="__span-6-4"><span class="o">*</span><span class="n">p</span><span class="o">=</span><span class="mi">100</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">将</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">赋给指针变量</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">所指向的变量</span><span class="w"> </span><span class="n">m</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/14569904-0e9f-40b0-a4e2-8cac536ecb5a.png" /></p>
+<p>辨析：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-7-2"><span class="p">{</span>
+</span><span id="__span-7-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="o">=</span><span class="mi">25</span><span class="p">;</span>
+</span><span id="__span-7-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pointer</span><span class="o">=&amp;</span><span class="n">age</span><span class="p">;</span>
+</span><span id="__span-7-5"><span class="w">    </span><span class="c1">//问题：age，&amp;age，pointer，&amp;pointer，*pointer，*&amp;age，&amp;*pointer都是什么？</span>
+</span><span id="__span-7-6"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of age is %d .&quot;</span><span class="p">,</span><span class="n">age</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-7-7"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of &amp;age is %#X .&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">age</span><span class="p">);</span>
+</span><span id="__span-7-8"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of pointer is %#X .&quot;</span><span class="p">,</span><span class="n">pointer</span><span class="p">);</span>
+</span><span id="__span-7-9"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of &amp;pointer is %#X .&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">pointer</span><span class="p">);</span>
+</span><span id="__span-7-10"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of *pointer is %d .&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">pointer</span><span class="p">);</span>
+</span><span id="__span-7-11"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of *&amp;age is %d .&quot;</span><span class="p">,</span><span class="o">*&amp;</span><span class="n">age</span><span class="p">);</span>
+</span><span id="__span-7-12"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">the value of &amp;*pointer is %#X .</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">&amp;*</span><span class="n">pointer</span><span class="p">);</span>
+</span><span id="__span-7-13"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-7-14"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/93c9f8b4-8760-4ac2-a147-4662758f3fa4.png" /></p>
+<p>结论：</p>
+<p>age，变量</p>
+<p>&amp;age，变量地址</p>
+<p>pointer，变量地址</p>
+<p>&amp;pointer，指针变量地址</p>
+<p>*pointer，变量</p>
+<p>*&amp;age，变量</p>
+<p>&amp;*pointer，变量地址</p>
+<h2 id="_9">定义指针变量注意事项：<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>1、指针变量前面的“<em>”，表示该变量的类型为**指针型变量*</em></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pointer_1</span><span class="err">；</span>
+</span><span id="__span-8-2">
+</span><span id="__span-8-3"><span class="n">指针变量名是pointer_1</span><span class="w"> </span><span class="err">，</span><span class="n">而不是</span><span class="w"> </span><span class="o">*</span><span class="n">pointer_1</span>
+</span></code></pre></div></td></tr></table></div>
+<p>2、在定义指针变量时**必须指定基类型。**需要特别注意的是，只有整型变量的地址才能放到指向整型变量的指针变量中。下面的赋值是错误的∶</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-9-2">
+</span><span id="__span-9-3"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pointer_1</span><span class="p">;</span>
+</span><span id="__span-9-4">
+</span><span id="__span-9-5"><span class="n">pointer_1</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">;</span><span class="w">     </span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/d1498a7b-8eef-4007-8b41-2135d4ed2486.png" /></p>
+<p>例：输入ａ和ｂ两个整数，按先大后小的顺序输出ａ和ｂ。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-10-2"><span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+</span><span id="__span-10-3"><span class="kt">int</span><span class="w">  </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-10-4"><span class="p">{</span>
+</span><span id="__span-10-5"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="p">,</span><span class="o">*</span><span class="n">p2</span><span class="p">,</span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-10-6"><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-10-7"><span class="w">    </span><span class="n">p1</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-10-8"><span class="w">    </span><span class="n">p2</span><span class="o">=&amp;</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-10-9"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-10-10"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-10-11"><span class="w">        </span><span class="n">p</span><span class="o">=</span><span class="n">p1</span><span class="p">;</span>
+</span><span id="__span-10-12"><span class="w">        </span><span class="n">p1</span><span class="o">=</span><span class="n">p2</span><span class="p">;</span>
+</span><span id="__span-10-13"><span class="w">        </span><span class="n">p2</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-10-14"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-15"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a=%d,b=%d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-10-16"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;max=%d,min=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">p1</span><span class="p">,</span><span class="o">*</span><span class="n">p2</span><span class="p">);</span>
+</span><span id="__span-10-17"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-10-18"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/63c427ca-dccf-4735-b2db-b8f65e38c5cd.png" /></p>
+<h2 id="_10">引用传参<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p><strong>按引用向函数传递实参</strong></p>
+<p>引用：变量或实参的别名。一块内存两个名字。</p>
+<ul>
+<li>按引用向被调函数传递的实参，在被调函数中可以改变实参的值。（C++功能）</li>
+<li>
+<p>C语言提供模拟按引用调用的功能。</p>
+</li>
+<li>
+<p>使用指针和间接寻址运算符(*)实现</p>
+</li>
+<li>实际传递实参的地址。</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+</span><span id="__span-11-2"><span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+</span><span id="__span-11-3"><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="o">*</span><span class="p">);</span>
+</span><span id="__span-11-4"><span class="kt">int</span><span class="w">  </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-11-5"><span class="p">{</span>
+</span><span id="__span-11-6"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">pointer_1</span><span class="p">,</span><span class="o">*</span><span class="n">pointer_2</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-11-7"><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d %d&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-11-8"><span class="w">    </span><span class="n">pointer_1</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-11-9"><span class="w">    </span><span class="n">pointer_2</span><span class="o">=&amp;</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-11-10"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a=%d,b=%d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-11-11"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">&lt;</span><span class="n">b</span><span class="p">)</span>
+</span><span id="__span-11-12"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-13"><span class="w">        </span><span class="n">swap</span><span class="p">(</span><span class="n">pointer_1</span><span class="p">,</span><span class="n">pointer_2</span><span class="p">);</span>
+</span><span id="__span-11-14"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-15">
+</span><span id="__span-11-16">
+</span><span id="__span-11-17"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;max=%d,min=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">pointer_1</span><span class="p">,</span><span class="o">*</span><span class="n">pointer_2</span><span class="p">);</span>
+</span><span id="__span-11-18"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-11-19"><span class="p">}</span>
+</span><span id="__span-11-20"><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">p1</span><span class="p">,</span><span class="kt">int</span><span class="o">*</span><span class="n">p2</span><span class="p">)</span>
+</span><span id="__span-11-21"><span class="p">{</span>
+</span><span id="__span-11-22"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+</span><span id="__span-11-23"><span class="w">    </span><span class="n">temp</span><span class="o">=*</span><span class="n">p1</span><span class="p">;</span>
+</span><span id="__span-11-24"><span class="w">    </span><span class="o">*</span><span class="n">p1</span><span class="o">=*</span><span class="n">p2</span><span class="p">;</span>
+</span><span id="__span-11-25"><span class="w">    </span><span class="o">*</span><span class="n">p2</span><span class="o">=</span><span class="n">temp</span><span class="p">;</span>
+</span><span id="__span-11-26"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/705854ee-e857-4b2e-bb7d-1557dda438dc.png" /></p>
+<p>实质：指针的指向并没有改变，只是改变了指向的变量的值。</p>
+<p>思考：怎样改变指针的指向？而不是改变指针指向变量的值</p>
+<h2 id="const">指针和const<a class="headerlink" href="#const" title="Permanent link">&para;</a></h2>
+<p><strong>1、const的作用</strong></p>
+<p>告诉编译器这个被const修饰的（指针）变量的值是不可改变的。向函数传递**指针型实参**时，若不允许改变实参的值(即指针的值、指针的指向)，应使用const限定符。</p>
+<p><strong>2、分类</strong></p>
+<ul>
+<li>
+<p><strong>非常量指针：**其值(地址)是可变化的，例 **int</strong> ***** <strong>p</strong></p>
+</li>
+<li>
+<p>指向非常量数据</p>
+</li>
+<li>
+<p>int * nPtr;</p>
+</li>
+<li>int x= 5, y = 8;</li>
+<li>nPtr = &x;   *nPtr = 2;</li>
+<li>
+<p>nPtr = &y;   *nPtr = 10;</p>
+</li>
+<li>
+<p>指向常量数据</p>
+</li>
+<li>
+<p>const int * nPtr;</p>
+</li>
+<li>int x= 5, y = 8;</li>
+<li>nPtr = &x;  错误： *nPtr = 2;</li>
+<li>
+<p>nPtr = &y;  错误： *nPtr = 10;</p>
+</li>
+<li>
+<p><strong>常量指针：**其值(地址)是不可变化的，例 **int</strong> ***** <strong>const</strong> <strong>cp</strong></p>
+</li>
+<li>
+<p><strong>指向非常量数据</strong></p>
+</li>
+<li>
+<p>int * const nPtr=&x;</p>
+</li>
+<li>int x= 5, y = 8;</li>
+<li>*nPtr = 2;</li>
+<li>
+<p>错误：nPtr = &y;</p>
+</li>
+<li>
+<p><strong>指向常量数据</strong></p>
+</li>
+<li>
+<p>const int * const nPtr;</p>
+</li>
+<li>int x= 5;</li>
+<li>nPtr = &x;  错误： *nPtr = 2;</li>
+</ul>
+<h2 id="-">指针和++、--、*<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<p>++、--、*优先级相同</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-12-2"><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-12-3"><span class="n">p</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/7fdafe22-a1d0-45c7-9b46-c0df32f050d1.png" /></p>
+<p><img alt="" src="../img/e2b6c170-226f-456d-b2a1-38aaf834a8f6.png" /></p>
+<p><img alt="" src="../img/8137c79a-a8c3-49ec-8f0f-e083c949bee0.png" /></p>
+<p><img alt="" src="../img/7e82a723-be51-482d-ab50-13f45d922f1e.png" /></p>
+<p><img alt="" src="../img/c71b5bf4-dd56-4143-b66c-0c1435de2a8f.png" /></p>
+<p><img alt="" src="../img/fa045975-d63c-4a16-8f08-f3349e583f47.png" /></p>
+<p><img alt="" src="../img/003fa2b4-29f2-4605-8f44-f1abff88c634.png" /></p>
+<p><img alt="" src="../img/89ff7a38-29fe-445c-bcd9-02c6652c62aa.png" /></p>
+<p><img alt="" src="../img/68c316f6-0fb4-427c-9ce5-13d2013ef8a1.png" /></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-13-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ctype.h&gt;</span><span class="c1">   /*字符处理</span>
+</span><span id="__span-13-3"><span class="w">            </span><span class="n">函数库头文件</span><span class="o">*/</span>
+</span><span id="__span-13-4"><span class="kt">void</span><span class="w"> </span><span class="n">convertToUppercase</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">sPtr</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-13-5"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-13-6"><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">string</span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;characters and $32.98&quot;</span><span class="p">;</span>
+</span><span id="__span-13-7"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;The string before conversion is : %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-13-8"><span class="w">    </span><span class="n">convertToUppercase</span><span class="p">(</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-13-9"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;The string after conversion is : %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-13-10"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-13-11"><span class="p">}</span><span class="w">  </span><span class="cm">/* end main */</span>
+</span><span id="__span-13-12"><span class="cm">/* convert string to uppercase</span>
+</span><span id="__span-13-13"><span class="cm">                letters  */</span>
+</span><span id="__span-13-14"><span class="kt">void</span><span class="w"> </span><span class="nf">convertToUppercase</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">sPtr</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-13-15"><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="n">sPtr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-13-16"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">islower</span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="n">sPtr</span><span class="w"> </span><span class="p">)){</span>
+</span><span id="__span-13-17"><span class="w">            </span><span class="o">*</span><span class="n">sPtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">toupper</span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="n">sPtr</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-13-18"><span class="w">        </span><span class="p">}</span><span class="w">  </span><span class="cm">/* end if  */</span>
+</span><span id="__span-13-19"><span class="w">        </span><span class="o">++</span><span class="n">sPtr</span><span class="p">;</span>
+</span><span id="__span-13-20"><span class="w">    </span><span class="p">}</span><span class="w">  </span><span class="cm">/* end while  */</span>
+</span><span id="__span-13-21"><span class="p">}</span><span class="w">  </span><span class="cm">/* end converToUppercase */</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_11">数组和指针<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>指向数组元素的指针</p>
+<ul>
+<li>数组与变量一样，在内存中占据单元，有地址，一样可以用指针来表示。</li>
+<li>
+<p>C语言规定：</p>
+</li>
+<li>
+<p><strong>数组名就是数组的起始地址；</strong></p>
+</li>
+<li><strong>数组的指针就是数组的起始地址。</strong>（==&gt;数组指针就是数组名）</li>
+<li>数组元素的指针就是数组元素的地址</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-14-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">arrayy</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+</span><span id="__span-14-3"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;数组名的地址：%#X </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">arrayy</span><span class="p">);</span>
+</span><span id="__span-14-4"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;数组名的地址：%#X </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">arrayy</span><span class="p">);</span>
+</span><span id="__span-14-5"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;数组元素array[0]的地址：%#X </span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">arrayy</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-14-6"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-14-7"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;数组元素array[%d]的地址：%#X </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="o">&amp;</span><span class="n">arrayy</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-14-8"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-14-9"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-14-10"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/6d6a491e-3f6e-4785-9c1c-9dd0a6de92b6.png" /></p>
+<p><strong>指向数组元素的指针变量的定义和赋值</strong></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><span class="kt">int</span><span class="w">   </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span><span id="__span-15-2"><span class="n">p</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">//数组第一个元素的地址</span>
+</span><span id="__span-15-3"><span class="n">p</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">//直接用数组名赋值</span>
+</span><span id="__span-15-4"><span class="c1">//p是变量，a为常量</span>
+</span><span id="__span-15-5">
+</span><span id="__span-15-6"><span class="n">若数组元素为int型</span><span class="err">，</span><span class="n">则指向其的指针变量也应定义为int型</span>
+</span><span id="__span-15-7">
+</span><span id="__span-15-8"><span class="kt">int</span><span class="w">  </span><span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span id="__span-15-9"><span class="kt">int</span><span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w">     </span><span class="c1">//等价</span>
+</span><span id="__span-15-10"><span class="kt">int</span><span class="w">  </span><span class="o">*</span><span class="n">p</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">//等价</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/52c6242a-d412-4390-ace2-93727e33aabd.png" /></p>
+<p><strong>怎样表示数组中的第i个元素？</strong></p>
+<p>指针p，数组a，p的初值为a</p>
+<p>***(a+i)**  数组名法  </p>
+<p>***(p+i)**  指针法</p>
+<p><strong>a[i]</strong>   下标法</p>
+<p><strong>p[i]</strong>   下标法</p>
+<p><img alt="" src="../img/fca296c0-d196-46c8-8e6e-45ea36a5e1db.png" /></p>
+<p><strong>怎样表示数组中的第i个元素的地址？</strong></p>
+<p>指针p，数组a，p的初值为a</p>
+<p><strong>a+i</strong>  数组名法  </p>
+<p><strong>p+i</strong>  指针法</p>
+<p><strong>&amp;a[i]</strong> 下标法</p>
+<p><strong>&amp;p[i]</strong> 下标法</p>
+<p><strong>通过数组名和指针变量访问数组元素的区别：</strong></p>
+<p>1.<strong>指针变量是地址变量</strong>，其指向由所赋值确定。</p>
+<p>2.<strong>数组名是地址常量（指针常量）</strong>，恒定指向</p>
+<p>数组的第1个元素。</p>
+<p><strong>指针相减运算的意义？</strong></p>
+<p>**指向相同数据类型**的指针变量可以相减，其结果为两指针所指向地址之间数据元素的个数。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">px</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-16-2"><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">py</span><span class="p">;</span>
+</span><span id="__span-16-3"><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-16-4"><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</span><span id="__span-16-5"><span class="n">px</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span><span id="__span-16-6"><span class="n">py</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span><span id="__span-16-7"><span class="n">n</span><span class="o">=</span><span class="n">py</span><span class="o">-</span><span class="n">px</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="c1">//结果：n 值为3</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/2c6c4e20-844f-4c94-a5c6-9f6059800790.png" /></p>
+<p><strong>指针比较运算的意义？</strong></p>
+<p>==、!=、&lt;、&lt;=、&gt;、&gt;=</p>
+<p>指针的关系运算是两个指针（指向相同数据类型）所指向的地址之间的比较运算，产生的结果为 0（假）和 1（真）。</p>
+<p><strong>示例：</strong></p>
+<p><img alt="" src="../img/00953e5a-119c-4599-a1c2-baea302d4b8d.png" /></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><span class="n">有定义</span><span class="err">：</span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="o">*</span><span class="n">p1</span><span class="p">,</span><span class="o">*</span><span class="n">p2</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="w"> </span><span class="n">的指向如图所示</span>
+</span><span id="__span-17-2"><span class="n">计算</span><span class="err">：</span>
+</span><span id="__span-17-3"><span class="n">p1</span><span class="o">==</span><span class="n">p2</span><span class="w">   </span><span class="n">判断p1</span><span class="p">,</span><span class="n">p2是否指向同一变量</span><span class="err">？</span><span class="w">      </span><span class="n">结果</span><span class="err">：</span><span class="mi">0</span>
+</span><span id="__span-17-4"><span class="n">p1</span><span class="o">&lt;</span><span class="n">p2</span><span class="w">    </span><span class="n">判断p1的地址是否比p2的地址小</span><span class="err">？</span><span class="w">    </span><span class="n">结果</span><span class="err">：</span><span class="mi">1</span>
+</span><span id="__span-17-5"><span class="n">p1</span><span class="o">==</span><span class="nb">NULL</span><span class="w"> </span><span class="n">判断p1是否为空指针</span><span class="err">？</span><span class="p">(</span><span class="n">NULL是系统定义的</span><span class="p">)</span><span class="w">      </span><span class="n">结果</span><span class="err">：</span><span class="mi">0</span>
+</span><span id="__span-17-6"><span class="n">p1</span><span class="o">!=</span><span class="mi">0</span><span class="w">    </span><span class="n">判断</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="n">是否不为空指针</span><span class="err">？</span><span class="w">      </span><span class="n">结果</span><span class="err">：</span><span class="mi">1</span>
+</span></code></pre></div></td></tr></table></div>
+<p>冒泡排序：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-18-2"><span class="cp">#define LEN 8</span>
+</span><span id="__span-18-3">
+</span><span id="__span-18-4"><span class="c1">//冒泡排序——1</span>
+</span><span id="__span-18-5"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-18-6"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">arrayy</span><span class="p">[</span><span class="n">LEN</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">38</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">52</span><span class="p">};</span>
+</span><span id="__span-18-7"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">LEN</span><span class="mi">-1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"> </span><span class="c1">//总共比较LEN-1轮</span>
+</span><span id="__span-18-8"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">LEN</span><span class="mi">-1</span><span class="o">-</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span><span class="c1">//每一轮需要比较LEN-1-i次</span>
+</span><span id="__span-18-9"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+</span><span id="__span-18-10"><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="o">=</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+</span><span id="__span-18-11"><span class="w">                </span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+</span><span id="__span-18-12"><span class="w">                </span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">temp</span><span class="p">;</span>
+</span><span id="__span-18-13"><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-18-14"><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;第%d轮第%d次比较  &quot;</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-18-15"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-18-16"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-18-17"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-18"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">LEN</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-18-19"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">arrayy</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-18-20"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-21"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-18-22"><span class="p">}</span>
+</span><span id="__span-18-23"><span class="o">==============================================</span>
+</span><span id="__span-18-24">
+</span><span id="__span-18-25"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-18-26"><span class="cp">#define LEN 8</span>
+</span><span id="__span-18-27">
+</span><span id="__span-18-28"><span class="kt">void</span><span class="w"> </span><span class="n">swapp</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-18-29">
+</span><span id="__span-18-30"><span class="c1">//冒泡排序</span>
+</span><span id="__span-18-31"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-18-32"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">arrayy</span><span class="p">[</span><span class="n">LEN</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">38</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">76</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">27</span><span class="p">,</span><span class="mi">52</span><span class="p">};</span>
+</span><span id="__span-18-33"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">LEN</span><span class="mi">-1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"> </span><span class="c1">//总共比较LEN-1轮</span>
+</span><span id="__span-18-34"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">LEN</span><span class="mi">-1</span><span class="o">-</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span><span class="c1">//每一轮需要比较LEN-1-i次</span>
+</span><span id="__span-18-35"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+</span><span id="__span-18-36"><span class="w">                </span><span class="n">swapp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="o">&amp;</span><span class="n">arrayy</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]);</span>
+</span><span id="__span-18-37"><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-18-38"><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;第%d轮第%d次比较  &quot;</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-18-39"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-18-40"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-18-41"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-42"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">LEN</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-18-43"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">arrayy</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-18-44"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-45"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-18-46"><span class="p">}</span>
+</span><span id="__span-18-47">
+</span><span id="__span-18-48">
+</span><span id="__span-18-49"><span class="kt">void</span><span class="w"> </span><span class="nf">swapp</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">){</span><span class="c1">//传递数组元素的地址</span>
+</span><span id="__span-18-50"><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="o">&gt;=*</span><span class="n">b</span><span class="p">){</span>
+</span><span id="__span-18-51"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="o">=*</span><span class="n">b</span><span class="p">;</span>
+</span><span id="__span-18-52"><span class="w">        </span><span class="o">*</span><span class="n">b</span><span class="o">=*</span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-18-53"><span class="w">        </span><span class="o">*</span><span class="n">a</span><span class="o">=</span><span class="n">temp</span><span class="p">;</span>
+</span><span id="__span-18-54"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-55"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="sizeof">sizeof运算符<a class="headerlink" href="#sizeof" title="Permanent link">&para;</a></h2>
+<p>在编译程序期间计算出数据类型（包括数组）的字节长度。注意字符数组末尾是一个'\0'字符</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-19-2"><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[]</span><span class="o">=</span><span class="s">&quot;abcdefg&quot;</span><span class="p">;</span>
+</span><span id="__span-19-3"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-19-4"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="n">name</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-19-5"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-19-6"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">字符数组name的长度是：%d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">));</span>
+</span><span id="__span-19-7"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-8"><span class="p">}</span>
+</span><span id="__span-19-9"><span class="nl">函数getSize</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">也是返回类型的字节数</span><span class="p">.</span><span class="n">该函数在程序运行时才执行</span><span class="p">.</span><span class="n">返回值类型</span><span class="w"> </span><span class="err">：</span><span class="kt">size_t</span><span class="w">  </span><span class="p">(</span><span class="n">相当于unsigned</span><span class="w"> </span><span class="kt">int</span>
+</span><span id="__span-19-10"><span class="w">    </span><span class="n">或者</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="vs">字符指针变量VS字符数组<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h2>
+<h3 id="1"><strong>1、存储形式不同</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>字符数组由若干个元素组成，每个元素中放一个字符。而字符指针变量中存放的是地址（字符串第1个字符的地址），决不是将字符串放到字符指针变量中。</p>
+<h3 id="2">2、赋值方式<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>对字符数组只能对各个元素赋值，不能用以下办法对字符数组赋值。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="err">［</span><span class="mi">14</span><span class="err">］</span><span class="p">;</span>
+</span><span id="__span-20-2"><span class="n">str</span><span class="err">＝″</span><span class="n">I</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">China</span><span class="err">！″</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>而对字符指针变量，可以采用下面方法赋值：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ａ</span><span class="err">；</span>
+</span><span id="__span-21-2"><span class="n">ａ</span><span class="err">＝″</span><span class="n">I</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">China</span><span class="err">！″；</span>
+</span><span id="__span-21-3"><span class="c1">//以上两行等价于</span>
+</span><span id="__span-21-4"><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ａ</span><span class="err">＝″</span><span class="n">I</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">Chian</span><span class="err">！″；</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="3_1">3、初始化方式<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>对字符指针变量赋初值：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ａ</span><span class="err">＝″</span><span class="n">Ｉ</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">China</span><span class="err">！″；</span><span class="n">等价于</span>
+</span><span id="__span-22-2"><span class="w">   </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ａ</span><span class="err">；</span>
+</span><span id="__span-22-3"><span class="w">  </span><span class="n">ａ</span><span class="err">＝″</span><span class="n">I</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">Chian</span><span class="err">！″；</span>
+</span></code></pre></div></td></tr></table></div>
+<p>对数组的初始化：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="err">［</span><span class="mi">１４</span><span class="err">］＝｛″</span><span class="n">Ｉ</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">China</span><span class="err">！″｝</span><span class="p">;</span>
+</span><span id="__span-23-2"><span class="w">  </span><span class="n">不能等价于</span>
+</span><span id="__span-23-3"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="err">［</span><span class="mi">１４</span><span class="err">］；</span>
+</span><span id="__span-23-4"><span class="w">  </span><span class="n">str</span><span class="err">［</span><span class="w"> </span><span class="err">］＝″</span><span class="n">I</span><span class="w"> </span><span class="n">love</span><span class="w"> </span><span class="n">China</span><span class="err">！″；</span>
+</span></code></pre></div></td></tr></table></div>
+<p>**4、**定义了一个字符数组，在编译时为它分配内存单元，它有确定的地址。</p>
+<p>而定义一个字符指针变量时，给指针变量分配内存单元，在其中可以放一个字符变量的地址。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><span class="nl">例如</span><span class="p">:</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="err">［</span><span class="mi">１０</span><span class="err">］；</span>
+</span><span id="__span-24-2">
+</span><span id="__span-24-3"><span class="err">​</span><span class="w">     </span><span class="n">scanf</span><span class="err">（″％</span><span class="n">ｓ</span><span class="err">″，</span><span class="n">str</span><span class="err">）；</span>
+</span></code></pre></div></td></tr></table></div>
+<p>5、指针变量的值是可以改变的，例如：</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-25-2"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="o">=</span><span class="s">&quot;I love China!&quot;</span><span class="p">;</span>
+</span><span id="__span-25-3"><span class="w">  </span><span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mi">7</span><span class="p">;</span>
+</span><span id="__span-25-4"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-25-5"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-25-6"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>若定义了一个指针变量，并使它指向一个字符串，就可以用下标形式引用指针变量所指的字符串中的字符。例如:</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-26-2"><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="o">=</span><span class="s">&quot;I love China!&quot;</span><span class="p">;</span>
+</span><span id="__span-26-3"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-26-4"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;the sixth character is %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+</span><span id="__span-26-5"><span class="w">  </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="sc">&#39;\0&#39;</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-26-6"><span class="err">​</span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-26-7"><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-26-8"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-26-9">
+</span><span id="__span-26-10"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_12">多维数组和指针<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>用指针变量可以指向一维数组中的元素，也可以指向多维数组中的元素。</p>
+<p><strong>多维数组元素的地址：****二维数组是“数组的数组”</strong></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-27-2"><span class="w">        </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">  </span><span class="mi">5</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">},</span>
+</span><span id="__span-27-3"><span class="w">        </span><span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-27-4"><span class="w">        </span><span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-27-5"><span class="w">    </span><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+<p>二维数组a是由3个一维数组所组成的。设二维数组的首行的首地址为0X2000  ，则</p>
+<p><img alt="" src="../img/04a8089c-ec37-4aeb-bfa7-cb2b363e5e78.png" /></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><span class="o">*</span><span class="w"> </span><span class="err">#</span><span class="n">define</span><span class="w"> </span><span class="n">FROMAT</span><span class="w"> </span><span class="s">&quot;%d,%d</span><span class="se">\n</span><span class="s">&quot;</span>
+</span><span id="__span-28-2"><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-28-3"><span class="p">{</span>
+</span><span id="__span-28-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span>
+</span><span id="__span-28-5"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-28-6"><span class="w">        </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">  </span><span class="mi">5</span><span class="p">,</span><span class="w">  </span><span class="mi">7</span><span class="p">},</span>
+</span><span id="__span-28-7"><span class="w">        </span><span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">},</span>
+</span><span id="__span-28-8"><span class="w">        </span><span class="p">{</span><span class="mi">17</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-28-9"><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-28-10"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="o">*</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-28-11"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">0</span><span class="p">));</span>
+</span><span id="__span-28-12"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+</span><span id="__span-28-13"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-28-14"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-28-15"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+</span><span id="__span-28-16"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">a</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-28-17"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="n">FORMAT</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">0</span><span class="p">));</span>
+</span><span id="__span-28-18"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-28-19"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_13">指针数组<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>数组元素全部是指针</p>
+<ul>
+<li>通常用来构造字符串数组，故指针数组又称为字符串数组。</li>
+<li>字符串数组的每一个元素都是一个字符串（实质上是指向字符串的指针）。</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suits</span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">“</span><span class="n">Hearts</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Diamonds</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Clubs</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="err">“</span><span class="n">Spades</span><span class="err">”</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/Snipaste_2023-12-03_14-15-13.png" /></p>
+<h2 id="_14">洗牌发牌模拟<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-30-2"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</span><span id="__span-30-3"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span>
+</span><span id="__span-30-4">
+</span><span id="__span-30-5">
+</span><span id="__span-30-6"><span class="kt">void</span><span class="w"> </span><span class="nf">shuffle</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">wDeck</span><span class="p">[</span><span class="w"> </span><span class="p">][</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-7"><span class="kt">void</span><span class="w"> </span><span class="nf">deal</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">wDeck</span><span class="p">[][</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">],</span>
+</span><span id="__span-30-8"><span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">wFace</span><span class="p">[</span><span class="w"> </span><span class="p">],</span>
+</span><span id="__span-30-9"><span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">wSuit</span><span class="p">[]</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-10">
+</span><span id="__span-30-11">
+</span><span id="__span-30-12"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-30-13"><span class="p">{</span>
+</span><span id="__span-30-14"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">suit</span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Hearts&quot;</span><span class="p">,</span><span class="s">&quot;Diamonds&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Clubs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Spades&quot;</span><span class="p">};</span>
+</span><span id="__span-30-15"><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">face</span><span class="p">[</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-30-16"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-30-17"><span class="w">        </span><span class="s">&quot;Ace&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Deuce&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Three&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Four&quot;</span><span class="p">,</span>
+</span><span id="__span-30-18"><span class="w">        </span><span class="s">&quot;Five&quot;</span><span class="p">,</span><span class="s">&quot;Six&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Seven&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Eight&quot;</span><span class="p">,</span>
+</span><span id="__span-30-19"><span class="w">        </span><span class="s">&quot;Nine&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ten&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Jack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Queen&quot;</span><span class="p">,</span>
+</span><span id="__span-30-20"><span class="w">        </span><span class="s">&quot;King&quot;</span>
+</span><span id="__span-30-21"><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-30-22"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">][</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-30-23"><span class="w">    </span><span class="n">srand</span><span class="p">(</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-24"><span class="w">    </span><span class="n">shuffle</span><span class="p">(</span><span class="w"> </span><span class="n">deck</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-25"><span class="w">    </span><span class="n">deal</span><span class="p">(</span><span class="w"> </span><span class="n">deck</span><span class="p">,</span><span class="w"> </span><span class="n">face</span><span class="p">,</span><span class="w"> </span><span class="n">suit</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-26"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-30-27"><span class="p">}</span>
+</span><span id="__span-30-28"><span class="kt">void</span><span class="w"> </span><span class="nf">shuffle</span><span class="p">(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">wDeck</span><span class="p">[][</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-30-29"><span class="p">{</span>
+</span><span id="__span-30-30"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">;</span>
+</span><span id="__span-30-31"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">column</span><span class="p">;</span>
+</span><span id="__span-30-32"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">card</span><span class="p">;</span>
+</span><span id="__span-30-33">
+</span><span id="__span-30-34">
+</span><span id="__span-30-35"><span class="w">    </span><span class="cm">/* for each the 52 cards, choose slot of deck randomly  */</span>
+</span><span id="__span-30-36"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">52</span><span class="p">;</span><span class="n">card</span><span class="o">++</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-30-37"><span class="w">        </span><span class="cm">/* choose new random location until unoccupied  slot  found */</span>
+</span><span id="__span-30-38"><span class="w">        </span><span class="k">do</span><span class="p">{</span>
+</span><span id="__span-30-39"><span class="w">            </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-30-40"><span class="w">            </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
+</span><span id="__span-30-41"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-30-42"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="w"> </span><span class="n">wDeck</span><span class="p">[</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="p">][</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-43"><span class="w">        </span><span class="cm">/* place card number in chosen slot of deck */</span>
+</span><span id="__span-30-44"><span class="w">        </span><span class="n">wDeck</span><span class="p">[</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="p">][</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">card</span><span class="p">;</span>
+</span><span id="__span-30-45"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end for  */</span>
+</span><span id="__span-30-46"><span class="p">}</span><span class="w"> </span><span class="cm">/* end function shuffle  */</span>
+</span><span id="__span-30-47"><span class="cm">/* deal cards in deck */</span>
+</span><span id="__span-30-48"><span class="kt">void</span><span class="w"> </span><span class="nf">deal</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">wDeck</span><span class="p">[][</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="p">],</span>
+</span><span id="__span-30-49"><span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">wFace</span><span class="p">[],</span>
+</span><span id="__span-30-50"><span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">wSuit</span><span class="p">[]</span><span class="w"> </span><span class="p">)</span>
+</span><span id="__span-30-51"><span class="p">{</span>
+</span><span id="__span-30-52"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">card</span><span class="p">;</span>
+</span><span id="__span-30-53"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">;</span>
+</span><span id="__span-30-54"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">column</span><span class="p">;</span>
+</span><span id="__span-30-55"><span class="w">    </span><span class="cm">/* deal each of the 52 card */</span>
+</span><span id="__span-30-56"><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">52</span><span class="p">;</span><span class="w"> </span><span class="n">card</span><span class="o">++</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-30-57"><span class="w">        </span><span class="cm">/* loop through rows of wDeck  */</span>
+</span><span id="__span-30-58">
+</span><span id="__span-30-59">
+</span><span id="__span-30-60"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="n">row</span><span class="o">++</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-30-61"><span class="w">            </span><span class="cm">/* loop through column of wDeck for current row */</span>
+</span><span id="__span-30-62"><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="n">column</span><span class="o">++</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-30-63"><span class="w">                </span><span class="cm">/* if slot contains current card,display card */</span>
+</span><span id="__span-30-64"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">wDeck</span><span class="p">[</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="p">][</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-30-65"><span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5s of %-8s%c&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">wFace</span><span class="p">[</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="p">],</span><span class="n">wSuit</span><span class="p">[</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="p">],</span><span class="n">card</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="sc">&#39;\t&#39;</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-30-66"><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end if  */</span>
+</span><span id="__span-30-67"><span class="w">            </span><span class="p">}</span><span class="w">  </span><span class="cm">/* end inner for  */</span>
+</span><span id="__span-30-68"><span class="w">        </span><span class="p">}</span><span class="w">    </span><span class="cm">/* end middle for */</span>
+</span><span id="__span-30-69"><span class="w">    </span><span class="p">}</span><span class="w">  </span><span class="cm">/* end outer for */</span>
+</span><span id="__span-30-70"><span class="p">}</span><span class="w"> </span><span class="cm">/* end function deal  */</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_15">函数指针<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>一个指向函数的指针包含的是一个函数在内存中的地址。函数名就是执行该函数功能的程序代码在内存中的起始地址</p>
+<h3 id="_16">定义<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><span class="n">返回类型</span><span class="w">  </span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="n">函数名</span><span class="w"> </span><span class="p">)(</span><span class="w"> </span><span class="n">形参列表</span><span class="p">)</span><span class="err">；</span>
+</span><span id="__span-31-2"><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">)(</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-31-3"><span class="kt">double</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">function</span><span class="p">)(</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_17">调用<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><span class="p">(</span><span class="o">*</span><span class="n">函数名</span><span class="err">）（</span><span class="n">实参列表</span><span class="err">）；</span>
+</span><span id="__span-32-2"><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+</span><span id="__span-32-3"><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="w"> </span><span class="p">)(</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-32-4"><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="n">function</span><span class="p">)(</span><span class="w"> </span><span class="mf">4.0</span><span class="w"> </span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p><strong>用函数指针实现冒泡法排序:</strong></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><span class="cm">/* Fig. 7.26 : fing07_26.c Multipurpose sorting program using function pointer</span>
+</span><span id="__span-33-2"><span class="cm">*/</span>
+</span><span id="__span-33-3"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-33-4"><span class="cp">#define SIZE 10</span>
+</span><span id="__span-33-5"><span class="cm">/* prototypes */</span>
+</span><span id="__span-33-6"><span class="kt">void</span><span class="w"> </span><span class="nf">bubble</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">work</span><span class="p">[],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compare</span><span class="p">)(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">));</span>
+</span><span id="__span-33-7"><span class="kt">int</span><span class="w"> </span><span class="nf">ascending</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-33-8"><span class="kt">int</span><span class="w"> </span><span class="nf">descending</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-33-9">
+</span><span id="__span-33-10"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-11"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">order</span><span class="p">;</span>
+</span><span id="__span-33-12"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+</span><span id="__span-33-13"><span class="w">  </span><span class="cm">/* initialize array a */</span>
+</span><span id="__span-33-14"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">SIZE</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">89</span><span class="p">,</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">};</span>
+</span><span id="__span-33-15"><span class="w">  </span><span class="n">printf</span><span class="p">(</span>
+</span><span id="__span-33-16"><span class="w">      </span><span class="s">&quot;Enter 1 to sort in ascending order,</span><span class="se">\n</span><span class="s">&quot;</span>
+</span><span id="__span-33-17"><span class="w">      </span><span class="s">&quot;Enter 2 to sort in descending order,</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-33-18"><span class="w">  </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">order</span><span class="p">);</span>
+</span><span id="__span-33-19"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Data items in original order</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-33-20">
+</span><span id="__span-33-21"><span class="w">  </span><span class="cm">/* output original array */</span>
+</span><span id="__span-33-22"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-23"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">counter</span><span class="p">]);</span>
+</span><span id="__span-33-24"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end for */</span>
+</span><span id="__span-33-25">
+</span><span id="__span-33-26"><span class="w">  </span><span class="cm">/* sort array in ascending order;pass function ascending as an argument to</span>
+</span><span id="__span-33-27"><span class="cm">   * specify ascenting sorting order  */</span>
+</span><span id="__span-33-28"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-29"><span class="w">    </span><span class="n">bubble</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">SIZE</span><span class="p">,</span><span class="w"> </span><span class="n">ascending</span><span class="p">);</span>
+</span><span id="__span-33-30"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Data items in ascending order</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-33-31"><span class="w">  </span><span class="p">}</span><span class="w">      </span><span class="cm">/* end if */</span>
+</span><span id="__span-33-32"><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* pass function descending */</span>
+</span><span id="__span-33-33"><span class="w">    </span><span class="n">bubble</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">SIZE</span><span class="p">,</span><span class="w"> </span><span class="n">descending</span><span class="p">);</span>
+</span><span id="__span-33-34"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Data items in descending order</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-33-35"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end else */</span>
+</span><span id="__span-33-36">
+</span><span id="__span-33-37"><span class="w">  </span><span class="cm">/* output sorted array */</span>
+</span><span id="__span-33-38"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">SIZE</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-39"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%5d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">counter</span><span class="p">]);</span>
+</span><span id="__span-33-40"><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end for */</span>
+</span><span id="__span-33-41">
+</span><span id="__span-33-42"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-33-43"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-33-44"><span class="p">}</span><span class="w"> </span><span class="cm">/* end main  */</span>
+</span><span id="__span-33-45"><span class="cm">/* multipurpose bubble sort;parameter compapare is a pinter to the comparison</span>
+</span><span id="__span-33-46"><span class="cm">* function function that determines sorting order */</span>
+</span><span id="__span-33-47"><span class="kt">void</span><span class="w"> </span><span class="nf">bubble</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">work</span><span class="p">[],</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">compare</span><span class="p">)(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">))</span>
+</span><span id="__span-33-48"><span class="p">{</span>
+</span><span id="__span-33-49"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">pass</span><span class="p">;</span>
+</span><span id="__span-33-50"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+</span><span id="__span-33-51"><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">element1Ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">element2Ptr</span><span class="p">);</span>
+</span><span id="__span-33-52"><span class="w">  </span><span class="cm">/* loop to control passes */</span>
+</span><span id="__span-33-53"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">pass</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-54"><span class="w">    </span><span class="cm">/* loop to control number of comparisons per pass  */</span>
+</span><span id="__span-33-55"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-56"><span class="w">      </span><span class="cm">/* if adjacent elements iare out of order, swap them */</span>
+</span><span id="__span-33-57"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="o">*</span><span class="n">compare</span><span class="p">)(</span><span class="n">work</span><span class="p">[</span><span class="n">count</span><span class="p">],</span><span class="w"> </span><span class="n">work</span><span class="p">[</span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-58"><span class="w">        </span><span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">work</span><span class="p">[</span><span class="n">count</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">work</span><span class="p">[</span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span>
+</span><span id="__span-33-59"><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end if  */</span>
+</span><span id="__span-33-60"><span class="w">    </span><span class="p">}</span><span class="w">   </span><span class="cm">/* end inner for  */</span>
+</span><span id="__span-33-61"><span class="w">  </span><span class="p">}</span><span class="w">     </span><span class="cm">/* end outer for */</span>
+</span><span id="__span-33-62"><span class="p">}</span><span class="w"> </span><span class="cm">/* end bubble  */</span>
+</span><span id="__span-33-63">
+</span><span id="__span-33-64"><span class="cm">/* swap values at memory locations to which  element1Ptr and element2Ptr point</span>
+</span><span id="__span-33-65"><span class="cm">*/</span>
+</span><span id="__span-33-66"><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">element1Ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">element2Ptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-33-67"><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">hold</span><span class="p">;</span>
+</span><span id="__span-33-68"><span class="w">  </span><span class="n">hold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">element1Ptr</span><span class="p">;</span>
+</span><span id="__span-33-69"><span class="w">  </span><span class="o">*</span><span class="n">element1Ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">element2Ptr</span><span class="p">;</span>
+</span><span id="__span-33-70"><span class="w">  </span><span class="o">*</span><span class="n">element2Ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hold</span><span class="p">;</span>
+</span><span id="__span-33-71"><span class="p">}</span><span class="w"> </span><span class="cm">/* end swap  */</span>
+</span><span id="__span-33-72"><span class="cm">/* determine whether elements are out of order for an ascending order sort */</span>
+</span><span id="__span-33-73"><span class="kt">int</span><span class="w"> </span><span class="nf">ascending</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end ascending  */</span>
+</span><span id="__span-33-74"><span class="cm">/* determine whether elements are out of order for an descending order sort */</span>
+</span><span id="__span-33-75"><span class="kt">int</span><span class="w"> </span><span class="nf">descending</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="cm">/* end desending  */</span>
+</span></code></pre></div></td></tr></table></div>
+<p>练习：写出定义语句：int n=20;</p>
+<p>p为指向整型数据的指针变量  int *p</p>
+<p>定义整型数组a，它有n个元素  int a[n]</p>
+<p>定义指针数组p，它由n个指向整型数据的指针元素组成  int *p[n]</p>
+<p>p为指向含n个元素的一维数组的指针变量  int (*p)[n]</p>
+<p>f为返回整型函数值的函数  int f();</p>
+<p>p为指向函数的指针，该函数返回一个整型值  int (*p)()</p>
+<p>P为一个数组，创建了n个指向函数的指针  int (*p[n]) ();</p>
+<p>p是一个指向指针的指针变量，它指向一个指向整型数据的指针变量  int **p</p>
+<p><img alt="" src="../img/88c3f344-ab5f-447e-a4ed-9e43dabf8b96.png" /></p>
+<h2 id="_18">本章小结<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<ul>
+<li>一个指针包含的是一个存放数值的变量的地址</li>
+<li>使用指针可以模拟按引用向函数传递实参</li>
+<li>同类指针可以进行某些算术运算</li>
+<li>指针和数组可以互换使用</li>
+<li>指针数组常用来表示字符串数组</li>
+<li>函数指针包含的是一个函数在内存中的起始地址，常用于基于文本的菜单驱动系统</li>
+</ul>
+<h2 id="_19">函数指针<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<ul>
+<li>数组名  != &amp;数组名：<code>arr!=&amp;arr;</code></li>
+<li>函数名 = &amp;函数名：<code>func=&amp;func;</code></li>
+</ul>
+<h3 id="_20">声明<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><span class="n">返回值类型</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">指针变量名</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">形参列表</span><span class="w"> </span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-34-2"><span class="kt">int</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="c1">//声明函数</span>
+</span><span id="__span-34-3"><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="c1">//声明函数指针</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="_21">声明简化<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">type_ptr</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-35-2"><span class="c1">//声明函数指针数据类型，类型名为type_ptr</span>
+</span><span id="__span-35-3"><span class="n">type_ptr</span><span class="w"> </span><span class="n">ptr1</span><span class="p">,</span><span class="n">ptr2</span><span class="p">,</span><span class="n">ptrn</span><span class="p">;</span>
+</span><span id="__span-35-4"><span class="n">ptr1</span><span class="o">=</span><span class="n">func</span><span class="p">;</span>
+</span><span id="__span-35-5"><span class="n">ptr2</span><span class="o">=</span><span class="n">func</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_22">赋值<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><span class="n">ptr</span><span class="o">=</span><span class="n">func</span><span class="p">;</span><span class="c1">//函数指针赋值方式1</span>
+</span><span id="__span-36-2"><span class="n">ptr</span><span class="o">=&amp;</span><span class="n">func</span><span class="p">;</span><span class="c1">//函数指针赋值方式2</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_23">调用<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<div class="language-cpp highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C++</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><span class="n">ptr</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">10.5</span><span class="p">);</span><span class="c1">//函数指针调用</span>
+</span><span id="__span-37-2"><span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">)(</span><span class="mi">10</span><span class="p">,</span><span class="mf">10.5</span><span class="p">);</span><span class="c1">//函数指针调用</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_24">应用场景<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<ol>
+<li>回调函数</li>
+<li>线程</li>
+</ol>
+<h2 id="_25">本章小结<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06-C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/" class="md-footer__link md-footer__link--prev" aria-label="Previous: C语言数组">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                C语言数组
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08-C%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-footer__link md-footer__link--next" aria-label="Next: C字符和字符串">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                C字符和字符串
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

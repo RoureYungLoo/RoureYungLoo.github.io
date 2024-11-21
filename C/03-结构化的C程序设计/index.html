@@ -1,0 +1,1813 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02-%E8%B5%B0%E8%BF%91C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
+      
+      
+        <link rel="next" href="../04-C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>结构化的C程序设计 - 笔记仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-Q4DFFNKQER"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-Q4DFFNKQER",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-Q4DFFNKQER",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="笔记仓库" class="md-header__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            笔记仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              结构化的C程序设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="cyan"  aria-label="开启日间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="开启日间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="blue"  aria-label="开启夜间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="开启夜间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="笔记仓库" class="md-nav__button md-logo" aria-label="笔记仓库" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    笔记仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    C
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            C
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-C%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    什么是C语言？
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E8%B5%B0%E8%BF%91C%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-%E8%B5%B0%E8%BF%91C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    走近C语言程序设计
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    结构化的C程序设计
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    结构化的C程序设计
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引言
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序控制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      伪码
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="控制结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      顺序结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      循环结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句块
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      计数控制的循环
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      类型转换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类型转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      强制类型转换运算符
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数输出
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法设计考虑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值运算符
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      增1减1运算符
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章小结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C程序控制
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-C%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-C%E8%AF%AD%E8%A8%80%E6%95%B0%E7%BB%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言数组
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C语言指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-C%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    格式化输入和输出
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-%E7%BB%93%E6%9E%84%E4%BD%93-%E5%85%B1%E7%94%A8%E4%BD%93-%E6%9E%9A%E4%B8%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结构体、共用体、枚举、位域
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tinyhttpd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tinyhttpd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目管理工具
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../CPP/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    CPP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Java/01-%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章大纲
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引言
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="引言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序控制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      伪码
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="控制结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      顺序结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      循环结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句块
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      计数控制的循环
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      类型转换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类型转换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      强制类型转换运算符
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮点数输出
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法设计考虑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      赋值运算符
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      增1减1运算符
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      本章小结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="c">结构化的C程序设计<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
+<h2 id="_1">本章大纲<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>自顶向下、逐步求精的算法设计</li>
+<li>简单的选择语句</li>
+<li>采用while循环语句重复执行一段语句</li>
+<li>计数控制循环和标记控制循环</li>
+<li>结构化程序设计</li>
+</ul>
+<h2 id="_2">引言<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在编写程序来求解一个特定的问题之前，透彻地**理解问题**以及仔细地**设计解决**问题的**办法**是至关重要的。</p>
+<h3 id="_3">算法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>求解一个问题的流程称为算法。</p>
+<ul>
+<li>将要执行的**操作**</li>
+<li>执行这些操作的**顺序**</li>
+</ul>
+<h3 id="_4">语句<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>在程序中，将要执行的一个操作称为一个**语句**。</p>
+<h3 id="_5">程序控制<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>在一个计算机程序中，定义程序语句的**执行顺序**被称为程序控制</p>
+<h3 id="_6">伪码<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>伪码是一种人工的、非正式的辅助人们进行算法设计的语言。</p>
+<ul>
+<li>易于转换成相应的C程序</li>
+<li>编写伪码时可以不进行变量定义</li>
+</ul>
+<h2 id="_7">控制结构<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>顺序执行：通常情况下，计算机程序中的语句是按照它们被编写的顺序逐条执行的，称为顺序执行。</p>
+<p>控制转移：下一条要执行的语句不是当前语句的后继语句</p>
+<p>Bohm的研究结论：</p>
+<ul>
+<li>可以不使用goto语句来编写计算机程序</li>
+<li>任何计算机程序可以仅用三种控制结果来实现</li>
+<li>顺序结构</li>
+<li>选择结果</li>
+<li>循环结构</li>
+</ul>
+<h3 id="_8">顺序结构<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>使语句顺序执行的结构。</p>
+<ul>
+<li>顺序结构是C语言的内在结构，除非特别指明，计算机总是自动地按照C语句在程序中被编写的顺序，逐条地执行这些语句。</li>
+</ul>
+<p><strong>流程图</strong>：流程图是一个或一段算法的图形化表示。</p>
+<ul>
+<li>特定意义的图框</li>
+<li>流程线（箭头）</li>
+</ul>
+<p>顺序结构流程图：</p>
+<ul>
+<li>矩形框：计算等处理操作</li>
+<li>箭头：执行顺序</li>
+<li>圆圈：开始或结束</li>
+</ul>
+<p><img alt="img" src="../img/ch03-01.png" /></p>
+<h3 id="_9">选择结构<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>单分支：if 语句</p>
+</li>
+<li>
+<p>双分支：if 语句1 else 语句2</p>
+</li>
+<li>
+<p>多分支：</p>
+</li>
+<li>
+<ul>
+<li>switch 语句</li>
+</ul>
+</li>
+<li>if 语句1 else if 语句2 else 语句3</li>
+</ul>
+<h3 id="_10">循环结构<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>while循环</li>
+<li>do while循环</li>
+<li>for循环</li>
+</ul>
+<p>1、C语言全部的七种控制结构 ：顺序结构，三种选择结构，三种循环结构</p>
+<p>2、结构化程序设计是基于这七种结构进行设计的。任何一个C语言程序，根据程序所实现算法的需要，由这七种结构组合而成。</p>
+<p>3、顺序结构的单入口/单出口的控制结构易于实现程序的模块化设计。</p>
+<p>4、结构化程序构建方法</p>
+<ul>
+<li><strong>堆叠</strong></li>
+<li><strong>嵌套</strong></li>
+</ul>
+<p>语句示例</p>
+<p>if单分支</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Passed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-3"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>if else 双分支</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="p">){</span>
+</span><span id="__span-1-2"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Passed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-1-3"><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span id="__span-1-4"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-1-5"><span class="p">}</span>
+</span><span id="__span-1-6"><span class="c1">// grade &gt;= 60 ? printf ( Passed” ) :</span>
+</span><span id="__span-1-7"><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed&quot;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>if else 嵌套</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span>
+</span><span id="__span-2-2"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;A</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-3"><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+</span><span id="__span-2-4"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;B</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-5"><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span>
+</span><span id="__span-2-6"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;C</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-7"><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+</span><span id="__span-2-8"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; D</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-9"><span class="k">else</span>
+</span><span id="__span-2-10"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;F</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="_11">语句块<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>（复合语句）：包含在一对大括号内的一组语句。</p>
+<ul>
+<li>复合语句在语法上等同于一个语句</li>
+<li>在程序中可以放置单个语句的任何地方，都可以放置复合语句。</li>
+<li>在可以放置单个语句的任何地方也可以不放置任何语句，即一条空语句。空语句就是仅有一个分号（;）</li>
+</ul>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Passed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-3"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Congratuation!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-4"><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-5"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-6"><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; Sorry!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-7"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>while循环</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><span class="w">  </span><span class="c1">// 循环体</span>
+</span><span id="__span-4-3"><span class="p">}</span>
+</span><span id="__span-4-4"><span class="kt">int</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span id="__span-4-5"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">product</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><span class="w">  </span><span class="n">protuct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
+</span><span id="__span-4-7"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_12">计数控制的循环<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><strong>问题描述</strong>：一个班级有10个学生，请计算语文考试的平均成绩（满分100）？</p>
+<p><strong>算法要求</strong>：</p>
+<ul>
+<li>首先输入每一名学生的成绩</li>
+<li>然后计算平均分</li>
+<li>最后输出结果</li>
+</ul>
+<p><strong>解决方案</strong></p>
+<ul>
+<li>用伪码来描述要执行的操作及其执行顺序</li>
+<li>采用计数控制的循环（确定性循环）来逐个输入学生的成绩</li>
+</ul>
+<p><strong>书写伪码</strong></p>
+<p>令总分total 等于0</p>
+<p>令分数计数器counter等于1</p>
+<p>While 分数计数器counter的值小于或等于10时</p>
+<p>输入该分数grade</p>
+<p>将该分数grade加到总分数total中</p>
+<p>将分数计数器 counter的值加1</p>
+<p>令班级平均分 average 等于总分total 除以学生人数10</p>
+<p>输出班级平均分 average</p>
+<p><strong>编写代码</strong></p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+</span><span id="__span-5-2"><span class="p">{</span>
+</span><span id="__span-5-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+</span><span id="__span-5-4"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">grade</span><span class="p">;</span>
+</span><span id="__span-5-5"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+</span><span id="__span-5-6"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">average</span><span class="p">;</span>
+</span><span id="__span-5-7"><span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-5-8"><span class="w">    </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-5-9"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-5-10"><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-5-11"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;enter grade: &quot;</span><span class="p">);</span>
+</span><span id="__span-5-12"><span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%lf&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">grade</span><span class="p">);</span>
+</span><span id="__span-5-13"><span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">grade</span><span class="p">;</span>
+</span><span id="__span-5-14"><span class="w">        </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-5-15"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-16"><span class="w">    </span><span class="n">average</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-5-17"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;class average is %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">);</span>
+</span><span id="__span-5-18"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-5-19"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="" src="../img/ch03-02.png" /></p>
+<p><strong>问题描述</strong>：设计一个每次运行时能够处理任意个成绩的平均分的程序。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+</span><span id="__span-6-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+</span><span id="__span-6-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">grade</span><span class="p">;</span>
+</span><span id="__span-6-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+</span><span id="__span-6-5"><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">average</span><span class="p">;</span>
+</span><span id="__span-6-6"><span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-6-7"><span class="w">    </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-6-8"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;enter grade,-1 to end: &quot;</span><span class="p">);</span>
+</span><span id="__span-6-9"><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">grade</span><span class="p">);</span>
+</span><span id="__span-6-10"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">grade</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">){</span>
+</span><span id="__span-6-11"><span class="w">        </span><span class="c1">// printf(&quot;enter grade: &quot;);</span>
+</span><span id="__span-6-12"><span class="w">        </span><span class="c1">// scanf(&quot;%lf&quot;,&amp;grade);</span>
+</span><span id="__span-6-13"><span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">grade</span><span class="p">;</span>
+</span><span id="__span-6-14"><span class="w">        </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-6-15"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;enter grade,-1 to end: &quot;</span><span class="p">);</span>
+</span><span id="__span-6-16"><span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">grade</span><span class="p">);</span>
+</span><span id="__span-6-17"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-18"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+</span><span id="__span-6-19"><span class="w">        </span><span class="n">average</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span>
+</span><span id="__span-6-20"><span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span id="__span-6-21"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;No grades were entered </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-6-22"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-23"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;class average is %.2lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">average</span><span class="p">);</span>
+</span><span id="__span-6-24"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-6-25"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_13">类型转换<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<ul>
+<li>强制类型转换：(目标类型)原有类型 </li>
+<li>隐式类型转换：编译器在对源程序进行编译时，将对不同类型的操作数进行类型提升，从而使其类型一致，称作隐式类型转换。</li>
+</ul>
+<h3 id="_14">强制类型转换运算符<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>一元运算符</li>
+<li>优先级比*、\和%等高一级</li>
+<li>自右相左结合</li>
+</ul>
+<p>一元正（+）、负（-）运算符</p>
+<ul>
+<li>一元运算符</li>
+<li>优先级比*、\和%等高一级，与强制类型转换运算符同级</li>
+<li>自右相左结合</li>
+</ul>
+<h2 id="_15">浮点数输出<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>格式转换说明符 ：%.2f</p>
+</li>
+<li>
+<ul>
+<li>浮点数类型输出</li>
+</ul>
+</li>
+<li>小数点后输出两位</li>
+<li>%f ：默认，小数点后输出六位</li>
+</ul>
+<p>问题描述</p>
+<p>10个人参加考试，1表示通过，2表示未通过。请设计程序，使其具有如下功能：</p>
+<p>（1）输入每一名学生的考试结果（即“1”或“2”）。程序每次要求用户输入另一个考试结果时，都显示如下提示信息：Enter result(请输入考试结果）。</p>
+<p>（2）统计每种考试结果的个数</p>
+<p>（3）显示通过考试的学生总数和未通过考试的学生总数。</p>
+<p>（4）如果通过考试的学生总数超过8名，则显示“Bonus to instructor”（奖励教师）。     </p>
+<h2 id="_16">算法设计考虑<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>1 这个程序要处理10个考试结果，可以采用计数控制的循环结构。</p>
+<p>2 考试结果是一个整数：1或2。每读入一个结果，程序必须判断它是1还是2.在本算法中，只测试是否是1，如果不是1，则认为是2。</p>
+<p>3 设置两个计数器变量，一个用来统计通过考试的学生总数，另一个用来统计未通过考试的学生总数。</p>
+<p>4 处理完所有的考试结果后，程序必须判断通过考生的学生总数是否超过8名。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+</span><span id="__span-7-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">passes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-7-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">failues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-7-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-7-5"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+</span><span id="__span-7-6"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">student</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">){</span>
+</span><span id="__span-7-7"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;enter result (1=pass,2=fail): &quot;</span><span class="p">);</span>
+</span><span id="__span-7-8"><span class="w">        </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+</span><span id="__span-7-9"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+</span><span id="__span-7-10"><span class="w">            </span><span class="n">passes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">passes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-7-11"><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span id="__span-7-12"><span class="w">            </span><span class="n">failues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">failues</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-7-13"><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-14"><span class="w">        </span><span class="n">student</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-7-15"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-16"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;passed %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">passes</span><span class="p">);</span>
+</span><span id="__span-7-17"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;failed %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">failues</span><span class="p">);</span>
+</span><span id="__span-7-18"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">passes</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">8</span><span class="p">){</span>
+</span><span id="__span-7-19"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;bonus to instrctor!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-7-20"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-21"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-7-22"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_17">赋值运算符<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>算数赋值运算符+=  -=  *=  /= %=</p>
+<p>例：输入一个正整数，然后确定并打印该整数中各个位上的数字是7的个数。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+</span><span id="__span-8-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 用户输入的正整数 */</span>
+</span><span id="__span-8-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 计算用中间变量 */</span>
+</span><span id="__span-8-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 尾数字 */</span>
+</span><span id="__span-8-5"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 7的个数 */</span>
+</span><span id="__span-8-6"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个正整数：&quot;</span><span class="p">);</span>
+</span><span id="__span-8-7"><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num1</span><span class="p">);</span>
+</span><span id="__span-8-8"><span class="w">    </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="p">;</span>
+</span><span id="__span-8-9"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">num2</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">){</span>
+</span><span id="__span-8-10"><span class="w">        </span><span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 尾数字*/</span>
+</span><span id="__span-8-11"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">digit</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="n">amount</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-8-12"><span class="w">        </span><span class="n">num2</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-8-13"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="cm">/* while循环结束 */</span>
+</span><span id="__span-8-14"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;整数%d中含有%d个数字7</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+</span><span id="__span-8-15"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-8-16"><span class="p">}</span><span class="w"> </span><span class="cm">/* 主函数结束 */</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="11">增1减1运算符<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>增1运算符：++</p>
+</li>
+<li>
+<ul>
+<li>先增1/先减1：++a --a</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>将a的值增1/减1，然后在包含a的表达式中进行计算</li>
+<li>相当于使用（a+1)或（a-1)进行计算</li>
+<li>a的值变成(a+1)或（a-1)</li>
+</ul>
+</li>
+<li>
+<p>减1运算符：--</p>
+</li>
+<li>
+<ul>
+<li>后增1/后减1: a++ a--</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>在包含a的表达式中，使用a进行计算，然后将a的值增1/减1</li>
+<li>不使用（a+1)和（a-1)进行计算;</li>
+<li>a的值变成(a+1)或（a-1)</li>
+</ul>
+</li>
+</ul>
+<p>1、一元运算符必须直接写在它们的操作数旁边，二者之间不允许插入空格，这是一元运算符与二元运算符的不同之处。</p>
+<p>2、在一个只包含有一个变量的语句中，对变量使用先增1和后增1运算符的执行结果是相同的。</p>
+<p>3、对一个表达式而非一个简单的变量名使用增1运算符或减1运算符，例如++(x+1)，是一个语法错误。</p>
+<p><img alt="img" src="../img/ch03-03.png" /></p>
+<p>例子：回文检测。回文是一段数字或文本， 无论顺读还是倒读都是一样的。例如，下面这些五位数的整数都是回文：12321，55555， 45354和11611。请编写一个读入五位整数并判断其是否为回文的程序。</p>
+<div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 用户输入的正整数 */</span>
+</span><span id="__span-9-3"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 计算用中间变量 */</span>
+</span><span id="__span-9-4"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 倒数第一位数字 */</span>
+</span><span id="__span-9-5"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d2</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 倒数第二位数字 */</span>
+</span><span id="__span-9-6"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d3</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 倒数第三位数字 */</span>
+</span><span id="__span-9-7"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d4</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 倒数第四位数字 */</span>
+</span><span id="__span-9-8"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">d5</span><span class="p">;</span><span class="w"> </span><span class="cm">/* 倒数第五位数字 */</span>
+</span><span id="__span-9-9"><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;请输入一个五位数的正整数：&quot;</span><span class="p">);</span>
+</span><span id="__span-9-10"><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-9-11"><span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-9-12"><span class="w">    </span><span class="n">d1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-13"><span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-14"><span class="w">    </span><span class="n">d2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-15"><span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-16"><span class="w">    </span><span class="n">d3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-17"><span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-18"><span class="w">    </span><span class="n">d4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-19"><span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-20"><span class="w">    </span><span class="n">d5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-9-21"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">d4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-22"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;数字字符串%d是回文</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-9-23"><span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-24"><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;数字字符串%d不是回文</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-9-25"><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-26"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-9-27"><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="_18">本章小结<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<ul>
+<li>算法就是要执行的操作及其操作的顺序。</li>
+<li>伪码与日常使用的英语极为类似，它并不是一种真正的计算机程序设计语言。</li>
+<li>使用结构化程序设计技术编写的程序，更清晰可读、易于修改、易于查错排错。</li>
+<li>任何计算机程序都可以仅用顺序结构、选择结构和循环结构来实现。</li>
+<li>流程图可以用图形化的方式直观地描述算法。</li>
+<li>自顶向下、逐步求精的方法是一种有效的程序设计方法。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02-%E8%B5%B0%E8%BF%91C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 走近C语言程序设计">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                走近C语言程序设计
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-C%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6/" class="md-footer__link md-footer__link--next" aria-label="Next: C程序控制">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                C程序控制
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/RoureYungLoo" target="_blank" rel="noopener" title="RoureYungLoo" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<luruoyang@petalmail.com>" target="_blank" rel="noopener" title="禄若阳的花瓣邮箱" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.expand", "navigation.tracking", "navigation.path", "navigation.footer", "navigation.top", "navigation.indexes", "toc.follow", "navigation.prune", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
