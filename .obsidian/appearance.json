@@ -1,4 +1,7 @@
 {
   "accentColor": "",
-  "theme": "moonstone"
+  "theme": "moonstone",
+  "interfaceFontFamily": "HarmonyOS Sans SC",
+  "textFontFamily": "HarmonyOS Sans SC",
+  "monospaceFontFamily": "Consolas"
 }

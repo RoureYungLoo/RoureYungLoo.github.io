@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/08-程序人生/02-后端技术/01-编程语言/01-C/index.md",
+                "file": "docs/java/01-概述与基础.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/08-程序人生/02-后端技术/01-编程语言/01-C/index.md",
+                "file": "docs/java/01-概述与基础.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/08-程序人生/02-后端技术/01-编程语言/01-C/index.md",
+                "file": "docs/java/01-概述与基础.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/08-程序人生/02-后端技术/01-编程语言/01-C/index.md"
+                "file": "docs/java/01-概述与基础.md"
               }
             }
           }
@@ -138,16 +138,25 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
   "active": "b96814461b4d32cd",
   "lastOpenFiles": [
+    "docs/index.md",
+    "docs/logo.png",
+    "docs/resume.jpeg",
+    "docs/java/01-概述与基础.md",
+    "docs/java/01-概述与基础.assets/1715531608101-3321f0c7-e8af-416f-9be1-60bc227e5d0b.png",
+    "docs/java/01-概述与基础.assets/1715530484488-2a1e8e33-cbaa-4e7a-9e62-e63f34d6e723.png",
+    "docs/java/01-概述与基础.assets/1715530054294-152daf18-d098-4d73-b855-ad6c2bca7419.png",
+    "docs/java/01-概述与基础.assets/1715528014878-61e9b525-bb3c-440f-8258-4aae50b9a541.png",
+    "docs/java/01-概述与基础.assets/1715528338194-50f2af6c-7835-4008-a2f1-0ed0515d00f7.png",
     "docs/08-程序人生/02-后端技术/01-编程语言/01-C/tinyhttpd.md",
     "docs/08-程序人生/02-后端技术/01-编程语言/01-C/index.md",
     "docs/08-程序人生/02-后端技术/01-编程语言/01-C/CH10_结构体_共用体_枚举.md",
@@ -175,10 +184,6 @@
     "docs/08-程序人生/01-基础原理/09-计算机图形学",
     "Untitled 1",
     "Untitled",
-    "docs/logo.png",
-    "docs/index.md",
-    "docs/08-程序人生/02-后端技术/02-request-limit.md",
-    "docs/08-程序人生/02-后端技术/01-my-nova6.md",
-    "docs/08-程序人生/02-后端技术/01-编程语言/06-Golang/01-资料推荐.md"
+    "docs/08-程序人生/02-后端技术/02-request-limit.md"
   ]
 }
